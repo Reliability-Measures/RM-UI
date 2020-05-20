@@ -1,0 +1,758 @@
+{
+  "quizzes": [
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-4-24 17:35:25",
+      "description": "Quiz 2",
+      "id": 381,
+      "marks": "5 / 5",
+      "name": "Nimra Shahzad",
+      "responses": [
+        {
+          "correct": "A) 571 CE",
+          "point": 1,
+          "question": "1. Prophet Muhammad (pbuh) was born into the noble tribe of Quraish in Makkah in ______________",
+          "topic": "Seerah",
+          "your_answer": "A) 571 CE"
+        },
+        {
+          "correct": "B) To establish Ma'ruf and remove Munkar from the society",
+          "point": 1,
+          "question": "2. What is the basic purpose of Shariah ?",
+          "topic": "Fiqh",
+          "your_answer": "B) To establish Ma'ruf and remove Munkar from the society"
+        },
+        {
+          "correct": "C) The Clear Evidence",
+          "point": 1,
+          "question": "3. The meaning of Bayyinah is ______",
+          "topic": "Qur`an",
+          "your_answer": "C) The Clear Evidence"
+        },
+        {
+          "correct": "B. Sura al Tin",
+          "point": 1,
+          "question": "4. \"the human being is created in the best of moulds\", is a verse from .......",
+          "topic": "Qur`an",
+          "your_answer": "B. Sura al Tin"
+        },
+        {
+          "correct": "C. 20th Ramadan of 8th year of Hijrah",
+          "point": 1,
+          "question": "5. When was Makkah conquered by Muslims?",
+          "topic": "Seerah",
+          "your_answer": "C. 20th Ramadan of 8th year of Hijrah"
+        }
+      ],
+      "school": "Texas",
+      "score": 5,
+      "state": "Texas"
+    },
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-4-25 18:08:59",
+      "description": "Quiz 3",
+      "id": 613,
+      "marks": "4 / 5",
+      "name": "Nimra shahzad",
+      "responses": [
+        {
+          "correct": "D) Major Shirk",
+          "point": 1,
+          "question": "1. Slaughtering in the name of somebody other than Allah is",
+          "topic": "Aqeedah",
+          "your_answer": "D) Major Shirk"
+        },
+        {
+          "correct": "C) Flame of fire",
+          "point": 1,
+          "question": "2. Angels were created from light while Jins were created from................................",
+          "topic": "Qur`an",
+          "your_answer": "C) Flame of fire"
+        },
+        {
+          "correct": "A) disbelieved",
+          "point": 1,
+          "question": "3. Prophet Muhammad (pbuh) said: \u201cWhoever swears with anything other than Allah has already..............................",
+          "topic": "Fiqh",
+          "your_answer": "A) disbelieved"
+        },
+        {
+          "correct": "C. I will try my best to do it by tomorrow unless Allah wills otherwise or I forget.",
+          "point": 1,
+          "question": "4. \"I will do it tomorrow, Insahllah\", means .......",
+          "topic": "Fiqh",
+          "your_answer": "C. I will try my best to do it by tomorrow unless Allah wills otherwise or I forget."
+        },
+        {
+          "correct": "A. Anfal",
+          "point": 0,
+          "question": "5. In which chapter of the Qur'an, Allah mentioned Battle of Badr?",
+          "topic": "Qur`an",
+          "your_answer": "B. Tauba"
+        }
+      ],
+      "school": "Texas",
+      "score": 4,
+      "state": "Texas"
+    },
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-4-27 22:21:01",
+      "description": "Quiz 5",
+      "id": 1017,
+      "marks": "2 / 5",
+      "name": "Nimra Shahzad",
+      "responses": [
+        {
+          "correct": "B) In the Heaven",
+          "point": 1,
+          "question": "1. Where is Allah?",
+          "topic": "Aqeedah",
+          "your_answer": "B) In the Heaven"
+        },
+        {
+          "correct": "B) 2:282",
+          "point": 1,
+          "question": "2. Which verse of the Qur'an is the longest?",
+          "topic": "Qur`an",
+          "your_answer": "B) 2:282"
+        },
+        {
+          "correct": "D) 7th",
+          "point": 0,
+          "question": "3. From an authentic narration,  Aqeeqah is recommended on the \u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026..day of birth.",
+          "topic": "Fiqh",
+          "your_answer": "E) as early as possible"
+        },
+        {
+          "correct": "A. He was Prophet's nephew",
+          "point": 0,
+          "question": "4. How was \u2018Abdullah bin Zubayr bin \u2018Awam related to Prophet Muhammad (saw)?",
+          "topic": "Seerah",
+          "your_answer": "D. He was not related as he was born in Medina"
+        },
+        {
+          "correct": "C. Zakariyah",
+          "point": 0,
+          "question": "5. Who was the carpenter among prophets?",
+          "topic": "History",
+          "your_answer": "B. Daud"
+        }
+      ],
+      "school": "Texas",
+      "score": 2,
+      "state": "Texas"
+    },
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-4-28 12:25:13",
+      "description": "Quiz 6",
+      "id": 1158,
+      "marks": "5 / 5",
+      "name": "Nimra shahzad",
+      "responses": [
+        {
+          "correct": "C) the straight path",
+          "point": 1,
+          "question": "1. What is the meaning of Sirat al Mustaqim ?",
+          "topic": "Aqeedah",
+          "your_answer": "C) the straight path"
+        },
+        {
+          "correct": "D) All of the above",
+          "point": 1,
+          "question": "2. According to Surah Al-'Asr, man is surely in loss except those:",
+          "topic": "Qur`an",
+          "your_answer": "D) All of the above"
+        },
+        {
+          "correct": "A) Fard al-Kifaya",
+          "point": 1,
+          "question": "3. What is the Arabic term used for the collective obligation for learning essential sciences, arts and technology?",
+          "topic": "Fiqh",
+          "your_answer": "A) Fard al-Kifaya"
+        },
+        {
+          "correct": "B. establish the Law of Allah (swt) on the earth",
+          "point": 1,
+          "question": "4. Prophet Muhammad's (pbuh) mission was to  ___",
+          "topic": "Seerah",
+          "your_answer": "B. establish the Law of Allah (swt) on the earth"
+        },
+        {
+          "correct": "C. Maryam bint \u2018Imran and her son",
+          "point": 1,
+          "question": "5. Shaytan touches every new born baby except_____and _____",
+          "topic": "History",
+          "your_answer": "C. Maryam bint \u2018Imran and her son"
+        }
+      ],
+      "school": "Texas",
+      "score": 5,
+      "state": "Texas"
+    },
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-4-29 18:01:07",
+      "description": "Quiz 7",
+      "id": 1292,
+      "marks": "4 / 5",
+      "name": "Nimra Shahzad",
+      "responses": [
+        {
+          "correct": "E) All of the above",
+          "point": 1,
+          "question": "1. Which of the following describes correctly the religious beliefs of the people of Arabia before the Prophet-hood of Muhammad (pbuh) ?",
+          "topic": "Aqeedah",
+          "your_answer": "E) All of the above"
+        },
+        {
+          "correct": "D) Surah Mujadila",
+          "point": 1,
+          "question": "2. In which Surah the name of 'Allah' is repeated in every verse:",
+          "topic": "Qur`an",
+          "your_answer": "D) Surah Mujadila"
+        },
+        {
+          "correct": "A) Knowledge and understanding",
+          "point": 1,
+          "question": "3. What does the Arabic word \"Fiqh\" mean?",
+          "topic": "Fiqh",
+          "your_answer": "A) Knowledge and understanding"
+        },
+        {
+          "correct": "C. They thought he was too young and inexperienced",
+          "point": 0,
+          "question": "4. The Companions did not want the army to be led by Usama bin Zayd because______",
+          "topic": "Seerah",
+          "your_answer": "B. They don't want the son of the Prophet(pbuh)'s adopted son (Zayd) to risk his life"
+        },
+        {
+          "correct": "D. Prophet Daud",
+          "point": 1,
+          "question": "5. Who is the prophet of Allah who used to fast a day and break a day?_____",
+          "topic": "History",
+          "your_answer": "D. Prophet Daud"
+        }
+      ],
+      "school": "Texas",
+      "score": 4,
+      "state": "Texas"
+    },
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-5-04 20:41:02",
+      "description": "Quiz 12",
+      "id": 1932,
+      "marks": "4 / 5",
+      "name": "Nimra Shahzad",
+      "responses": [
+        {
+          "correct": "C) To worship Him",
+          "point": 1,
+          "question": "1. Why Allah (saw) created humans?",
+          "topic": "Aqeedah",
+          "your_answer": "C) To worship Him"
+        },
+        {
+          "correct": "B) Pomegranates, Figs, Olives, dates, grapes",
+          "point": 1,
+          "question": "2. Which fruits are mentioned in the Qur'an?",
+          "topic": "Qur`an",
+          "your_answer": "B) Pomegranates, Figs, Olives, dates, grapes"
+        },
+        {
+          "correct": "D) All of the above;E) A and B only",
+          "point": 1,
+          "question": "3.  Mention things that are done only in Ramadan?",
+          "topic": "Fiqh",
+          "your_answer": "D) All of the above"
+        },
+        {
+          "correct": "A. 'Umar bin al-khattab (RA)",
+          "point": 0,
+          "question": "4. \u2018Umar ibn \u2018Abdul Aziz is considered the 5th rightly guided Caliph. He was related to one of the first four Caliphs. Name the Calif.",
+          "topic": "Seerah",
+          "your_answer": "C. Abu Bakr (RA)"
+        },
+        {
+          "correct": "C.The people of Cave",
+          "point": 1,
+          "question": "5. These people were raised up after many years?",
+          "topic": "History",
+          "your_answer": "C.The people of Cave"
+        }
+      ],
+      "school": "Texas",
+      "score": 4,
+      "state": "Texas"
+    },
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-5-10 16:09:59",
+      "description": "Quiz 15",
+      "id": 2343,
+      "marks": "5 / 5",
+      "name": "Nimra Shahzad",
+      "responses": [
+        {
+          "correct": "C) To Tie a Knot",
+          "point": 1,
+          "question": "1. What does the root of the word \"Aqeedah\" literally translate to? ",
+          "topic": "Aqeedah",
+          "your_answer": "C) To Tie a Knot"
+        },
+        {
+          "correct": "B) Naml",
+          "point": 1,
+          "question": "2. Which surah has two \"Bismilllah\" in it? ",
+          "topic": "Qur`an",
+          "your_answer": "B) Naml"
+        },
+        {
+          "correct": "C) feed 10 poor people the same amount you feed your family",
+          "point": 1,
+          "question": "3.  What is the first expiation (Kaffarah) for breaking an oath (as mentioned in the Qur'an)?",
+          "topic": "Fiqh",
+          "your_answer": "C) feed 10 poor people the same amount you feed your family"
+        },
+        {
+          "correct": "D. Abdullah bin Abdul-Muttalib and Ismaeel (AS)",
+          "point": 1,
+          "question": "4. Muhammad (SAW) is also known as the \"descendant of the two sacrificed ones\"? Who were they?",
+          "topic": "Seerah",
+          "your_answer": "D. Abdullah bin Abdul-Muttalib and Ismaeel (AS)"
+        },
+        {
+          "correct": "D. Musa (AS) to Harun (AS)",
+          "point": 1,
+          "question": "5. According to a Aishah (R.A.A), who did the best favor to their brother? And to which brother? ",
+          "topic": "History",
+          "your_answer": "D. Musa (AS) to Harun (AS)"
+        }
+      ],
+      "school": "Texas",
+      "score": 5,
+      "state": "Texas"
+    },
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-5-10 16:08:58",
+      "description": "Quiz 16",
+      "id": 2431,
+      "marks": "5 / 5",
+      "name": "Nimra Shahzad",
+      "responses": [
+        {
+          "correct": "D) Someone who fasted Mondays and Thursdays regularly",
+          "point": 1,
+          "question": "1. Seven types of people will be given Allah (SWT)'s shade on day of judgement when there is no other shade. Who is NOT among them?",
+          "topic": "Aqeedah",
+          "your_answer": "D) Someone who fasted Mondays and Thursdays regularly"
+        },
+        {
+          "correct": "C) Youths in the Cave, Two Gardens, Musa (AS) and Khidr, Dhul- Qurnayn",
+          "point": 1,
+          "question": "2. Surah Kahf is full of beautiful stories. Which is the correct order that the stories come in?",
+          "topic": "Qur`an",
+          "your_answer": "C) Youths in the Cave, Two Gardens, Musa (AS) and Khidr, Dhul- Qurnayn"
+        },
+        {
+          "correct": "C) one who can overcome his anger",
+          "point": 1,
+          "question": "3.  Complete the Hadeeth: \"A strong man is not one who can overpower others, rather the strong man is...\" ",
+          "topic": "Fiqh",
+          "your_answer": "C) one who can overcome his anger"
+        },
+        {
+          "correct": "D. Asma bint Abu Bakr (RA) for tying supply bags for the Prophet (SAW)",
+          "point": 1,
+          "question": "4. Which companion of the Prophet (SAW) is known as \u201cZu Nataqain\u201d (Lady of Two Belts) and for what reason?",
+          "topic": "Seerah",
+          "your_answer": "D. Asma bint Abu Bakr (RA) for tying supply bags for the Prophet (SAW)"
+        },
+        {
+          "correct": "A. Hoopoe (Bird)",
+          "point": 1,
+          "question": "5. Which animal informed Sulayman (AS) about the Queen of Saba? ",
+          "topic": "History",
+          "your_answer": "A. Hoopoe (Bird)"
+        }
+      ],
+      "school": "Texas",
+      "score": 5,
+      "state": "Texas"
+    },
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-5-10 16:07:53",
+      "description": "Quiz 17",
+      "id": 2512,
+      "marks": "5 / 5",
+      "name": "Nimra shahzad",
+      "responses": [
+        {
+          "correct": "E) No more masajid (mosques) will be built at all",
+          "point": 1,
+          "question": "1.  Which of the following is NOT a sign leading to the Day of Judgement?",
+          "topic": "Aqeedah",
+          "your_answer": "E) No more masajid (mosques) will be built at all"
+        },
+        {
+          "correct": "C) Surah Hajj",
+          "point": 1,
+          "question": "2. Which Surah has two Sajdahs in it? ",
+          "topic": "Qur`an",
+          "your_answer": "C) Surah Hajj"
+        },
+        {
+          "correct": "B) Let other go in the first row",
+          "point": 1,
+          "question": "3. Which is NOT a right a Muslim has over another Muslim? ",
+          "topic": "Fiqh",
+          "your_answer": "B) Let other go in the first row"
+        },
+        {
+          "correct": "D) A Christian Monk who recognized that Muhammad (SAW) will become a prophet",
+          "point": 1,
+          "question": "4. Who was Bahira? ",
+          "topic": "Seerah",
+          "your_answer": "D) A Christian Monk who recognized that Muhammad (SAW) will become a prophet"
+        },
+        {
+          "correct": "E) Stop flowing",
+          "point": 1,
+          "question": "5. What does \u201cZamzam\u201d actually mean? ",
+          "topic": "History",
+          "your_answer": "E) Stop flowing"
+        }
+      ],
+      "school": "Texas",
+      "score": 5,
+      "state": "Texas"
+    },
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-5-11 00:12:46",
+      "description": "Quiz 17",
+      "id": 2518,
+      "marks": "5 / 5",
+      "name": "Nimra Shahzad",
+      "responses": [
+        {
+          "correct": "E) No more masajid (mosques) will be built at all",
+          "point": 1,
+          "question": "1.  Which of the following is NOT a sign leading to the Day of Judgement?",
+          "topic": "Aqeedah",
+          "your_answer": "E) No more masajid (mosques) will be built at all"
+        },
+        {
+          "correct": "C) Surah Hajj",
+          "point": 1,
+          "question": "2. Which Surah has two Sajdahs in it? ",
+          "topic": "Qur`an",
+          "your_answer": "C) Surah Hajj"
+        },
+        {
+          "correct": "B) Let other go in the first row",
+          "point": 1,
+          "question": "3. Which is NOT a right a Muslim has over another Muslim? ",
+          "topic": "Fiqh",
+          "your_answer": "B) Let other go in the first row"
+        },
+        {
+          "correct": "D) A Christian Monk who recognized that Muhammad (SAW) will become a prophet",
+          "point": 1,
+          "question": "4. Who was Bahira? ",
+          "topic": "Seerah",
+          "your_answer": "D) A Christian Monk who recognized that Muhammad (SAW) will become a prophet"
+        },
+        {
+          "correct": "E) Stop flowing",
+          "point": 1,
+          "question": "5. What does \u201cZamzam\u201d actually mean? ",
+          "topic": "History",
+          "your_answer": "E) Stop flowing"
+        }
+      ],
+      "school": "Texas",
+      "score": 5,
+      "state": "Texas"
+    },
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-5-11 17:44:53",
+      "description": "Quiz 18",
+      "id": 2601,
+      "marks": "5 / 5",
+      "name": "Nimra Shahzad",
+      "responses": [
+        {
+          "correct": "B) Al- Hafeez (\u0627\u0644\u062d\u0641\u064a\u0638)",
+          "point": 1,
+          "question": "1.  Allah (SWT) has preserved the Quran for over 1400 years. Which attribute of His best reflects this? ",
+          "topic": "Aqeedah",
+          "your_answer": "B) Al- Hafeez (\u0627\u0644\u062d\u0641\u064a\u0638)"
+        },
+        {
+          "correct": "A) Surah Fatihah",
+          "point": 1,
+          "question": "2. Which Surah is known as the \"Seven oft-repeated verses\"?",
+          "topic": "Qur`an",
+          "your_answer": "A) Surah Fatihah"
+        },
+        {
+          "correct": "A) a person who was given wealth by Allah (SWT) and he donates it, D) a person who was given wisdom by Allah (SWT) and he judges by it",
+          "point": 1,
+          "question": "3. What are the two only acceptable forms of envy, according to a Hadeeth? ",
+          "topic": "Fiqh",
+          "your_answer": "A) a person who was given wealth by Allah (SWT) and he donates it, D) a person who was given wisdom by Allah (SWT) and he judges by it"
+        },
+        {
+          "correct": "C) Mother of Ammar bin Yasir (RA)",
+          "point": 1,
+          "question": "4. Who was the first Mother martyr (shaheed) in Islam? ",
+          "topic": "Seerah",
+          "your_answer": "C) Mother of Ammar bin Yasir (RA)"
+        },
+        {
+          "correct": "A) His stick turning into a snake, B) A lot of frogs, C) Lice, D) Putting his hand in his shirt and it came out white, E) Blood in the water",
+          "point": 1,
+          "question": "5. What are some of the nine signs that Allah (SWT) gave to Musa (AS)? ",
+          "topic": "History",
+          "your_answer": "A) His stick turning into a snake, B) A lot of frogs, C) Lice, D) Putting his hand in his shirt and it came out white, E) Blood in the water"
+        }
+      ],
+      "school": "Texas",
+      "score": 5,
+      "state": "Texas"
+    },
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-5-11 17:43:55",
+      "description": "Quiz 19",
+      "id": 2634,
+      "marks": "5 / 5",
+      "name": "Nimra Shahzad",
+      "responses": [
+        {
+          "correct": "A) 19; Malik (AS)",
+          "point": 1,
+          "question": "1. How many angels guard the Hellfire? (Hint: Surah Muddathir) One of them is named in the Quran, what is his name? ",
+          "topic": "Aqeedah",
+          "your_answer": "A) 19; Malik (AS)"
+        },
+        {
+          "correct": "D) eat the flesh of their dead brother",
+          "point": 1,
+          "question": "2. Surah Hujurat has compared those who backbite with those who...",
+          "topic": "Qur`an",
+          "your_answer": "D) eat the flesh of their dead brother"
+        },
+        {
+          "correct": "B) Using the restroom, D) Deep Sleep, E) Passing gas",
+          "point": 1,
+          "question": "3. Which of 3 (three) the following breaks the wudu (ablution)?  (select all that applies)",
+          "topic": "Fiqh",
+          "your_answer": "B) Using the restroom, D) Deep Sleep, E) Passing gas"
+        },
+        {
+          "correct": "B) Zayd bin Haritha (RA)",
+          "point": 1,
+          "question": "4. Who did the Prophet (SAW) go to Ta'if with the first time? ",
+          "topic": "Seerah",
+          "your_answer": "B) Zayd bin Haritha (RA)"
+        },
+        {
+          "correct": "E) A house of worship that the angels circulate around; in Heaven",
+          "point": 1,
+          "question": "5. What and where is \"Bait Al-Ma'mur\"? (\u0627\u0644\u0628\u064a\u062a \u0627\u0644\u0645\u064e\u0639\u0652\u0645\u0648\u0631)",
+          "topic": "History",
+          "your_answer": "E) A house of worship that the angels circulate around; in Heaven"
+        }
+      ],
+      "school": "Texas",
+      "score": 5,
+      "state": "Texas"
+    },
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-5-12 20:20:28",
+      "description": "Quiz 20",
+      "id": 2721,
+      "marks": "5 / 5",
+      "name": "Nimra Shahzad",
+      "responses": [
+        {
+          "correct": "B) And for you as well (Walika Bi-Mithli)",
+          "point": 1,
+          "question": "1.  When you make dua'a for someone else, what do the angles say?",
+          "topic": "Aqeedah",
+          "your_answer": "B) And for you as well (Walika Bi-Mithli)"
+        },
+        {
+          "correct": "B) do not do shirk (associate others with Allah)",
+          "point": 1,
+          "question": "2. In Surah Luqman, what is the first piece of advice Luqman gives to his son? ",
+          "topic": "Qur`an",
+          "your_answer": "B) do not do shirk (associate others with Allah)"
+        },
+        {
+          "correct": "A) Cutting the nails, B) Hunting animals, C) Wearing perfume",
+          "point": 1,
+          "question": "3. Which 3 (three) is prohibited in the state of Ihram? (check all that applies) ",
+          "topic": "Fiqh",
+          "your_answer": "A) Cutting the nails, B) Hunting animals, C) Wearing perfume"
+        },
+        {
+          "correct": "D) Israa means Night Journey; Mi'raaj means Ascension.",
+          "point": 1,
+          "question": "4. What is the meaning of the words \"Israa\" and Mi'raaj'? ",
+          "topic": "Seerah",
+          "your_answer": "D) Israa means Night Journey; Mi'raaj means Ascension."
+        },
+        {
+          "correct": "E) Qabil",
+          "point": 1,
+          "question": "5. According to a Hadeeth, who gets a share of the punishment every time someone murders someone? ",
+          "topic": "History",
+          "your_answer": "E) Qabil"
+        }
+      ],
+      "school": "Texas",
+      "score": 5,
+      "state": "Texas"
+    },
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-5-13 17:31:54",
+      "description": "Quiz 21",
+      "id": 2795,
+      "marks": "5 / 5",
+      "name": "Nimra Shahzad",
+      "responses": [
+        {
+          "correct": "A) it is narrower than a hair, thinner than a sword, C) Some will pass in a blink of an eye, E) Some will fall down in the Hell",
+          "point": 1,
+          "question": "1.  Describe the Sirat over Hell we will all have to pass. Select all correct options.",
+          "topic": "Aqeedah",
+          "your_answer": "A) it is narrower than a hair, thinner than a sword, C) Some will pass in a blink of an eye, E) Some will fall down in the Hell"
+        },
+        {
+          "correct": "D) Surah Ahzab",
+          "point": 1,
+          "question": "2. Which Surah describes the Prophet's (SAW) wives as \"the Mother of the Believers\"? ",
+          "topic": "Qur`an",
+          "your_answer": "D) Surah Ahzab"
+        },
+        {
+          "correct": "B) Excessive, unnecessary movements that are not part of the Salah, C) Talking and Laughing out loud, D) Not covering the parts of the body that should be covered",
+          "point": 1,
+          "question": "3. Which of the following things break the Salah? Select all that applies.",
+          "topic": "Fiqh",
+          "your_answer": "B) Excessive, unnecessary movements that are not part of the Salah, C) Talking and Laughing out loud, D) Not covering the parts of the body that should be covered"
+        },
+        {
+          "correct": "A) You will be next after me (in death) and you will be made a leader in Paradise",
+          "point": 1,
+          "question": "4. What did the Prophet (SAW) whisper to his daughter Fatimah (RA) as he was dying that made her smile? ",
+          "topic": "Seerah",
+          "your_answer": "A) You will be next after me (in death) and you will be made a leader in Paradise"
+        },
+        {
+          "correct": "C) seven skinny cows eating seven fat cows",
+          "point": 1,
+          "question": "5. What was part of the dream of the King that Yusuf (AS) was asked to interpret? ",
+          "topic": "History",
+          "your_answer": "C) seven skinny cows eating seven fat cows"
+        }
+      ],
+      "school": "Texas",
+      "score": 5,
+      "state": "Texas"
+    },
+    {
+      "age": 20,
+      "city": "Texas",
+      "created_at": "2020-5-14 14:05:23",
+      "description": "Quiz 22",
+      "id": 2851,
+      "marks": "5 / 5",
+      "name": "Nimra Shahzad",
+      "responses": [
+        {
+          "correct": "C) The One We Can Trust",
+          "point": 1,
+          "question": "1.  What does the name Al-Wakeel (\u0627\u0644\u0652\u0648\u064e\u0643\u0650\u064a\u0644) mean? ",
+          "topic": "Aqeedah",
+          "your_answer": "C) The One We Can Trust"
+        },
+        {
+          "correct": "A) Surah Najm",
+          "point": 1,
+          "question": "2. When the Quraysh heard this Surah, they prostrated because of its beauty. Which Surah was it? ",
+          "topic": "Qur`an",
+          "your_answer": "A) Surah Najm"
+        },
+        {
+          "correct": "B) if you knew the punishment, you would have waited for 40 periods of time",
+          "point": 1,
+          "question": "3. What did the Prophet (SAW) say about passing in front of someone without a sutrah while they are praying? ",
+          "topic": "Fiqh",
+          "your_answer": "B) if you knew the punishment, you would have waited for 40 periods of time"
+        },
+        {
+          "correct": "E) When the Quraysh saw that the pact in the Kabah was eaten by termites",
+          "point": 1,
+          "question": "4. How did the Boycott of Muslims in Makkah end?  ",
+          "topic": "Seerah",
+          "your_answer": "E) When the Quraysh saw that the pact in the Kabah was eaten by termites"
+        },
+        {
+          "correct": "C) a gold, measuring bowl",
+          "point": 1,
+          "question": "5. What did Yusuf (AS) put in the bag of his brother Benyameen (AS)? ",
+          "topic": "History",
+          "your_answer": "C) a gold, measuring bowl"
+        }
+      ],
+      "school": "Texas",
+      "score": 5,
+      "state": "Texas"
+    }
+  ],
+  "total_scores": {
+    "Combined score": 69,
+    "Combined score Percentage": 92.0,
+    "No. of Quizzes": 15,
+    "Topic Max Scores": {
+      "Aqeedah": 14,
+      "Fiqh": 16,
+      "History": 13,
+      "Qur`an": 17,
+      "Seerah": 15
+    },
+    "Topic Scores": {
+      "Aqeedah": 14,
+      "Fiqh": 15,
+      "History": 12,
+      "Qur`an": 16,
+      "Seerah": 12
+    }
+  }
+}

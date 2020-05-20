@@ -1,13 +1,14 @@
 import React from 'react'
 import { useFormContext, useFieldArray, Controller } from 'react-hook-form'
 import { Button, ListGroup, Row, Col, Form } from 'react-bootstrap'
+import MyInput from './Reuse_components/my_input'
 
 function MultipleChoiceForm() {
-  const { watch, control, register } = useFormContext()
-  const { fields, append, remove } = useFieldArray({ control, name: 'item_choices' })
+  const { watch, control } = useFormContext()
+  const { fields, append, remove } = useFieldArray({ control, name: 'quiz_question.item_choices' })
   return (
     <>
-      {watch('item_type') === 'Multiple Choice' ? (
+      {watch('quiz_question.tags.item_type') === 'Multiple Choice' ? (
         <>
           <ListGroup>
             <ListGroup.Item>
@@ -34,13 +35,13 @@ function MultipleChoiceForm() {
                     <Controller
                       as={<Form.Control as='textarea' rows='2' />}
                       autoComplete='off'
-                      name={`item_choices[${index}].choice`}
+                      name={`quiz_question.item_choices[${index}].choice`}
                       control={control}
                       defaultValue={item.choice}
                     />
                   </Col>
                   <Col md='2'>
-                    <input type='checkbox' value='1' name={`item_choices[${index}].correct`} ref={register()} />
+                    <MyInput input_type='checkbox' value='1' name={`quiz_question.item_choices[${index}].correct`} />
                   </Col>
                   <Col md='2'>
                     <Button type='button' onClick={() => remove(index)}>

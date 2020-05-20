@@ -5,8 +5,7 @@ function ListItem({ item, text, color }) {
   return (
     <>
       <ListGroup.Item variant={color}>
-        {text}
-        {item}
+        {text} {item}
       </ListGroup.Item>
     </>
   )

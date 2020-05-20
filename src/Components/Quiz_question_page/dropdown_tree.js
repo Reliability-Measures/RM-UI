@@ -9,9 +9,16 @@ function DropdownTree() {
   const { watch } = useFormContext()
   const dispatch = useDispatch()
   let question_json = question_details.subject_list
-  let topics = []
+  let topics = [
+    {
+      label: 'Choose Subject First'
+    }
+  ]
   for (let i = 0; i < question_json.length; i++) {
-    if (watch('subject') === question_json[i].label) {
+    if (
+      watch('quiz_question.tags.subject') === question_json[i].label ||
+      watch('quiz_create.subject') === question_json[i].label
+    ) {
       topics = question_json[i].children
     }
   }

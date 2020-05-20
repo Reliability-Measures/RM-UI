@@ -6,7 +6,7 @@ import { FileSuccess, FileFailure } from '../Redux/Dropbox_init/dropbox_actions'
 //   fetchRamadanResultsStat5,
 //   fetchRamadanResultsStat6
 // } from '.././Redux/Ramadan_quiz_results/aggregated_actions'
-import { fetchCourses } from '.././Redux/RM-courses_init/rm_courses_init_actions'
+//import { fetchCourses } from '.././Redux/RM-courses_init/rm_courses_init_actions'
 import { Dropbox } from 'dropbox'
 import { cloud_provider, set_config } from './Config'
 
@@ -32,7 +32,7 @@ function Initializer() {
     // dispatch(fetchRamadanResultsStat4())
     // dispatch(fetchRamadanResultsStat5())
     // dispatch(fetchRamadanResultsStat6())
-    dispatch(fetchCourses())
+    //dispatch(fetchCourses())
   }
   return <div></div>
 }

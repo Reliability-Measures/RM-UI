@@ -114,3 +114,14 @@ export const question_details = {
     }
   ]
 }
+
+// let item_json = {
+//   user_data: [],
+//   tags: { id: '', item_type: '', grade_min: 1, grade_max: 12, item_text: '', subject: '', privacy_flag: 1, paths: [] },
+//   item_choices: [
+//     { choice: '', correct: 0 },
+//     { choice: '', correct: 0 },
+//     { choice: '', correct: 0 },
+//     { choice: '', correct: 0 }
+//   ]
+// }

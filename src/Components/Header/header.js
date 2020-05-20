@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import GoogleLogin from './google_login'
-import { rmCoursesShow, rmCoursesHide } from '../../Redux/RM-courses_init/rm_courses_init_actions'
-import { Nav, Navbar, NavDropdown, Col } from 'react-bootstrap'
+//import { rmCoursesShow, rmCoursesHide } from '../../Redux/RM-courses_init/rm_courses_init_actions'
+import { Nav, Navbar, Col } from 'react-bootstrap'
 //import { dataLoadedOff } from '../../Redux/Ramadan_quiz_results/indivisual_actions'
 
 function Header() {
   const [expanded, setexpanded] = useState(false)
-  const dispatch = useDispatch()
   return (
     <div>
       <Navbar expanded={expanded} style={{ backgroundColor: 'green' }} expand='lg' variant='dark'>
@@ -28,8 +26,11 @@ function Header() {
             <Link className='text-light nav-link' to='/analyze'>
               Analyze Test
             </Link>
-            <Link className='text-light nav-link' to='/dailyquiz'>
+            <Link className='text-light nav-link' to='/createquestion'>
               Create Questions
+            </Link>
+            <Link className='text-light nav-link' to='/createquiz'>
+              Create Quiz
             </Link>
             {/* <Link
               className='text-light nav-link'
@@ -40,7 +41,7 @@ function Header() {
               Ramadan Quiz Results
             </Link> */}
 
-            <NavDropdown title={<span className='text-light my-auto'>Courses</span>} id='basic-nav-dropdown'>
+            {/* <NavDropdown title={<span className='text-light my-auto'>Courses</span>} id='basic-nav-dropdown'>
               <NavDropdown.Item
                 as={Link}
                 to='/courses'
@@ -57,7 +58,7 @@ function Header() {
                 }}>
                 R-M Courses (samples)
               </NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
           </Nav>
         </Navbar.Collapse>
         <GoogleLogin />

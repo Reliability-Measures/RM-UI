@@ -5,12 +5,8 @@ import { Card, Row, Col, Accordion } from 'react-bootstrap'
 function IndividualQuizzesCards() {
   const [expanded, setexpanded] = useState(false)
   const data_loaded = useSelector((state) => state.ramadan_ind_results.loaded)
-  const quizzes = useSelector(
-    (state) => state.ramadan_ind_results.ind_quizzes.quizzes
-  )
-  const total_scores = useSelector(
-    (state) => state.ramadan_ind_results.ind_quizzes.total_scores
-  )
+  const quizzes = useSelector((state) => state.ramadan_ind_results.ind_quizzes.quizzes)
+  const total_scores = useSelector((state) => state.ramadan_ind_results.ind_quizzes.total_scores)
   return (
     <div>
       {data_loaded && total_scores['No. of Quizzes'] >= 1 ? (
@@ -19,9 +15,7 @@ function IndividualQuizzesCards() {
             <Accordion.Toggle
               className='panel-heading'
               eventKey='0'
-              onClick={() =>
-                setexpanded((prevExpanded) => (prevExpanded = !prevExpanded))
-              }>
+              onClick={() => setexpanded((prevExpanded) => (prevExpanded = !prevExpanded))}>
               <Row as={(Card.Header, 'h2')}>
                 <Col />
                 <Col>Individual Quizzes</Col>
@@ -42,9 +36,7 @@ function IndividualQuizzesCards() {
                       <Card>
                         <Accordion.Toggle eventKey='0'>
                           <Row as={(Card.Header, 'h5')}>
-                            <Col className='small'>
-                              {val.created_at.substring(0, 10)}
-                            </Col>
+                            <Col className='small'>{val.created_at.substring(0, 10)}</Col>
                             <Col className='small'>{val.description} </Col>
                             <Col className='small'>{val.marks}</Col>
                           </Row>
@@ -54,11 +46,7 @@ function IndividualQuizzesCards() {
                             {val.responses.map((va, index) => (
                               <div key={index} className='ramadan-card-text'>
                                 <div>
-                                  {
-                                    <div style={{ fontWeight: 'bold' }}>
-                                      {va.question}
-                                    </div>
-                                  }
+                                  {<div style={{ fontWeight: 'bold' }}>{va.question}</div>}
                                   {
                                     <div style={{ color: 'green' }}>
                                       <i className='fas fa-check'></i>

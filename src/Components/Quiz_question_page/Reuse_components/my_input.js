@@ -3,12 +3,27 @@ import { Form } from 'react-bootstrap'
 import '../../Components.css'
 import { useFormContext } from 'react-hook-form'
 
-function MyInput({ label, name, options, input_type, max_range, id }) {
+function MyInput({
+  label,
+  name,
+  options,
+  input_type,
+  max_range,
+  id,
+  value,
+  disabled,
+  checked,
+  size,
+  rows,
+  label_size,
+  onClick,
+  required
+}) {
   const { register } = useFormContext()
   return (
     <>
       <Form.Group controlId={id} className='input'>
-        <Form.Label as='h4'>{label}</Form.Label>
+        <Form.Label as={label_size}> {label} </Form.Label>
         {input_type === 'select' ? (
           <Form.Control as={input_type} name={name} ref={register}>
             <>
@@ -23,7 +38,7 @@ function MyInput({ label, name, options, input_type, max_range, id }) {
         ) : null}
         {input_type === 'textarea' ? (
           <>
-            <Form.Control as={input_type} name={name} ref={register} autoComplete='off' />
+            <Form.Control as={input_type} name={name} ref={register} autoComplete='off' rows={rows} size={size} />
           </>
         ) : null}
         {input_type === 'range' ? (
@@ -34,6 +49,20 @@ function MyInput({ label, name, options, input_type, max_range, id }) {
         {input_type === 'switch' ? (
           <>
             <input type='checkbox' value={1} name={name} ref={register} />
+          </>
+        ) : null}
+        {input_type === 'checkbox' ? (
+          <>
+            <input
+              type='checkbox'
+              value={value}
+              name={name}
+              ref={register}
+              disabled={disabled}
+              checked={checked}
+              className='double'
+              onClick={onClick}
+            />
           </>
         ) : null}
       </Form.Group>
