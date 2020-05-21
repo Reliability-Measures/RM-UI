@@ -17,7 +17,7 @@ function QuizLinkModal(props) {
   return (
     <>
       {props.show === true && (
-        <Modal {...props} size='lg' aria-labelledby='contained-modal-title-vcenter' centered>
+        <Modal {...props} size='lg' backdrop="static" aria-labelledby='contained-modal-title-vcenter' centered>
           <Modal.Header>
             <Modal.Title>Generating Quiz</Modal.Title>
           </Modal.Header>
