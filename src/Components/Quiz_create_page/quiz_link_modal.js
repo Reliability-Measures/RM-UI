@@ -9,15 +9,13 @@ function QuizLinkModal(props) {
   const request_sent = useSelector((state) => state.quiz_question.items_post_sent)
   const response = useSelector((state) => state.quiz_question.items_post_response)
   let error = !response.quiz
-  console.log(error)
-
   let pub_link = !error && request_sent ? response.quiz.metadata.published_url : null
   let edit_link = !error && request_sent ? response.quiz.metadata.editor_url : null
 
   return (
     <>
       {props.show === true && (
-        <Modal {...props} size='lg' backdrop="static" aria-labelledby='contained-modal-title-vcenter' centered>
+        <Modal {...props} size='lg' backdrop='static' aria-labelledby='contained-modal-title-vcenter' centered>
           <Modal.Header>
             <Modal.Title>Generating Quiz</Modal.Title>
           </Modal.Header>

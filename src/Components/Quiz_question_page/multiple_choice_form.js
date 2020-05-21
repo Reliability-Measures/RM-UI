@@ -4,18 +4,18 @@ import { Button, ListGroup, Row, Col, Form } from 'react-bootstrap'
 
 function MultipleChoiceForm() {
   const { watch, control } = useFormContext()
-  const { fields, append, remove } = useFieldArray({ control, name: 'quiz_question.item_choices' })
-  const from_data = watch({ nest: true })
-  console.log(from_data.quiz_question)
+  const { fields, append, remove } = useFieldArray({ control, name: 'item_choices' })
   return (
     <>
-      {watch('quiz_question.tags.item_type') === 'Multiple Choice' ? (
+      {watch('tags.item_type') === 'Multiple Choice' ? (
         <>
           <ListGroup>
             <ListGroup.Item>
               <Row>
                 <Col md='2' />
-                <Col md='6' className="h4">Item Choices</Col>
+                <Col md='6' className='h4'>
+                  Item Choices
+                </Col>
                 <Col md='3'>Check Correct Answer(s)</Col>
                 <Col md='1'>
                   <Button
@@ -24,7 +24,8 @@ function MultipleChoiceForm() {
                       append({ choice: '', correct: false })
                     }}>
                     <i className='fas fa-plus'></i>
-                  </Button>{' '} Add
+                  </Button>{' '}
+                  Add
                 </Col>
               </Row>
             </ListGroup.Item>
@@ -36,7 +37,7 @@ function MultipleChoiceForm() {
                     <Controller
                       as={<Form.Control as='textarea' rows='2' />}
                       autoComplete='off'
-                      name={`quiz_question.item_choices[${index}].choice`}
+                      name={`item_choices[${index}].choice`}
                       control={control}
                       defaultValue={item.choice}
                     />
@@ -44,7 +45,7 @@ function MultipleChoiceForm() {
                   <Col md='3'>
                     <Controller
                       as={<input type='checkbox' className='double' />}
-                      name={`quiz_question.item_choices[${index}].correct`}
+                      name={`item_choices[${index}].correct`}
                       defaultValue={item.correct}
                       control={control}
                     />

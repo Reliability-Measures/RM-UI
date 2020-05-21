@@ -17,13 +17,15 @@ function QuizConfirmModal(props) {
   const is_login = useSelector((state) => state.google_json.isLogin)
   let quiz_json = {}
   if (props.show === true) {
-    form_data.quiz_create.question_list.map((val) =>
-      val.question_id === false ? (val.question_id = 0) : (val.question_id = 1)
-    )
     let item_ids = items_selected_id
-    let quiz_name = form_data.quiz_create.quiz_name
-    let quiz_description = form_data.quiz_create.quiz_description
+    let quiz_name = form_data.quiz_name
+    let quiz_description = form_data.quiz_description
+    let options = form_data.options
     let user_profile = is_login ? google_json.profileObj : {}
+    options.email === false ? (options.email = 0) : (options.email = 1)
+    options.name === false ? (options.name = 0) : (options.name = 1)
+    options.show_correct === false ? (options.show_correct = 0) : (options.show_correct = 1)
+    Object.assign(quiz_json, { options })
     Object.assign(quiz_json, { item_ids })
     Object.assign(quiz_json, { quiz_name })
     Object.assign(quiz_json, { quiz_description })
@@ -48,8 +50,8 @@ function QuizConfirmModal(props) {
           <Modal.Body>
             <Row>
               <Col md='10'>
-                <ListItem text='Quiz Name: ' item={<h4>{form_data.quiz_create.quiz_name}</h4>} color='success' />
-                <ListItem text='Quiz Description: ' item={form_data.quiz_create.quiz_description} color='success' />
+                <ListItem text='Quiz Name: ' item={<h4>{form_data.quiz_name}</h4>} color='success' />
+                <ListItem text='Quiz Description: ' item={form_data.quiz_description} color='success' />
                 <br></br>
               </Col>
               <Col md='10'>

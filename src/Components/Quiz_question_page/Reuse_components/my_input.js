@@ -17,9 +17,11 @@ function MyInput({
   rows,
   label_size,
   onClick,
-  defaultValue
+  defaultValue,
+  placeholder
 }) {
   const { register } = useFormContext()
+
   return (
     <>
       <Form.Group controlId={id} className='input'>
@@ -38,7 +40,15 @@ function MyInput({
         ) : null}
         {input_type === 'textarea' ? (
           <>
-            <Form.Control as={input_type} name={name} ref={register} autoComplete='off' rows={rows} size={size} />
+            <Form.Control
+              type={input_type}
+              name={name}
+              ref={register}
+              autoComplete='off'
+              rows={rows}
+              size={size}
+              placeholder={placeholder}
+            />
           </>
         ) : null}
         {input_type === 'range' ? (

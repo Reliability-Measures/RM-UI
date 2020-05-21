@@ -15,15 +15,11 @@ function DropdownTree() {
     }
   ]
   for (let i = 0; i < question_json.length; i++) {
-    if (
-      watch('quiz_question.tags.subject') === question_json[i].label ||
-      watch('quiz_create.subject') === question_json[i].label
-    ) {
+    if (watch('tags.subject') === question_json[i].label || watch('quiz_create.subject') === question_json[i].label) {
       topics = question_json[i].children
     }
   }
   const onChange = (currentNode, selectedNodes) => {
-    console.log('path:', selectedNodes)
     dispatch(TopicPath(selectedNodes))
   }
   const assignObjectPaths = (obj, stack) => {
