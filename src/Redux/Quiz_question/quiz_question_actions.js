@@ -120,7 +120,7 @@ export const postItem = (data) => {
 }
 
 export const getItem = (data) => {
-  let url = get_config('test_url') + get_config('get_items')
+  let url = get_config('service2_url') + get_config('get_items')
   console.log(url)
   const options = {
     method: 'POST',
@@ -142,7 +142,7 @@ export const getItem = (data) => {
 }
 
 export const postItems = (data) => {
-  let url = get_config('test_url') + get_config('create_form')
+  let url = get_config('service2_url') + get_config('create_form')
   console.log(url)
   const options = {
     method: 'POST',

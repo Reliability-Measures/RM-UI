@@ -19,7 +19,7 @@ function SelectQuestions() {
   let items_selected_text = []
   if (
     dirty &&
-    Object.keys(touched).length > 0 &&
+    Object.keys(touched).length > 0 && touched.quiz_create &&
     touched.quiz_create.question_list &&
     touched.quiz_create.question_list.length > 0
   ) {
