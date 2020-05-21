@@ -13,7 +13,7 @@ function ItemSentModal(props) {
         <Modal {...props} size='lg' aria-labelledby='contained-modal-title-vcenter' centered>
           <Modal.Header closeButton>
             <Modal.Title id='contained-modal-title-vcenter' className='text-center'>
-              {sent && res.response === 1 ? 'Thank you for submitting' : 'Storing Item'}
+              {sent && res.response === 1 ? 'Thank you for submitting ' : 'Storing Item'}
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
