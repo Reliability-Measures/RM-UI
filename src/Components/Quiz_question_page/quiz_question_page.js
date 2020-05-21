@@ -21,7 +21,7 @@ export const quiz_question_form_values = {
 
 function QuizQuestionPage() {
   const [modalShow, setModalShow] = useState(false)
-  const { handleSubmit, watch } = useFormContext()
+  const { handleSubmit, watch, reset } = useFormContext()
   const onSubmit = () => {
     setModalShow(true)
   }
@@ -29,21 +29,35 @@ function QuizQuestionPage() {
     <>
       <Row>
         <Col md='2' />
-
         <Col md='8'>
           <h2>Create Item</h2>
           <br></br>
           {/* <TagForm /> */}
           <HookForm />
-
           <br></br>
         </Col>
         <Col md='2' />
       </Row>
       <QuestionModal show={modalShow} onHide={() => setModalShow(false)} />
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        {watch('quiz_question.item_choices[0].choice') !== '' ? <Button type='submit'>See Item Preview</Button> : null}
-      </Form>
+      <Row>
+        <Col md='2' />
+        <Col md='6'>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            {watch('quiz_question.item_choices[0].choice') !== '' ? <Button type='submit'>Item Preview</Button> : null}
+          </Form>
+        </Col>
+        <Col md='2' style={{ textAlign: 'right' }}>
+          {watch('quiz_question.item_choices[0].choice') !== '' ? (
+            <Button
+              onClick={() => {
+                reset()
+              }}>
+              Rest All Fields
+            </Button>
+          ) : null}
+        </Col>
+        <Col md='2' />
+      </Row>
     </>
   )
 }

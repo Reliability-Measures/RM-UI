@@ -20,13 +20,14 @@ function QuizCreateForm() {
   const items = useSelector((state) => state.quiz_question.item_get_response.items)
   const items_recived = useSelector((state) => state.quiz_question.item_get_received)
   const google_json = useSelector((state) => state.google_json.data)
+  const is_login = useSelector((state) => state.google_json.isLogin)
   let subjects = question_details.subject_list.map((val) => val.label)
   if (items_recived) {
     items.forEach((val) => quiz_create_form_values.question_list.push({ question_id: '' }))
   }
   const onSubmit = (form_data) => {
     let data = { subject: form_data.quiz_create.subject }
-    let user_profile = google_json.profileObj
+    let user_profile = is_login ? google_json.profileObj : {}
     Object.assign(data, { user_profile })
     // let topic = form_data.quiz_create.topic
     // Object.assign(data, {topic})

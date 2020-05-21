@@ -13,9 +13,10 @@ function QuestionModal(props) {
   const from_data = watch({ nest: true })
   const topic_path = useSelector((state) => state.quiz_question.topic_path)
   const google_json = useSelector((state) => state.google_json.data)
+  const is_login = useSelector((state) => state.google_json.isLogin)
   let paths = topic_path.map((val) => val.path)
   let quiz_question = props.show === true && from_data.quiz_question
-  let user_profile = google_json.profileObj
+  let user_profile = is_login ? google_json.profileObj : {}
   if (props.show === true) {
     console.log(quiz_question)
     quiz_question.item_choices.map((val) =>

@@ -14,7 +14,7 @@ function QuizConfirmModal(props) {
   const items_selected_id = useSelector((state) => state.quiz_question.items_selected_id)
   const items_selected_text = useSelector((state) => state.quiz_question.items_selected_text)
   const google_json = useSelector((state) => state.google_json.data)
-    const is_login = useSelector((state) => state.google_json.isLogin)
+  const is_login = useSelector((state) => state.google_json.isLogin)
   let quiz_json = {}
   if (props.show === true) {
     form_data.quiz_create.question_list.map((val) =>
@@ -23,7 +23,7 @@ function QuizConfirmModal(props) {
     let item_ids = items_selected_id
     let quiz_name = form_data.quiz_create.quiz_name
     let quiz_description = form_data.quiz_create.quiz_description
-    let user_profile = google_json.profileObj
+    let user_profile = is_login ? google_json.profileObj : {}
     Object.assign(quiz_json, { item_ids })
     Object.assign(quiz_json, { quiz_name })
     Object.assign(quiz_json, { quiz_description })
@@ -39,7 +39,7 @@ function QuizConfirmModal(props) {
   return (
     <>
       {props.show === true && (
-        <Modal {...props} size='lg' backdrop="static" aria-labelledby='contained-modal-title-vcenter' centered>
+        <Modal {...props} size='lg' backdrop='static' aria-labelledby='contained-modal-title-vcenter' centered>
           <Modal.Header closeButton>
             <Modal.Title id='contained-modal-title-vcenter' className='text-center'>
               Confirm Quiz Detials
@@ -61,7 +61,7 @@ function QuizConfirmModal(props) {
             </Row>
           </Modal.Body>
           <Modal.Footer>
-              {!is_login && <div className="text-danger">For editing access, you need to login first!</div>}
+            {!is_login && <div className='text-danger'>For editing access, you need to login first!</div>}
 
             <Button onClick={props.onHide}>Close</Button>
             <Button onClick={handleSubmit}>Create Quiz</Button>
