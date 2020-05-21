@@ -17,7 +17,7 @@ function MyInput({
   rows,
   label_size,
   onClick,
-  required
+  defaultValue
 }) {
   const { register } = useFormContext()
   return (
@@ -62,6 +62,7 @@ function MyInput({
               checked={checked}
               className='double'
               onClick={onClick}
+              defaultValue={defaultValue}
             />
           </>
         ) : null}

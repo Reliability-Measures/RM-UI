@@ -1,11 +1,12 @@
 import React from 'react'
 import { useFormContext, useFieldArray, Controller } from 'react-hook-form'
 import { Button, ListGroup, Row, Col, Form } from 'react-bootstrap'
-import MyInput from './Reuse_components/my_input'
 
 function MultipleChoiceForm() {
   const { watch, control } = useFormContext()
   const { fields, append, remove } = useFieldArray({ control, name: 'quiz_question.item_choices' })
+  const from_data = watch({ nest: true })
+  console.log(from_data.quiz_question)
   return (
     <>
       {watch('quiz_question.tags.item_type') === 'Multiple Choice' ? (
@@ -20,7 +21,7 @@ function MultipleChoiceForm() {
                   <Button
                     type='button'
                     onClick={() => {
-                      append({ choice: '', correct: 0 })
+                      append({ choice: '', correct: false })
                     }}>
                     <i className='fas fa-plus'></i>
                   </Button>
@@ -41,7 +42,12 @@ function MultipleChoiceForm() {
                     />
                   </Col>
                   <Col md='2'>
-                    <MyInput input_type='checkbox' value='1' name={`quiz_question.item_choices[${index}].correct`} />
+                    <Controller
+                      as={<input type='checkbox' className='double' />}
+                      name={`quiz_question.item_choices[${index}].correct`}
+                      defaultValue={item.correct}
+                      control={control}
+                    />
                   </Col>
                   <Col md='2'>
                     <Button type='button' onClick={() => remove(index)}>

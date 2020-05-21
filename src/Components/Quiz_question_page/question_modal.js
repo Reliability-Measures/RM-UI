@@ -4,18 +4,23 @@ import { ListGroup, Row, Col, Modal, Button } from 'react-bootstrap'
 import ListItem from './Reuse_components/list_item'
 import { useFormContext } from 'react-hook-form'
 import { postItem } from '../../Redux/Quiz_question/quiz_question_actions'
+import ItemSentModal from './item_sent_modal'
 
 function QuestionModal(props) {
+  const [modalShow, setModalShow] = React.useState(false)
   const dispatch = useDispatch()
-  const { getValues } = useFormContext()
-  const from_data = getValues({ nest: true })
+  const { watch } = useFormContext()
+  const from_data = watch({ nest: true })
   const topic_path = useSelector((state) => state.quiz_question.topic_path)
   const google_json = useSelector((state) => state.google_json.data)
   let paths = topic_path.map((val) => val.path)
   let quiz_question = props.show === true && from_data.quiz_question
   let user_profile = google_json.profileObj
   if (props.show === true) {
-    quiz_question.item_choices.map((val) => (val.correct === false ? (val.correct = 0) : (val.correct = 1)))
+    console.log(quiz_question)
+    quiz_question.item_choices.map((val) =>
+      val.correct === false ? (val.correct = 0) : val.correct !== false ? (val.correct = 1) : null
+    )
     quiz_question.tags.privacy === false ? (quiz_question.tags.privacy = 0) : (quiz_question.tags.privacy = 1)
     Object.assign(quiz_question.tags, { paths })
     Object.assign(quiz_question, { user_profile })
@@ -23,6 +28,7 @@ function QuestionModal(props) {
 
   const handleSubmit = () => {
     props.onHide()
+    setModalShow(true)
     dispatch(postItem(quiz_question))
   }
   return (
@@ -74,6 +80,7 @@ function QuestionModal(props) {
           </Modal.Footer>
         </Modal>
       )}
+      <ItemSentModal show={modalShow} onHide={() => setModalShow(false)} />
     </>
   )
 }

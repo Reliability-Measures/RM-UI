@@ -16,12 +16,7 @@ export const quiz_question_form_values = {
     subject: '',
     privacy: 1
   },
-  item_choices: [
-    { choice: '', correct: 0 },
-    { choice: '', correct: 0 },
-    { choice: '', correct: 0 },
-    { choice: '', correct: 0 }
-  ]
+  item_choices: [{ choice: '', correct: false }]
 }
 
 function QuizQuestionPage() {
