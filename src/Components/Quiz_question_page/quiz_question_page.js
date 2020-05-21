@@ -30,7 +30,7 @@ function QuizQuestionPage() {
       <Row>
         <Col md='2' />
         <Col md='8'>
-          <h2>Create Item</h2>
+          <h1>Create Item</h1>
           <br></br>
           {/* <TagForm /> */}
           <HookForm />

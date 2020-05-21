@@ -24,7 +24,7 @@ function Googlelogin() {
   return (
     <>
       {isLogin ? (
-        <Link className='google-user nav-link text-light' to='/myaccount'>
+        <Link className='google-user nav-link text-light' >
           {user_name} <img src={img} alt='Profile Pic' height={50} style={{ borderRadius: 50 }}></img>
         </Link>
       ) : null}

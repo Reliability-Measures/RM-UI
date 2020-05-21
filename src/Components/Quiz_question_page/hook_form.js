@@ -20,10 +20,10 @@ function HookForm() {
   return (
     <>
       <Row>
-        <Col md='12'>
-          <MyInput label='Item Text' name='quiz_question.tags.item_text' input_type='textarea' id='item' />
+        <Col md='12' className="h2">
+          <MyInput label='Item Text' placeholder='Enter question here..' name='quiz_question.tags.item_text' input_type='textarea' id='item' />
         </Col>
-        <Col>
+        <Col md='2' className="h5">
           <MyInput
             label='Item Type'
             name='quiz_question.tags.item_type'
@@ -34,7 +34,7 @@ function HookForm() {
         </Col>
         {watch('quiz_question.show.subject') !== false && (
           <>
-            <Col>
+            <Col md='2' className="h5">
               <MyInput
                 label='Subject'
                 name='quiz_question.tags.subject'
@@ -43,15 +43,15 @@ function HookForm() {
                 id='subject'
               />
             </Col>
-            <Col>
-              <h4 style={{ textAlign: 'initial' }}>Item Topics</h4>
+            <Col md='2' className="h5">
+              Item Topics
               <DropdownTree />
             </Col>
           </>
         )}
         {/* {watch('quiz_question.show.grade_level') !== false && ( */}
         <>
-          <Col>
+          <Col md='2' className="h5">
             <MyInput
               label='Grade-Level-Min'
               name='quiz_question.tags.grade_min'
@@ -60,7 +60,7 @@ function HookForm() {
               id='grade_min'
             />
           </Col>
-          <Col>
+          <Col md='2' className="h5">
             <MyInput
               label='Grade-Level-Max'
               name='quiz_question.tags.grade_max'
@@ -72,7 +72,7 @@ function HookForm() {
         </>
         {/* )} */}
         {isLogin && (
-          <Col>
+          <Col md='2' className="h5">
             <MyInput
               label={acc_label}
               label_size='h6'

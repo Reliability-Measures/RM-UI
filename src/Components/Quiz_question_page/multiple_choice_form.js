@@ -15,16 +15,16 @@ function MultipleChoiceForm() {
             <ListGroup.Item>
               <Row>
                 <Col md='2' />
-                <Col md='6'>Item Choices</Col>
-                <Col md='2'>Selct All Correct Answers</Col>
-                <Col md='2'>
+                <Col md='6' className="h4">Item Choices</Col>
+                <Col md='3'>Check Correct Answer(s)</Col>
+                <Col md='1'>
                   <Button
                     type='button'
                     onClick={() => {
                       append({ choice: '', correct: false })
                     }}>
                     <i className='fas fa-plus'></i>
-                  </Button>
+                  </Button>{' '} Add
                 </Col>
               </Row>
             </ListGroup.Item>
@@ -41,7 +41,7 @@ function MultipleChoiceForm() {
                       defaultValue={item.choice}
                     />
                   </Col>
-                  <Col md='2'>
+                  <Col md='3'>
                     <Controller
                       as={<input type='checkbox' className='double' />}
                       name={`quiz_question.item_choices[${index}].correct`}
@@ -49,7 +49,7 @@ function MultipleChoiceForm() {
                       control={control}
                     />
                   </Col>
-                  <Col md='2'>
+                  <Col md='1'>
                     <Button type='button' onClick={() => remove(index)}>
                       Delete
                     </Button>
