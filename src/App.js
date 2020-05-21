@@ -13,8 +13,10 @@ import Test from './Components/test'
 import QuizQuestionPage, { quiz_question_form_values } from './Components/Quiz_question_page/quiz_question_page'
 import QuizCreatePage from './Components/Quiz_create_page/quiz_create_page'
 import { quiz_create_form_values } from './Components/Quiz_create_page/get_questions'
-import MyAccountPage from './Components/My_account_page/my_account_page'
+//import MyAccountPage from './Components/My_account_page/my_account_page'
 //import RamazanPage from './Components/Ramazan_page/ramazan_page'
+console.log(process.env.REACT_APP_GOOGLE_KEY)
+console.log(process.env.REACT_APP_CLOUD_API_KEY)
 
 function App() {
   const drop_init = useSelector((state) => state.dropbox.init)
@@ -37,7 +39,7 @@ function App() {
               <Route path='/courses' component={CoursesPage} exact />
               <Route path='/createquestion' component={QuizQuestionPage} exact />
               <Route path='/createquiz' component={QuizCreatePage} exact />
-              <Route path='/myaccount' component={MyAccountPage} exact />
+              {/*<Route path='/myaccount' component={MyAccountPage} exact />*/}
               <Route path='/test' component={Test} exact />
               <Route component={Error} />
               {/* <Route path='/ramazan' component={RamazanPage} exact /> */}
