@@ -8,6 +8,7 @@ import { FileSuccess, FileFailure } from '../Redux/Dropbox_init/dropbox_actions'
 // } from '.././Redux/Ramadan_quiz_results/aggregated_actions'
 //import { fetchCourses } from '.././Redux/RM-courses_init/rm_courses_init_actions'
 import { Dropbox } from 'dropbox'
+import fetch from 'cross-fetch'
 import { cloud_provider, set_config } from './Config'
 
 function Initializer() {
