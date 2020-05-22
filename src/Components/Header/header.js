@@ -23,9 +23,9 @@ function Header() {
             <Link className='text-light nav-link' to='/'>
               Home
             </Link>
-            <Link className='text-light nav-link' to='/analyze'>
+            {/* <Link className='text-light nav-link' to='/analyze'>
               Analyze Test
-            </Link>
+            </Link> */}
             <Link className='text-light nav-link' to='/createquestion'>
               Create Questions
             </Link>

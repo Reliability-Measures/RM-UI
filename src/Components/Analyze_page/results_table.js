@@ -13,7 +13,11 @@ function ResultsTable() {
   const showTableInput = useSelector((state) => state.input_json.table)
   const { ExportCSVButton } = CSVExport
   let exam_name = showTableInput ? jsonStrIn.exam.name : jsonStrSam.Input.exam.name
-  let rm_keys = [get_service_config(1, 'short_name'), get_service_config(5, 'short_name'), get_service_config(8, 'short_name')]
+  let rm_keys = [
+    get_service_config(1, 'short_name'),
+    get_service_config(5, 'short_name'),
+    get_service_config(8, 'short_name')
+  ]
   let columns = rm_keys.map((val) => ({ dataField: val, text: val }))
   let results = showResTable ? jsonStrRes.analysis : jsonStrSam.analysis
   console.log('ResultsTable -> results', results)
@@ -50,7 +54,15 @@ function ResultsTable() {
           <div>
             <hr />
             <div className='text-center h3'>{exam_name}</div>
-            <BootstrapTable hover condensed bordered={false} bootstrap4={true} columns={columns} data={table_data} keyField='results' />
+            <BootstrapTable
+              hover
+              condensed
+              bordered={false}
+              bootstrap4={true}
+              columns={columns}
+              data={table_data}
+              keyField='results'
+            />
             <ExportCSVButton className='' {...props.csvProps}>
               Export CSV <i className='fas fa-file-excel text-success'></i>
             </ExportCSVButton>
