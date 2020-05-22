@@ -1,5 +1,6 @@
 {
   "name": "react-redux-rm",
+  "homepage": "https://reliability-measures.github.io/RM-UI/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,7 +23,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-bootstrap-switch": "^15.5.3",
-    "react-bootstrap-table-next": "^4.0.1",
+    "react-bootstrap-table-next": "^4.0.2",
     "react-bootstrap-table2-editor": "^1.4.0",
     "react-bootstrap-table2-paginator": "^2.1.2",
     "react-bootstrap-table2-toolkit": "^2.1.2",
@@ -47,7 +48,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy:": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -65,6 +68,7 @@
     ]
   },
   "devDependencies": {
-    "eslint-plugin-react-hooks": "^3.0.0"
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "gh-pages": "2.2.0"
   }
 }

@@ -11,6 +11,7 @@ function UserData() {
         <ListItem text='Name: ' item={data.name} />
         <ListItem text='Email: ' item={data.email} />
       </ListGroup>
+      <h2>Statistics (soon)</h2>
     </>
   )
 }

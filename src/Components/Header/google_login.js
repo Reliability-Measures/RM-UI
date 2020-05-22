@@ -1,9 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { logOut, Login } from '../../Redux/Google_login/google_actions'
-import { GoogleLogin, GoogleLogout } from 'react-google-login'
+import { Login } from '../../Redux/Google_login/google_actions'
+import { GoogleLogin } from 'react-google-login'
 import { get_config } from '../Config'
 import { Link } from 'react-router-dom'
+import { getUserData } from '../../Redux/User_data/user_data_actions'
 
 function Googlelogin() {
   const isLogin = useSelector((state) => state.google_json.isLogin)
@@ -13,13 +14,10 @@ function Googlelogin() {
   const dispatch = useDispatch()
   const signIn = (response) => {
     dispatch(Login(response))
+    dispatch(getUserData({ user_id: response.profileObj.email }))
   }
   const error = (response) => {
     console.log(response)
-  }
-  const logout = (response) => {
-    console.log(response)
-    dispatch(logOut())
   }
   return (
     <>
@@ -38,9 +36,6 @@ function Googlelogin() {
           //scope='https://www.googleapis.com/auth/spreadsheets.readonly https://www.googleapis.com/auth/classroom.courses'
           cookiePolicy={'single_host_origin'}
         />
-      ) : null}
-      {isLogin ? (
-        <GoogleLogout clientId={get_config('application_client_id')} buttonText='Logout' onLogoutSuccess={logout} />
       ) : null}
     </>
   )
