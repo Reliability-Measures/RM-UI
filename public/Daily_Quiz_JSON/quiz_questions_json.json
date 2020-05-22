@@ -1,0 +1,17 @@
+{
+  "user_data": [],
+  "id": "",
+  "item_details": {
+    "item_type": "",
+    "item_weight": 0,
+    "subject": "",
+    "grade_min": 0,
+    "grade_max": 0,
+    "topic": ""
+  },
+  "item_text": "",
+  "item_choices": [
+    { "choice": "", "correct": 0 },
+    { "choice": "", "correct": 0 }
+  ]
+}

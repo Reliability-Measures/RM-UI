@@ -1,0 +1,29 @@
+{
+  "Mathematics": [
+    {
+      "topics": [
+        "Algebra",
+        "Decimals",
+        "Estimation",
+        "Fractions",
+        "Exponents, roots, and logarithms",
+        "Geometry",
+        "Measurement",
+        "Multiplication and Division",
+        "Addition and Subtraction",
+        "Percents",
+        "Ratios and proportions",
+        "Time"
+      ]
+    }
+  ],
+  "Biology": [{ "topics": ["atom", "rna", "dna"] }],
+  "Physics": [{ "topics": ["atom", "rna", "dna"] }],
+  "Chemistry": [{ "topics": ["atom", "rna", "dna"] }],
+  "History": [{ "topics": ["atom", "rna", "dna"] }],
+  "Geography": [{ "topics": ["atom", "rna", "dna"] }],
+  "Islam": [{ "topics": ["atom", "rna", "dna"] }],
+  "English": [{ "topics": ["atom", "rna", "dna"] }],
+  "Health": [{ "topics": ["atom", "rna", "dna"] }],
+  "Government": [{ "topics": ["atom", "rna", "dna"] }]
+}

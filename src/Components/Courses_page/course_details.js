@@ -4,6 +4,7 @@ import { Card, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 function CourseDetails() {
   const display_bool = useSelector((state) => state.rm_courses_json.display)
+  const islogin = useSelector((state) => state.google_json.isLogin)
   const data_loaded = useSelector((state) => state.rm_courses_json.loaded)
   const google_courses = useSelector((state) => state.google_json.data)
   const rm_courses = useSelector((state) => state.rm_courses_json.data)
@@ -13,7 +14,8 @@ function CourseDetails() {
       : !display_bool && data_loaded
       ? rm_courses
       : []
-  let courses_length = data_loaded ? google_courses.courses.length : ''
+  let courses_length = islogin ? google_courses.courses.length : 'null'
+  console.log(courses)
   return (
     <div>
       {display_bool && courses_length === 0 ? (
@@ -21,10 +23,8 @@ function CourseDetails() {
           <br></br>
           <h4>No Classes with this account</h4>
         </div>
-      ) : (
-        <div></div>
-      )}
-      {data_loaded ? (
+      ) : null}
+      {data_loaded && islogin ? (
         courses.courses.map((val, index) => (
           <Card key={index}>
             <Card.Header as='h5'>{val.name}</Card.Header>

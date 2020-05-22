@@ -4,29 +4,22 @@
 
 let cloud_provider = {
   cloud_host: 'dropbox',
-  cloud_config_file: 'config.json',
-  cloud_access_key:
-    'vDuiM-56ZzsAAAAAAAAHJGw5MRrhkkeJZ0AJhft11_SCePhuuP2XCVGY3pMGvLBn'
+  cloud_config_file: process.env.REACT_APP_CLOUD_CONFIG,
+  cloud_access_key: process.env.REACT_APP_CLOUD_API_KEY
 }
 let config = {
   application_id: 'rm_01',
-  application_version: '0.2.3',
+  application_version: '0.4.2',
   application_name: 'Reliability Measures microservices',
   application_org: 'Reliability Measures',
   application_email: 'info@reliabilitymeasures.com',
   application_short_name: 'rm_microservices',
-  application_client_id: 'xxxxx.apps.googleusercontent.com',
+  application_client_id: process.env.REACT_APP_GOOGLE_KEY,
   service_url: 'http://api.reliabilitymeasures.com/',
   test_url: 'http://localhost:5000/',
   login_method: 'login/',
   sample_method: 'sample/',
   quiz_method: 'quiz/',
-  db_provider: {
-    db_host: '',
-    db_user: '',
-    db_password: '',
-    db_name: 'ReliabilityMeasures_DB'
-  },
   keywords: {
     exam: 'exam',
     name: 'name',
@@ -194,8 +187,10 @@ function get_service_config(service_id, key) {
   return config['services'][service_id][key]
 }
 function set_config(config_file) {
-  config = config_file
+  let keys = Object.keys(config_file)
+  keys.forEach((val) =>  config[val] = config_file[val])
 }
+
 function get_config(config_key) {
   return config[config_key]
 }

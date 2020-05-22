@@ -1,4 +1,4 @@
-import { send_login_success, send_login_failure, logout, send_login_request } from './google_types'
+import { send_login_success, send_login_failure, logout, send_login_request, login } from './google_types'
 import { get_config } from '../../Components/Config'
 import axios from 'axios'
 
@@ -7,7 +7,12 @@ export const sendLoginRequest = () => {
     type: send_login_request
   }
 }
-
+export const Login = (data) => {
+  return {
+    type: login,
+    payload: data
+  }
+}
 export const loginSuccess = (data) => {
   return {
     type: send_login_success,

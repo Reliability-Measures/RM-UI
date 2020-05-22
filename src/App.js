@@ -7,29 +7,33 @@ import Home from './Components/home_page'
 import Error from './Components/error_page'
 import Header from './Components/Header/header'
 import CoursesPage from './Components/Courses_page/courses_page'
-import RamazanPage from './Components/Ramazan_page/ramazan_page'
 import Initializer from './Components/initializer'
 import Test from './Components/test'
+import QuizQuestionPage from './Components/Quiz_question_page/quiz_question_page'
+import QuizCreatePage from './Components/Quiz_create_page/quiz_create_page'
+import MyAccountPage from './Components/My_account_page/my_account_page'
+//import RamazanPage from './Components/Ramazan_page/ramazan_page'
 
 function App() {
   const drop_init = useSelector((state) => state.dropbox.init)
   return (
     <BrowserRouter>
-      <Initializer />
-      {drop_init ? (
+      {!drop_init && <Initializer />}
+      {drop_init && (
         <div className='App'>
-          {/*<Header />*/}
+          <Header />
           <Switch>
-            <Route path='/' component={RamazanPage} exact />
+            <Route path='/' component={Home} exact />
             <Route path='/analyze' component={Analyzepage} exact />
             <Route path='/courses' component={CoursesPage} exact />
-            <Route path='/ramazan' component={RamazanPage} exact />
+            <Route path='/createquestion' component={QuizQuestionPage} exact />
+            <Route path='/createquiz' component={QuizCreatePage} exact />
+            <Route path='/myaccount' component={MyAccountPage} exact />
             <Route path='/test' component={Test} exact />
             <Route component={Error} />
+            {/* <Route path='/ramazan' component={RamazanPage} exact /> */}
           </Switch>
         </div>
-      ) : (
-        <div></div>
       )}
     </BrowserRouter>
   )
