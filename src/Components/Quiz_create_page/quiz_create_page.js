@@ -21,7 +21,7 @@ function QuizCreatePage() {
                   <h2>Filters</h2>
                 </Col> */}
                 <Col>
-                  <h2>Get Questions</h2>
+                  <h2>Get Items</h2>
                 </Col>
               </Row>
               <QuizCreateForm />
@@ -33,8 +33,6 @@ function QuizCreatePage() {
               <strong className='fa-stack-2x'>2</strong>
             </span>
             <ListGroup.Item>
-              <h2>Select Questions</h2>
-              <br></br>
               <SelectQuestions />
             </ListGroup.Item>
           </Col>

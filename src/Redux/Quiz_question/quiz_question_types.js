@@ -13,6 +13,7 @@ export const item_get_success = 'item_get_success'
 export const item_get_failure = 'item_get_failure'
 
 export const item_selected_id = 'item_selected_id'
+export const item_selected_reset = 'item_selected_rest'
 export const item_selected_text = 'item_selected_text'
 
 export const reset_sent = 'reset_sent'

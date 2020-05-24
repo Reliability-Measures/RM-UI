@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Row, Col, Card, Button } from 'react-bootstrap'
+import { Row, Col, Card } from 'react-bootstrap'
 import Loader from 'react-loader-spinner'
 import BootstrapTable from 'react-bootstrap-table-next'
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
@@ -36,12 +36,25 @@ function Items() {
     {
       dataField: 'subject',
       text: 'Subject',
-      sort: true
+      sort: true,
+      headerStyle: () => {
+        return { width: '10%' }
+      }
+    },
+    {
+      dataField: 'item_text',
+      text: 'Item Text',
+      headerStyle: () => {
+        return { width: '60%' }
+      }
     },
     {
       dataField: 'privacy_status',
       text: 'Privacy Status',
-      sort: true
+      sort: true,
+      headerStyle: () => {
+        return { width: '10%' }
+      }
     }
   ]
   let table_data =
@@ -50,6 +63,7 @@ function Items() {
       id: index + 1,
       item_id: val.id,
       subject: val.subject ? val.subject : 'None',
+      item_text: val.text,
       privacy_status: val.private === 1 ? 'Public' : 'Private'
     }))
   const expandRow = {
@@ -111,7 +125,7 @@ function Items() {
                         </div>
                       ))}
                     </Card.Text>
-                    <Button variant='primary'>Edit Item</Button>
+                    {/* <Button variant='primary'>Edit Item</Button> */}
                   </Card.Body>
                 </Card>
               )}

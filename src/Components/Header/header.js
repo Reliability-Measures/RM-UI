@@ -27,7 +27,7 @@ function Header() {
               Analyze Test
             </Link> */}
             <Link className='text-light nav-link' to='/createquestion'>
-              Create Questions
+              Create Items
             </Link>
             <Link className='text-light nav-link' to='/createquiz'>
               Create Quiz

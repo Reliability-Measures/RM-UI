@@ -11,6 +11,7 @@ import {
   items_post_failure,
   item_selected_id,
   item_selected_text,
+  item_selected_reset,
   reset_sent
 } from './quiz_question_types'
 import { get_config } from '../../Components/Config'
@@ -88,6 +89,14 @@ export const ItemSelectedText = (data) => {
   return {
     type: item_selected_text,
     payload: data
+  }
+}
+
+export const ItemSelectedReset = (id, text) => {
+  return {
+    type: item_selected_reset,
+    payload: id,
+    payload1: text
   }
 }
 

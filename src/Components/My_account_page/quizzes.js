@@ -32,6 +32,10 @@ function Quizzes() {
     {
       dataField: 'editor_link',
       text: 'Edit'
+    },
+    {
+      dataField: 'analaysis',
+      text: 'Analaysis(Upcoming Feature)'
     }
   ]
   let table_data =
@@ -47,7 +51,8 @@ function Quizzes() {
         <a target='blank' href={val.metadata.editor_url}>
           Edit
         </a>
-      )
+      ),
+      analaysis: 'Analaysis'
     }))
   return (
     <>
@@ -65,7 +70,7 @@ function Quizzes() {
                   </Col>
                 </Row>
                 <hr />
-                <BootstrapTable {...props.baseProps} keyField='exams_table' />
+                <BootstrapTable {...props.baseProps} />
               </>
             )}
           </ToolkitProvider>

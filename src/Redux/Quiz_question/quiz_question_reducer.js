@@ -11,6 +11,7 @@ import {
   items_post_failure,
   item_selected_id,
   item_selected_text,
+  item_selected_reset,
   reset_sent
 } from './quiz_question_types'
 const quiz_question_state = {
@@ -100,14 +101,19 @@ const quiz_question_reducer = (state = quiz_question_state, action) => {
     case item_selected_id:
       return {
         ...state,
-        items_selected_id: action.payload
+        items_selected_id: [...state.items_selected_id, action.payload]
       }
     case item_selected_text:
       return {
         ...state,
-        items_selected_text: action.payload
+        items_selected_text: [...state.items_selected_text, action.payload]
       }
-
+    case item_selected_reset:
+      return {
+        ...state,
+        items_selected_id: action.payload,
+        items_selected_text: action.payload1
+      }
     case reset_sent:
       return {
         ...state,

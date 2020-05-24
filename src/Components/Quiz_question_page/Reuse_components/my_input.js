@@ -25,7 +25,7 @@ function MyInput({
   return (
     <>
       <Form.Group controlId={id} className='input'>
-        <Form.Label as={label_size}> {label} </Form.Label>
+        {label && <Form.Label as={label_size}> {label} </Form.Label>}
         {input_type === 'select' ? (
           <Form.Control as={input_type} name={name} ref={register}>
             <>
@@ -71,6 +71,20 @@ function MyInput({
               disabled={disabled}
               checked={checked}
               className='double'
+              onClick={onClick}
+              defaultValue={defaultValue}
+            />
+          </>
+        ) : null}
+        {input_type === 'radio' ? (
+          <>
+            <Form.Check
+              type='radio'
+              value={value}
+              name={name}
+              ref={register}
+              disabled={disabled}
+              checked={checked}
               onClick={onClick}
               defaultValue={defaultValue}
             />
