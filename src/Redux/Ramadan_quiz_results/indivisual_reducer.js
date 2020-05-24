@@ -1,4 +1,9 @@
-import { indivisual_results_request, indivisual_results_success, indivisual_results_failure, data_loaded_off } from './indivisual_types'
+import {
+  indivisual_results_request,
+  indivisual_results_success,
+  indivisual_results_failure,
+  data_loaded_off
+} from './indivisual_types'
 
 const indivisual_results_state = {
   loading: false,
@@ -13,7 +18,8 @@ const ramadan_indivisual_results_reducer = (state = indivisual_results_state, ac
     case indivisual_results_request:
       return {
         ...state,
-        loading: true
+        loading: true,
+        loaded: false
       }
     case indivisual_results_success:
       return {
