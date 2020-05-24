@@ -32,7 +32,7 @@ function IndividualResultsCard() {
                 Quizzes: {total_scores['No. of Quizzes']}
                 <br></br>
                 Combined Scores: {total_scores['Combined score']}/
-                {total_scores['No. of Quizzes'] * 5} (
+                {total_scores['Total items']} (
                 {total_scores['Combined score Percentage']}%)
               </Col>
             </Row>

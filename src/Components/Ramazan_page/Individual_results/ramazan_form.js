@@ -30,7 +30,7 @@ function RamazanForm() {
     } else if (values.name.length < 2) {
       errors.name = 'Atleast 2 letters required!'
     }
-   if (values.age < 5 || values.age > 99) {
+   if (values.age && (values.age < 5 || values.age > 99)) {
       errors.age = 'between 5 and 99'
     }
     return errors
