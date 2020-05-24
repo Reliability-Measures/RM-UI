@@ -33,6 +33,8 @@ function QuizCreatePage() {
               <strong className='fa-stack-2x'>2</strong>
             </span>
             <ListGroup.Item>
+              <h2>Select Items</h2>
+              <br></br>
               <SelectQuestions />
             </ListGroup.Item>
           </Col>

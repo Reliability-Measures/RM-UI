@@ -34,6 +34,10 @@ function Quizzes() {
       text: 'Edit'
     },
     {
+      dataField: 'date_created',
+      text: 'Date Created'
+    },
+    {
       dataField: 'analaysis',
       text: 'Analaysis(Upcoming Feature)'
     }
@@ -52,6 +56,7 @@ function Quizzes() {
           Edit
         </a>
       ),
+      date_created: val.date_created.substring(0, 10),
       analaysis: 'Analaysis'
     }))
   return (

@@ -3,16 +3,12 @@ import { useSelector } from 'react-redux'
 import { Table } from 'react-bootstrap'
 
 function RamazanStat5() {
-  const data_loaded_5 = useSelector(
-    (state) => state.ramadan_agg_results.loaded_5
-  )
-  const data_loaded_4 = useSelector(
-    (state) => state.ramadan_agg_results.loaded_4
-  )
+  const data_loaded_5 = useSelector((state) => state.ramadan_agg_results.loaded_5)
+  const data_loaded_4 = useSelector((state) => state.ramadan_agg_results.loaded_4)
   const stat_5 = useSelector((state) => state.ramadan_agg_results.stat_5)
   const stat_4 = useSelector((state) => state.ramadan_agg_results.stat_4)
   return (
-    <React.Fragment>
+    <>
       {data_loaded_5 && data_loaded_4 ? (
         <Table responsive size='sm'>
           <thead>
@@ -55,7 +51,7 @@ function RamazanStat5() {
           </tbody>
         </Table>
       ) : null}
-    </React.Fragment>
+    </>
   )
 }
 

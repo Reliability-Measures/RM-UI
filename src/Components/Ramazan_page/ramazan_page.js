@@ -8,22 +8,16 @@ import Loader from 'react-loader-spinner'
 import '../Components.css'
 
 function RamazanPage() {
-  const data_loaded_4 = useSelector(
-    (state) => state.ramadan_agg_results.loaded_4
-  )
-  const data_loaded_5 = useSelector(
-    (state) => state.ramadan_agg_results.loaded_5
-  )
-  const data_loaded_6 = useSelector(
-    (state) => state.ramadan_agg_results.loaded_6
-  )
+  const data_loaded_4 = useSelector((state) => state.ramadan_agg_results.loaded_4)
+  const data_loaded_5 = useSelector((state) => state.ramadan_agg_results.loaded_5)
+  const data_loaded_6 = useSelector((state) => state.ramadan_agg_results.loaded_6)
   return (
     <div>
       {data_loaded_4 && data_loaded_5 && data_loaded_6 ? (
         <Container fluid='md'>
           <Row
             className='justify-content-center text-white'
-            style={{ backgroundImage: "url(Ramadan-2020.jpg)", backgroundSize: 'stretch' }}>
+            style={{ backgroundImage: 'url(Ramadan-2020.jpg)', backgroundSize: 'stretch' }}>
             <h1>Ramadan Mubarak !</h1>
           </Row>
           <Row className='justify-content-center'>

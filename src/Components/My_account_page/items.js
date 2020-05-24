@@ -22,7 +22,7 @@ function Items() {
       text: `Items (${items_count})`,
       sort: true,
       headerStyle: () => {
-        return { width: '10%' }
+        return { width: '6%' }
       }
     },
     {
@@ -30,7 +30,7 @@ function Items() {
       text: 'Item Id',
       sort: true,
       headerStyle: () => {
-        return { width: '10%' }
+        return { width: '8%' }
       }
     },
     {
@@ -45,7 +45,21 @@ function Items() {
       dataField: 'item_text',
       text: 'Item Text',
       headerStyle: () => {
-        return { width: '60%' }
+        return { width: '50%' }
+      }
+    },
+    {
+      dataField: 'date_created',
+      text: 'Date Created',
+      headerStyle: () => {
+        return { width: '10%' }
+      }
+    },
+    {
+      dataField: 'date_updated',
+      text: 'Date Updated',
+      headerStyle: () => {
+        return { width: '10%' }
       }
     },
     {
@@ -53,7 +67,7 @@ function Items() {
       text: 'Privacy Status',
       sort: true,
       headerStyle: () => {
-        return { width: '10%' }
+        return { width: '8%' }
       }
     }
   ]
@@ -64,6 +78,8 @@ function Items() {
       item_id: val.id,
       subject: val.subject ? val.subject : 'None',
       item_text: val.text,
+      date_created: val.date_created.substring(0, 10),
+      date_updated: val.date_updated.substring(0, 10),
       privacy_status: val.private === 1 ? 'Private' : 'Public'
     }))
   const expandRow = {
@@ -102,24 +118,25 @@ function Items() {
                       <Row>
                         <Col>
                           Topic(s)
-                          {Object.values(JSON.parse(val.topic))
-                            ? Object.values(JSON.parse(val.topic)).map((v) => (v ? <ListItem item={v} /> : null))
+                          {Object.values(val.topic)
+                            ? Object.values(val.topic).map((v) => (v ? <ListItem item={v} /> : null))
                             : 'None'}
                         </Col>
                         <Col>
                           Sub-Topic(s)
-                          {Object.values(JSON.parse(val.sub_topics))
-                            ? Object.values(JSON.parse(val.sub_topics)).map((v) => (v ? <ListItem item={v} /> : null))
+                          {Object.values(val.sub_topics)
+                            ? Object.values(val.sub_topics).map((v) => (v ? <ListItem item={v} /> : null))
                             : 'None'}
                         </Col>
                       </Row>
                     </Card.Title>
                     <Card.Text>
                       {val.choices.map((va, index) => (
-                        <div key={index} className='text-center'>
+                        <div key={index} className='text-left'>
                           <Row>
                             <Col style={{ color: [va.correct === 1 && 'green'] }} className='h4'>
-                              {va.choice}
+                              {index + 1}) {va.choice}
+                              {va.correct === 1 && <i className='fas fa-check text-success'></i>}
                             </Col>
                           </Row>
                         </div>

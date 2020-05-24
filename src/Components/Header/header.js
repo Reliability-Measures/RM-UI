@@ -32,14 +32,9 @@ function Header() {
             <Link className='text-light nav-link' to='/createquiz'>
               Create Quiz
             </Link>
-            {/* <Link
-              className='text-light nav-link'
-              to='/ramazan'
-              onClick={() => {
-                dispatch(dataLoadedOff())
-              }}>
+            <Link className='text-light nav-link' to='/ramazan'>
               Ramadan Quiz Results
-            </Link> */}
+            </Link>
 
             {/* <NavDropdown title={<span className='text-light my-auto'>Courses</span>} id='basic-nav-dropdown'>
               <NavDropdown.Item

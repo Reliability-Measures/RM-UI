@@ -3,18 +3,14 @@ import { useSelector } from 'react-redux'
 import { ListGroup } from 'react-bootstrap'
 
 function RamazanStat4() {
-  const data_loaded_4 = useSelector(
-    (state) => state.ramadan_agg_results.loaded_4
-  )
+  const data_loaded_4 = useSelector((state) => state.ramadan_agg_results.loaded_4)
   const stat_4 = useSelector((state) => state.ramadan_agg_results.stat_4)
   return (
-    <React.Fragment>
+    <>
       {data_loaded_4 ? (
         <ListGroup>
           <ListGroup.Item>Total Quizzes: {stat_4[0].quizzes}</ListGroup.Item>
-          <ListGroup.Item>
-            Total Quizzes Attempted: {stat_4[0].count}
-          </ListGroup.Item>
+          <ListGroup.Item>Total Quizzes Attempted: {stat_4[0].count}</ListGroup.Item>
 
           <ListGroup.Item>Unique Names: {stat_4[0].names}</ListGroup.Item>
           <ListGroup.Item>Unique States: {stat_4[0].states}</ListGroup.Item>
@@ -26,7 +22,7 @@ function RamazanStat4() {
           <ListGroup.Item>Youngest Age: {stat_4[0].min_age}</ListGroup.Item>
         </ListGroup>
       ) : null}
-    </React.Fragment>
+    </>
   )
 }
 

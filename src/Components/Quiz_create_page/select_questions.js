@@ -7,11 +7,12 @@ import BootstrapTable from 'react-bootstrap-table-next'
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import paginationFactory from 'react-bootstrap-table2-paginator'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css'
-//import ListItem from '../Quiz_question_page/Reuse_components/list_item'
+import ListItem from '../Quiz_question_page/Reuse_components/list_item'
 
 function SelectQuestions() {
   const dispatch = useDispatch()
   const items = useSelector((state) => state.quiz_question.item_get_response.items)
+  const response = useSelector((state) => state.quiz_question.item_get_response)
   const items_n = useSelector((state) => state.quiz_question.item_get_response.total_items)
   const items_recived = useSelector((state) => state.quiz_question.item_get_received)
   const items_loading = useSelector((state) => state.quiz_question.item_get_loading)
@@ -117,18 +118,32 @@ function SelectQuestions() {
                   <Card.Header className='h4'>{val.text}</Card.Header>
                   <Card.Body>
                     <Card.Title>
-                      {/* <Col>
-                        Topic(s)
-                        {Object.values(JSON.parse(val.topic))
-                          ? Object.values(JSON.parse(val.topic)).map((v) => (v ? <ListItem item={v} /> : null))
-                          : 'None'}
-                      </Col>
-                      <Col>
-                        Sub-Topic(s)
-                        {Object.values(JSON.parse(val.sub_topics))
-                          ? Object.values(JSON.parse(val.sub_topics)).map((v) => (v ? <ListItem item={v} /> : null))
-                          : 'None'}
-                      </Col> */}
+                      <Row>
+                        <Col>
+                          Topic(s)
+                          {typeof val.topic === 'string' ? (
+                            <ListItem item={val.topic} />
+                          ) : val.topic === null ? (
+                            <ListItem item={'None'} />
+                          ) : Object.values(val.topic) ? (
+                            Object.values(val.topic).map((v) => (v ? <ListItem item={v} /> : null))
+                          ) : (
+                            'None'
+                          )}
+                        </Col>
+                        <Col>
+                          Sub-Topic(s)
+                          {typeof val.sub_topics === 'string' ? (
+                            <ListItem item={val.sub_topics} />
+                          ) : val.sub_topics === null ? (
+                            <ListItem item={'None'} />
+                          ) : Object.values(val.sub_topics) ? (
+                            Object.values(val.sub_topics).map((v) => (v ? <ListItem item={v} /> : null))
+                          ) : (
+                            'None'
+                          )}
+                        </Col>
+                      </Row>
                     </Card.Title>
                     <hr></hr>
                     <Card.Text>
@@ -152,8 +167,6 @@ function SelectQuestions() {
   }
   return (
     <>
-      <h2>Select Items {items_recived && `(${items_n})`}</h2>
-      <br></br>
       {items_recived && (
         <>
           <Row>
@@ -194,6 +207,7 @@ function SelectQuestions() {
           </Row>
         </>
       )}
+      {response.error && !items_loading && <h3>Error Please Try Again</h3>}
       {items_n === 0 && !items_loading && <h3>No Questions Found</h3>}
       {items_loading && <Loader type='Puff' color='#00BFFF' height={200} width={200} />}
     </>
