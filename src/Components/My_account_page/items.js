@@ -64,7 +64,7 @@ function Items() {
       item_id: val.id,
       subject: val.subject ? val.subject : 'None',
       item_text: val.text,
-      privacy_status: val.private === 1 ? 'Public' : 'Private'
+      privacy_status: val.private === 1 ? 'Private' : 'Public'
     }))
   const expandRow = {
     onlyOneExpanding: true,

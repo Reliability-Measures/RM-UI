@@ -21,7 +21,7 @@ function QuestionModal(props) {
     quiz_question.item_choices.map((val) =>
       val.correct === false ? (val.correct = 0) : val.correct !== false ? (val.correct = 1) : null
     )
-    quiz_question.tags.privacy === false ? (quiz_question.tags.privacy = 0) : (quiz_question.tags.privacy = 1)
+    quiz_question.tags.privacy = quiz_question.tags.privacy === false ? 1 : 0
     Object.assign(quiz_question.tags, { paths })
     Object.assign(quiz_question, { user_profile })
   }

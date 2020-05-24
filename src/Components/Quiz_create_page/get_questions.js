@@ -66,7 +66,7 @@ function QuizCreateForm() {
             <h5>Subject</h5>
             <MyInput name='subject' input_type='select' options={subjects} id='subject' />
             {errors.subject && <p className='text-danger'>Subject Is Required</p>}
-            <MyInput label='Keyword' label_size='h5' name='keyword' input_type='textarea' />
+            {/*<MyInput label='Keyword' label_size='h5' name='keyword' input_type='textarea' />*/}
             <h5>No. of Items ({watch('limit')})</h5>
             <MyInput name='limit' input_type='range' max_range={50} />
             {/* {watch('show.topics') !== false && (
