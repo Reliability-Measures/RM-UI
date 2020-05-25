@@ -19,7 +19,7 @@ function RamazanStatContainer() {
             onClick={() => setexpanded((prevExpanded) => (prevExpanded = !prevExpanded))}>
             <Row as={(Card.Header, 'h2')}>
               <Col />
-              <Col>Overall Results</Col>
+              <Col>Result Summary</Col>
               <Col>
                 {!expanded ? (
                   <i className='fas fa-chevron-down'></i>
