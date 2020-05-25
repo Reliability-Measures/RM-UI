@@ -53,7 +53,7 @@ function SubmitForm() {
               </Col>
             </Row>
             <Dropdown id='filters' className='text-center' drop='left'>
-              <Dropdown.Toggle variant='primary' id='filters_toggle'>
+              <Dropdown.Toggle variant='outline-dark' id='filters_toggle'>
                 Additional Options
               </Dropdown.Toggle>
               <Dropdown.Menu>
@@ -67,7 +67,9 @@ function SubmitForm() {
             </Dropdown>
             <br></br>
             <Form onSubmit={handleSubmit(onSubmit)}>
-              <Button type='submit'>Confirm</Button>
+              <Button variant='outline-dark' type='submit'>
+                Confirm
+              </Button>
             </Form>
           </>
         )}

@@ -28,7 +28,7 @@ function HookForm() {
             name='tags.item_text'
             input_type='textarea'
             id='item'
-            size='lg'
+            rows='2'
           />
           {errors.tags && errors.tags.item_text && <p className='text-danger'>Item Text Is Required</p>}
         </Col>

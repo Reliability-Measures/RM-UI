@@ -76,7 +76,9 @@ function QuizCreateForm() {
               </>
             )} */}
             <Form onSubmit={handleSubmit(onSubmit)}>
-              <Button type='submit'>Search</Button>
+              <Button variant='outline-dark' type='submit'>
+                Search
+              </Button>
             </Form>
           </Col>
         </Row>

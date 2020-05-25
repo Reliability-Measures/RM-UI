@@ -7,7 +7,8 @@ import { Row, Col, Button, Form } from 'react-bootstrap'
 import * as yup from 'yup'
 
 const quiz_question_valid = yup.object().shape({
-  tags: yup.object().shape({ item_text: yup.string().required(), item_type: yup.string().required() })
+  tags: yup.object().shape({ item_text: yup.string().required(), item_type: yup.string().required() }),
+  item_choices: yup.array().of(yup.object().shape({ choice: yup.string().required() }))
 })
 
 function QuizQuestionPage() {
@@ -48,21 +49,24 @@ function QuizQuestionPage() {
         </Row>
         <QuestionModal show={modalShow} onHide={() => setModalShow(false)} />
         <Row>
-          <Col md='2' />
-          <Col md='8'>
+          <Col md='8' />
+          <Col md='1' className='text-right'>
             <Form onSubmit={handleSubmit(onSubmit)}>
-              <Button type='submit'>Item Preview</Button>
+              <Button variant='outline-dark' type='submit'>
+                Item Preview
+              </Button>
             </Form>
           </Col>
-          <Col md='1' style={{ textAlign: 'right' }}>
+          <Col md='1' className='text-right'>
             <Button
+              variant='outline-dark'
               onClick={() => {
                 reset()
               }}>
-              Rest All Fields
+              Reset All Fields
             </Button>
           </Col>
-          <Col md='1' />
+          <Col md='2' />
         </Row>
       </FormContext>
     </>

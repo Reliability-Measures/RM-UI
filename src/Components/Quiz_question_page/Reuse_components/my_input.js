@@ -41,12 +41,11 @@ function MyInput({
         {input_type === 'textarea' ? (
           <>
             <Form.Control
-              type={input_type}
+              as={input_type}
               name={name}
               ref={register}
               autoComplete='off'
               rows={rows}
-              size={size}
               placeholder={placeholder}
             />
           </>
