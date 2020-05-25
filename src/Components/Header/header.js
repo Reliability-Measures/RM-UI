@@ -32,7 +32,7 @@ function Header() {
             <Link className='text-light nav-link' to='/createquiz'>
               Create Quiz
             </Link>
-            <Link className='text-light nav-link' to='/ramazan'>
+            <Link className='text-light nav-link' to='/ramadan'>
               Ramadan Quiz Results
             </Link>
 

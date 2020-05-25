@@ -3,14 +3,16 @@ import { Row, Col } from 'react-bootstrap'
 import MyInput from './Reuse_components/my_input'
 import MultipleChoiceForm from './multiple_choice_form'
 import { useFormContext } from 'react-hook-form'
-import { question_details } from './question_details'
+import { subjects } from '../Config'
+//import { question_details } from './question_details'
 import DropdownTree from './dropdown_tree'
 import { useSelector } from 'react-redux'
 
 function HookForm() {
   const { watch, errors } = useFormContext()
   const isLogin = useSelector((state) => state.google_json.isLogin)
-  let subjects = question_details.subject_list.map((val) => val.label)
+    const subjects_init = useSelector((state) => state.dropbox.subjects_init)
+  let subject = subjects_init && subjects.subject_list.map((val) => val.label)
   let item_types = ['Multiple Choice']
   let acc_label = watch('tags.privacy') === false ? 'Private' : 'Public'
   let grades = []
@@ -51,7 +53,7 @@ function HookForm() {
                 label_size='h5'
                 name='tags.subject'
                 input_type='select'
-                options={subjects}
+                options={subject}
                 id='subject'
               />
             </Col>

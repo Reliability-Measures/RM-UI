@@ -1,14 +1,16 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import DropdownTreeSelect from 'react-dropdown-tree-select'
-import { question_details } from './question_details'
+//import { question_details } from './question_details'
+import { subjects } from '../Config'
 import { TopicPath } from '../../Redux/Quiz_question/quiz_question_actions'
 import { useFormContext } from 'react-hook-form'
 
 function DropdownTree() {
   const { watch } = useFormContext()
   const dispatch = useDispatch()
-  let question_json = question_details.subject_list
+    const subjects_init = useSelector((state) => state.dropbox.subjects_init)
+  let question_json = subjects_init && subjects.subject_list
   let topics = [
     {
       label: 'Choose Subject First'

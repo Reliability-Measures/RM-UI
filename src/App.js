@@ -15,11 +15,11 @@ import MyAccountPage from './Components/My_account_page/my_account_page'
 import RamazanPage from './Components/Ramazan_page/ramazan_page'
 
 function App() {
-  const drop_init = useSelector((state) => state.dropbox.init)
+  const config_init = useSelector((state) => state.dropbox.config_init)
   return (
     <BrowserRouter>
-      {!drop_init && <Initializer />}
-      {drop_init && (
+      {!config_init && <Initializer />}
+      {config_init && (
         <div className='App'>
           <Header />
           <Switch>
@@ -30,6 +30,7 @@ function App() {
             <Route path='/createquiz' component={QuizCreatePage} exact />
             <Route path='/myaccount' component={MyAccountPage} exact />
             <Route path='/ramazan' component={RamazanPage} exact />
+            <Route path='/ramadan' component={RamazanPage} exact />
             <Route path='/test' component={Test} exact />
             <Route component={Error} />
           </Switch>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useForm, FormContext } from 'react-hook-form'
 import { Button, Row, Col, Form } from 'react-bootstrap'
-import { question_details } from '../Quiz_question_page/question_details'
+import { subjects } from '../Config'
 import MyInput from '../Quiz_question_page/Reuse_components/my_input'
 import { getItem } from '../../Redux/Quiz_question/quiz_question_actions'
 //import DropdownTree from '../Quiz_question_page/dropdown_tree'
@@ -14,8 +14,9 @@ function QuizCreateForm() {
   const dispatch = useDispatch()
   const google_json = useSelector((state) => state.google_json.data)
   const is_login = useSelector((state) => state.google_json.isLogin)
+    const subjects_init = useSelector((state) => state.dropbox.subjects_init)
   //const topic_state = useSelector((state) => state.quiz_question.topic_path)
-  let subjects = question_details.subject_list.map((val) => val.label)
+  let subject = subjects_init && subjects.subject_list.map((val) => val.label)
 
   const get_questions = useForm({
     defaultValues: {
@@ -64,7 +65,7 @@ function QuizCreateForm() {
               </>
             )}
             <h5>Subject</h5>
-            <MyInput name='subject' input_type='select' options={subjects} id='subject' />
+            <MyInput name='subject' input_type='select' options={subject} id='subject' />
             {errors.subject && <p className='text-danger'>Subject Is Required</p>}
             {/*<MyInput label='Keyword' label_size='h5' name='keyword' input_type='textarea' />*/}
             <h5>No. of Items ({watch('limit')})</h5>
