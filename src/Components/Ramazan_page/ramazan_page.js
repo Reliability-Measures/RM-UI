@@ -18,7 +18,7 @@ function RamazanPage() {
           <Row
             className='justify-content-center text-white'
             style={{ backgroundImage: 'url(Ramadan-2020.jpg)', backgroundSize: 'stretch' }}>
-            <h1>Ramadan Mubarak !</h1>
+            <h1>Eid Mubarak !</h1>
           </Row>
           <Row className='justify-content-center'>
             <Col md='2' className='side-nav'>
@@ -26,6 +26,22 @@ function RamazanPage() {
               <br></br>
             </Col>
             <Col md='10' className='overall-row'>
+                <p className={"text-justify h4"} Style={"padding: 20px"}>
+                  We are very grateful for your overwhelming response, support and
+                    feedback to our daily Ramadan quizzes. Ramadan is over but our striving
+                    to gain knowledge should continue.
+                    We are introducing a feature to allow you to
+                    contribute your own questions and create your own quizzes.
+                   See the create Items and Create Quiz sections above.
+                </p>
+                <p className={"text-justify h4"} Style={"padding: 20px"}>
+                    Below are Ramadan Quiz overall results. In the individual results section,
+                    you can enter your name and age to see total score, rank and percentile.
+                    The rank and percentile is only available to quiz takers who
+                    have participated in at least 15 quizzes
+                    (out of 25 and no more than 5 duplicate entries).
+                    There are about 15 people who have 90% or above correct answers.
+                </p>
               <RamazanStatContainer />
               <br></br>
               <RamazanForm />

@@ -39,6 +39,16 @@ function QuizQuestionPage() {
           <Col md='2' />
           <Col md='8'>
             <h1>Create Item</h1>
+              <p className={"text-justify h5"} Style={"padding: 20px"}>
+                  Create your own items (questions, you want to include in a quiz)
+                  on the subject and topic of your interest. Provide item text, subject,
+                  topic and multiple choices and the correct answer(s).
+                  If you sign in with Google account then you will be able to also
+                  manage your items. You can also decide to make your items private
+                  so only you can use those items in your quizzes (otherwise you
+                  can leave it public so other quiz creators can use
+                  those items in their quizzes also).
+              </p>
             <br></br>
             {/* <TagForm /> */}
             <HookForm />
