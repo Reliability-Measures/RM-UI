@@ -156,6 +156,7 @@ export const postItems = (data) => {
   const options = {
     method: 'POST',
     url: url,
+    timeout: 1000 * 65,
     params: { input: data }
   }
   return (dispatch) => {
