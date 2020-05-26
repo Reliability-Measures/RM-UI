@@ -8,7 +8,8 @@ function QuizLinkModal(props) {
   const link_loading = useSelector((state) => state.quiz_question.items_post_loading)
   const request_sent = useSelector((state) => state.quiz_question.items_post_sent)
   const response = useSelector((state) => state.quiz_question.items_post_response)
-  let error = !response.quiz
+  let error = !response.quiz || !response.quiz.metadata
+  let error_text = response.error
   let pub_link = !error && request_sent ? response.quiz.metadata.published_url : null
   let edit_link = !error && request_sent ? response.quiz.metadata.editor_url : null
 
@@ -23,7 +24,7 @@ function QuizLinkModal(props) {
             {
               link_loading && <Loader type='ThreeDots' color='red' width={200} />
             }
-            {error && request_sent && 'Error Try Again'}
+            {error && request_sent && 'Error Try Again - ' + error_text }
             {!error && request_sent && (
               <>
                 <ListItem
@@ -44,8 +45,9 @@ function QuizLinkModal(props) {
             )}
           </Modal.Body>
           <Modal.Footer>
+              {!request_sent ? <p>May take up to 30 seconds</p> : ''}
             <Button onClick={props.onHide}>Close</Button>
-            <p>May take up to 30 seconds</p>
+
           </Modal.Footer>
         </Modal>
       )}

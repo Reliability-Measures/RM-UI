@@ -49,7 +49,7 @@ function QuizConfirmModal(props) {
         <Modal {...props} size='lg' backdrop='static' aria-labelledby='contained-modal-title-vcenter' centered>
           <Modal.Header closeButton>
             <Modal.Title id='contained-modal-title-vcenter' className='text-center'>
-              Confirm Quiz Detials
+              Confirm Quiz Details
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
