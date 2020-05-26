@@ -21,10 +21,10 @@ function HookForm() {
   }
   return (
     <>
-      <Row>
+      <Row  Style={"padding: 20px"}>
         <Col md='12'>
           <MyInput
-            label='Item Text'
+            label={<><i className='fas fa-star-of-life text-danger fa-xs'></i> Item Text</>}
             label_size='h2'
             placeholder='Enter question here..'
             name='tags.item_text'
@@ -34,9 +34,9 @@ function HookForm() {
           />
           {errors.tags && errors.tags.item_text && <p className='text-danger'>Item Text Is Required</p>}
         </Col>
-        <Col md='2'>
+        <Col >
           <MyInput
-            label='Item Type'
+            label={<><i className='fas fa-star-of-life text-danger fa-xs'></i> Item Type</>}
             label_size='h5'
             name='tags.item_type'
             input_type='select'
@@ -47,48 +47,52 @@ function HookForm() {
         </Col>
         {watch('show.subject') !== false && (
           <>
-            <Col md='2'>
+            <Col >
+
+
               <MyInput
-                label='Subject'
+                  label= {<><i className='fas fa-star-of-life text-danger fa-xs'></i> Subject</>}
                 label_size='h5'
                 name='tags.subject'
                 input_type='select'
                 options={subject}
                 id='subject'
               />
-            </Col>
-            <Col md='2' className='h5 text-left'>
+              {errors.tags && errors.tags.subject && <p className='text-danger'>Subject Is Required</p>}
+              </Col>
+
+            <Col md='4' className='h5 text-left'>
               Item Topics
               <DropdownTree />
             </Col>
           </>
         )}
         {/* {watch('quiz_question.show.grade_level') !== false && ( */}
-        <>
-          <Col md='2'>
-            <MyInput
-              label='Grade-Level-Min'
-              label_size='h5'
-              name='tags.grade_min'
-              input_type='select'
-              options={grades}
-              id='grade_min'
-            />
-          </Col>
-          <Col md='2'>
-            <MyInput
-              label='Grade-Level-Max'
-              label_size='h5'
-              name='tags.grade_max'
-              input_type='select'
-              options={grades}
-              id='grade_max'
-            />
-          </Col>
-        </>
+        {/*<>*/}
+          {/*<Col md='2'>*/}
+            {/*<MyInput*/}
+              {/*label='Grade-Level-Min'*/}
+              {/*label_size='h5'*/}
+              {/*name='tags.grade_min'*/}
+              {/*input_type='select'*/}
+              {/*options={grades}*/}
+              {/*id='grade_min'*/}
+            {/*/>*/}
+          {/*</Col>*/}
+          {/*<Col md='2'>*/}
+            {/*<MyInput*/}
+              {/*label='Grade-Level-Max'*/}
+              {/*label_size='h5'*/}
+              {/*name='tags.grade_max'*/}
+              {/*input_type='select'*/}
+              {/*options={grades}*/}
+              {/*id='grade_max'*/}
+            {/*/>*/}
+          {/*</Col>*/}
+        {/*</>*/}
         {/* )} */}
         {isLogin && (
-          <Col md='2'>
+          <Col md='1'>
             <MyInput label={acc_label} label_size='h5' name='tags.privacy' input_type='checkbox' id='privacy' />
           </Col>
         )}

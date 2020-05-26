@@ -8,7 +8,7 @@ import { getItem } from '../../Redux/Quiz_question/quiz_question_actions'
 //import DropdownTree from '../Quiz_question_page/dropdown_tree'
 import * as yup from 'yup'
 
-const get_questions_valid = yup.object().shape({})
+const get_questions_valid = yup.object().shape({subject: yup.string().required()})
 
 function QuizCreateForm() {
   const dispatch = useDispatch()
@@ -55,16 +55,16 @@ function QuizCreateForm() {
             {is_login && (
               <>
                 <Row>
-                  <Col xs='4'>
+                  <Col xs='8'>
                     <h5>My Items Only</h5>
                   </Col>
-                  <Col xs='1'>
+                  <Col xs='4'>
                     <MyInput input_type='checkbox' value='1' name='user' />
                   </Col>
                 </Row>
               </>
             )}
-            <h5>Subject</h5>
+            <h5><i className='fas fa-star-of-life text-danger fa-xs'></i> Subject</h5>
             <MyInput name='subject' input_type='select' options={subject} id='subject' />
             {errors.subject && <p className='text-danger'>Subject Is Required</p>}
             {/*<MyInput label='Keyword' label_size='h5' name='keyword' input_type='textarea' />*/}

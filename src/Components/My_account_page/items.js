@@ -22,7 +22,7 @@ function Items() {
       text: `Item #`,
       sort: true,
       headerStyle: () => {
-        return { width: '6%' }
+        return { width: '6%', }
       }
     },
     {
