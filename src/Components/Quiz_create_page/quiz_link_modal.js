@@ -17,10 +17,12 @@ function QuizLinkModal(props) {
       {props.show === true && (
         <Modal {...props} size='lg' backdrop='static' aria-labelledby='contained-modal-title-vcenter' centered>
           <Modal.Header>
-            <Modal.Title>Generating Quiz</Modal.Title>
+            <Modal.Title>Generating Quiz...</Modal.Title>
           </Modal.Header>
           <Modal.Body className='text-center'>
-            {link_loading && <Loader type='ThreeDots' color='red' width={500} />}
+            {
+              link_loading && <Loader type='ThreeDots' color='red' width={200} />
+            }
             {error && request_sent && 'Error Try Again'}
             {!error && request_sent && (
               <>
@@ -43,6 +45,7 @@ function QuizLinkModal(props) {
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={props.onHide}>Close</Button>
+            <p>May take up to 30 seconds</p>
           </Modal.Footer>
         </Modal>
       )}

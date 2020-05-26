@@ -39,7 +39,7 @@ function QuizQuestionPage() {
         <Row>
           <Col md='2' />
           <Col md='8'>
-            <h1>Create Item</h1>
+            <h1>Create an Item</h1>
               <p className={"text-justify h5"} Style={"padding: 20px"}>
                   Create your own items (questions, you want to include in a quiz)
                   on the subject and topic of your interest. Provide item text, subject,

@@ -19,7 +19,7 @@ function Items() {
   const columns = [
     {
       dataField: 'id',
-      text: `Items (${items_count})`,
+      text: `Item #`,
       sort: true,
       headerStyle: () => {
         return { width: '6%' }
