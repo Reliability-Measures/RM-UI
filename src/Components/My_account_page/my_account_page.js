@@ -11,10 +11,15 @@ import Items from './items'
 
 function MyAccountPage() {
   const dispatch = useDispatch()
+  const data = useSelector((state) => state.user_data.data)
   const isLogin = useSelector((state) => state.google_json.isLogin)
   const google_json = useSelector((state) => state.google_json.data)
   const user_name = isLogin ? google_json.profileObj.givenName : null
   const img = isLogin ? google_json.profileObj.imageUrl : null
+  const loaded = useSelector((state) => state.user_data.loaded)
+  let exams_count = loaded ? data.exams_count : ''
+  let items_count = loaded ? data.items_count : ''
+
   const logout = () => {
     dispatch(logOut())
   }
@@ -49,12 +54,13 @@ function MyAccountPage() {
                 <Tab eventKey='Info' title='Info'>
                   <UserData />
                 </Tab>
-                <Tab eventKey='Quizzes' title='Quizzes'>
+                <Tab eventKey='Items' title={'Items (' + items_count + ')'}>
+                <Items />
+                </Tab>
+                <Tab eventKey='Quizzes' title={'Quizzes (' + exams_count + ')'}>
                   <Quizzes />
                 </Tab>
-                <Tab eventKey='Items' title='Items'>
-                  <Items />
-                </Tab>
+
               </Tabs>
             </Col>
             <Col md='1'></Col>

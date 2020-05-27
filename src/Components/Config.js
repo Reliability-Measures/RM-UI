@@ -12,7 +12,7 @@ let subjects = {}
 
 let config = {
   application_id: 'rm_01',
-  application_version: '0.4.2',
+  application_version: '0.4.3',
   application_name: 'Reliability Measures microservices',
   application_org: 'Reliability Measures',
   application_email: 'info@reliabilitymeasures.com',

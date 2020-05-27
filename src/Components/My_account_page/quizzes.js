@@ -18,7 +18,7 @@ function Quizzes() {
   const columns = [
     {
       dataField: 'id',
-      text: `Exams (${exams_count})`,
+      text: `Exam #`,
       sort: true,
       headerStyle: () => {
         return { width: '10%' }
@@ -35,11 +35,12 @@ function Quizzes() {
     },
     {
       dataField: 'date_created',
-      text: 'Date Created'
+      text: 'Date Created',
+      sort: true
     },
     {
-      dataField: 'analaysis',
-      text: 'Analaysis(Upcoming Feature)'
+      dataField: 'analysis',
+      text: 'Analysis (Upcoming Feature)'
     }
   ]
   let table_data =
@@ -56,8 +57,8 @@ function Quizzes() {
           Edit
         </a>
       ),
-      date_created: val.date_created.substring(0, 10),
-      analaysis: 'Analaysis'
+      date_created: val.date_created,
+      analaysis: 'Analysis'
     }))
   return (
     <>
