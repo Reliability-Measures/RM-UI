@@ -11,8 +11,8 @@ import { useSelector } from 'react-redux'
 function HookForm() {
   const { watch, errors } = useFormContext()
   const isLogin = useSelector((state) => state.google_json.isLogin)
-    const subjects_init = useSelector((state) => state.dropbox.subjects_init)
-  let subject = subjects_init && subjects.subject_list.map((val) => val.label)
+  const subjects_init = useSelector((state) => state.dropbox.subjects_init)
+  let subject = subjects_init ? subjects.subject_list.map((val) => val.label) : []
   let item_types = ['Multiple Choice']
   let acc_label = watch('tags.privacy') === false ? 'Private' : 'Public'
   let grades = []
@@ -21,10 +21,14 @@ function HookForm() {
   }
   return (
     <>
-      <Row  Style={"padding: 20px"}>
+      <Row style={{ padding: 20 }}>
         <Col md='12'>
           <MyInput
-            label={<><i className='fas fa-star-of-life text-danger fa-xs'></i> Item Text</>}
+            label={
+              <>
+                <i className='fas fa-star-of-life text-danger fa-xs'></i> Item Text
+              </>
+            }
             label_size='h2'
             placeholder='Enter question here..'
             name='tags.item_text'
@@ -34,9 +38,13 @@ function HookForm() {
           />
           {errors.tags && errors.tags.item_text && <p className='text-danger'>Item Text Is Required</p>}
         </Col>
-        <Col >
+        <Col>
           <MyInput
-            label={<><i className='fas fa-star-of-life text-danger fa-xs'></i> Item Type</>}
+            label={
+              <>
+                <i className='fas fa-star-of-life text-danger fa-xs'></i> Item Type
+              </>
+            }
             label_size='h5'
             name='tags.item_type'
             input_type='select'
@@ -47,11 +55,13 @@ function HookForm() {
         </Col>
         {watch('show.subject') !== false && (
           <>
-            <Col >
-
-
+            <Col>
               <MyInput
-                  label= {<><i className='fas fa-star-of-life text-danger fa-xs'></i> Subject</>}
+                label={
+                  <>
+                    <i className='fas fa-star-of-life text-danger fa-xs'></i> Subject
+                  </>
+                }
                 label_size='h5'
                 name='tags.subject'
                 input_type='select'
@@ -59,38 +69,39 @@ function HookForm() {
                 id='subject'
               />
               {errors.tags && errors.tags.subject && <p className='text-danger'>Subject Is Required</p>}
-              </Col>
+            </Col>
 
-            <Col md='4' className='h5 text-left'>
-              Item Topics
-              <DropdownTree />
+            <Col md='4'>
+              <h5 className='text-left'>Item Topics</h5>
+              <div className='wrap-drop'>
+                <DropdownTree />
+              </div>
             </Col>
           </>
         )}
         {/* {watch('quiz_question.show.grade_level') !== false && ( */}
-        {/*<>*/}
-          {/*<Col md='2'>*/}
-            {/*<MyInput*/}
-              {/*label='Grade-Level-Min'*/}
-              {/*label_size='h5'*/}
-              {/*name='tags.grade_min'*/}
-              {/*input_type='select'*/}
-              {/*options={grades}*/}
-              {/*id='grade_min'*/}
-            {/*/>*/}
-          {/*</Col>*/}
-          {/*<Col md='2'>*/}
-            {/*<MyInput*/}
-              {/*label='Grade-Level-Max'*/}
-              {/*label_size='h5'*/}
-              {/*name='tags.grade_max'*/}
-              {/*input_type='select'*/}
-              {/*options={grades}*/}
-              {/*id='grade_max'*/}
-            {/*/>*/}
-          {/*</Col>*/}
-        {/*</>*/}
-        {/* )} */}
+        {/* <>
+          <Col md='2'>
+            <MyInput
+              label='Grade-Level-Min'
+              label_size='h5'
+              name='tags.grade_min'
+              input_type='select'
+              options={grades}
+              id='grade_min'
+            />
+          </Col>
+          <Col md='2'>
+            <MyInput
+              label='Grade-Level-Max'
+              label_size='h5'
+              name='tags.grade_max'
+              input_type='select'
+              options={grades}
+              id='grade_max'
+            />
+          </Col>
+        </> */}
         {isLogin && (
           <Col md='1'>
             <MyInput label={acc_label} label_size='h5' name='tags.privacy' input_type='checkbox' id='privacy' />

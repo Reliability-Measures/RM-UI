@@ -1,6 +1,11 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { ConfigFileSuccess, ConfigFileFailure, SubjectFileSuccess, SubjectFileFailure } from '../Redux/Dropbox_init/dropbox_actions'
+import {
+  ConfigFileSuccess,
+  ConfigFileFailure,
+  SubjectFileSuccess,
+  SubjectFileFailure
+} from '../Redux/Dropbox_init/dropbox_actions'
 import {
   fetchRamadanResultsStat4,
   fetchRamadanResultsStat5,

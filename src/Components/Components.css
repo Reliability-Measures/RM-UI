@@ -101,3 +101,8 @@
   font-weight: bold;
   font-size: larger;
 }
+
+.wrap-drop {
+  /* display: flex; */
+  align-self: flex-end;
+}

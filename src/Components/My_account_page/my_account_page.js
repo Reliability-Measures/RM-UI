@@ -1,8 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import UserData from './user_data'
-import { getUserData } from '../../Redux/User_data/user_data_actions'
-import { Row, Col, Tabs, Tab, Button } from 'react-bootstrap'
+import { Row, Col, Tabs, Tab } from 'react-bootstrap'
 import { get_config } from '../Config'
 import { GoogleLogout } from 'react-google-login'
 import { logOut } from '../../Redux/Google_login/google_actions'
@@ -33,19 +32,17 @@ function MyAccountPage() {
             <Col md='10'>
               <h1>Welcome {user_name}</h1>
               <img src={img} alt='Profile Pic' style={{ borderRadius: 50 }}></img>
+              <div className='text-right'>
+                {isLogin ? (
+                  <GoogleLogout
+                    clientId={get_config('application_client_id')}
+                    buttonText='Logout'
+                    onLogoutSuccess={logout}
+                  />
+                ) : null}
+              </div>
             </Col>
-            <Col md='1' className='text-right'>
-              {isLogin ? (
-                <GoogleLogout
-                  clientId={get_config('application_client_id')}
-                  buttonText='Logout'
-                  onLogoutSuccess={logout}
-                />
-              ) : null}
-              <Button onClick={() => dispatch(getUserData({ user_id: google_json.profileObj.email }))}>
-                <i className='fas fa-sync-alt'></i>
-              </Button>
-            </Col>
+            <Col md='1'></Col>
           </Row>
           <Row>
             <Col md='2' />
@@ -55,12 +52,11 @@ function MyAccountPage() {
                   <UserData />
                 </Tab>
                 <Tab eventKey='Items' title={'Items (' + items_count + ')'}>
-                <Items />
+                  <Items />
                 </Tab>
                 <Tab eventKey='Quizzes' title={'Quizzes (' + exams_count + ')'}>
                   <Quizzes />
                 </Tab>
-
               </Tabs>
             </Col>
             <Col md='1'></Col>

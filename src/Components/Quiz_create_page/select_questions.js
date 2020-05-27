@@ -196,6 +196,7 @@ function SelectQuestions() {
                     <hr />
                     <BootstrapTable
                       {...props.baseProps}
+                      //classes='table-responsive'
                       expandRow={expandRow}
                       selectRow={selectRow}
                       pagination={paginationFactory()}

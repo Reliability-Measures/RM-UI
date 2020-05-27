@@ -11,7 +11,6 @@ function QuestionModal(props) {
   const dispatch = useDispatch()
   const { watch } = useFormContext()
   const from_data = watch({ nest: true })
-  console.log('QuestionModal -> from_data', from_data)
   const topic_path = useSelector((state) => state.quiz_question.topic_path)
   const google_json = useSelector((state) => state.google_json.data)
   const is_login = useSelector((state) => state.google_json.isLogin)

@@ -8,15 +8,15 @@ import { getItem } from '../../Redux/Quiz_question/quiz_question_actions'
 //import DropdownTree from '../Quiz_question_page/dropdown_tree'
 import * as yup from 'yup'
 
-const get_questions_valid = yup.object().shape({subject: yup.string().required()})
+const get_questions_valid = yup.object().shape({ subject: yup.string().required() })
 
 function QuizCreateForm() {
   const dispatch = useDispatch()
   const google_json = useSelector((state) => state.google_json.data)
   const is_login = useSelector((state) => state.google_json.isLogin)
-    const subjects_init = useSelector((state) => state.dropbox.subjects_init)
+  const subjects_init = useSelector((state) => state.dropbox.subjects_init)
   //const topic_state = useSelector((state) => state.quiz_question.topic_path)
-  let subject = subjects_init && subjects.subject_list.map((val) => val.label)
+  let subject = subjects_init ? subjects.subject_list.map((val) => val.label) : []
 
   const get_questions = useForm({
     defaultValues: {
@@ -64,7 +64,9 @@ function QuizCreateForm() {
                 </Row>
               </>
             )}
-            <h5><i className='fas fa-star-of-life text-danger fa-xs'></i> Subject</h5>
+            <h5>
+              <i className='fas fa-star-of-life text-danger fa-xs'></i> Subject
+            </h5>
             <MyInput name='subject' input_type='select' options={subject} id='subject' />
             {errors.subject && <p className='text-danger'>Subject Is Required</p>}
             {/*<MyInput label='Keyword' label_size='h5' name='keyword' input_type='textarea' />*/}

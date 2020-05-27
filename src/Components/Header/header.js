@@ -55,8 +55,10 @@ function Header() {
               </NavDropdown.Item>
             </NavDropdown> */}
           </Nav>
+          <div onClick={() => setexpanded(false)}>
+            <GoogleLogin />
+          </div>
         </Navbar.Collapse>
-        <GoogleLogin />
       </Navbar>
     </div>
   )

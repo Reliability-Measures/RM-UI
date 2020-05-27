@@ -1,17 +1,19 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { Row, Col } from 'react-bootstrap'
+import { useSelector, useDispatch } from 'react-redux'
+import { Row, Col, Button } from 'react-bootstrap'
+import { getUserData } from '../../Redux/User_data/user_data_actions'
 import Loader from 'react-loader-spinner'
 import BootstrapTable from 'react-bootstrap-table-next'
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css'
 
 function Quizzes() {
+  const dispatch = useDispatch()
   const data = useSelector((state) => state.user_data.data)
+  const google_json = useSelector((state) => state.google_json.data)
   const is_loading = useSelector((state) => state.user_data.isloading)
   const loaded = useSelector((state) => state.user_data.loaded)
   let exams = loaded ? data.exams : null
-  let exams_count = loaded ? data.exams_count : null
 
   const { SearchBar, ClearSearchButton } = Search
 
@@ -19,14 +21,11 @@ function Quizzes() {
     {
       dataField: 'id',
       text: `Exam #`,
-      sort: true,
-      headerStyle: () => {
-        return { width: '10%' }
-      }
+      sort: true
     },
     {
       dataField: 'quiz_name',
-      text: 'Quiz Name',
+      text: 'Quiz',
       sort: true
     },
     {
@@ -34,13 +33,31 @@ function Quizzes() {
       text: 'Edit'
     },
     {
-      dataField: 'date_created',
-      text: 'Date Created',
+      dataField: 'quiz_desc',
+      text: 'Description'
+    },
+    {
+      dataField: 'no_of_items',
+      text: 'No. of Items',
       sort: true
+    },
+    {
+      dataField: 'responses',
+      text: 'Total Responses',
+      sort: true
+    },
+    {
+      dataField: 'google_summary',
+      text: 'Google Form Summary'
     },
     {
       dataField: 'analysis',
       text: 'Analysis (Upcoming Feature)'
+    },
+    {
+      dataField: 'date_created',
+      text: 'Date Created',
+      sort: true
     }
   ]
   let table_data =
@@ -57,8 +74,16 @@ function Quizzes() {
           Edit
         </a>
       ),
+      quiz_desc: val.description,
+      no_of_items: val.no_of_questions,
+      responses: val.responses,
       date_created: val.date_created,
-      analaysis: 'Analysis'
+      google_summary: (
+        <a target='blank' href={val.metadata.summary_url}>
+          Summary
+        </a>
+      ),
+      analysis: <Button>Analysis</Button>
     }))
   return (
     <>
@@ -74,9 +99,16 @@ function Quizzes() {
                     <SearchBar {...props.searchProps} />
                     <ClearSearchButton {...props.searchProps} />
                   </Col>
+                  <Col md='6' />
+                  <Col md='3'>
+                    Refresh{' '}
+                    <Button onClick={() => dispatch(getUserData({ user_id: google_json.profileObj.email }))}>
+                      <i className='fas fa-sync-alt'></i>
+                    </Button>
+                  </Col>
                 </Row>
                 <hr />
-                <BootstrapTable {...props.baseProps} />
+                <BootstrapTable {...props.baseProps} classes='table-responsive' />
               </>
             )}
           </ToolkitProvider>

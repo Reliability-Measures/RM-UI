@@ -9,7 +9,7 @@ import { useFormContext } from 'react-hook-form'
 function DropdownTree() {
   const { watch } = useFormContext()
   const dispatch = useDispatch()
-    const subjects_init = useSelector((state) => state.dropbox.subjects_init)
+  const subjects_init = useSelector((state) => state.dropbox.subjects_init)
   let question_json = subjects_init && subjects.subject_list
   let topics = [
     {
