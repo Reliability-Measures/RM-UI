@@ -16,4 +16,8 @@ export const item_selected_id = 'item_selected_id'
 export const item_selected_reset = 'item_selected_rest'
 export const item_selected_text = 'item_selected_text'
 
+export const quiz_get_request = 'quiz_get_request'
+export const quiz_get_success = 'quiz_get_success'
+export const quiz_get_failure = 'quiz_get_failure'
+
 export const reset_sent = 'reset_sent'

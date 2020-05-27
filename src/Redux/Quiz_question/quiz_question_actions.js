@@ -12,6 +12,9 @@ import {
   item_selected_id,
   item_selected_text,
   item_selected_reset,
+  quiz_get_request,
+  quiz_get_success,
+  quiz_get_failure,
   reset_sent
 } from './quiz_question_types'
 import { get_config } from '../../Components/Config'
@@ -103,6 +106,24 @@ export const ItemSelectedReset = (id, text) => {
 export const ResetSent = () => {
   return {
     type: reset_sent
+  }
+}
+
+export const QuizGetRequest = () => {
+  return {
+    type: quiz_get_request
+  }
+}
+export const QuizgetSuccess = (data) => {
+  return {
+    type: quiz_get_success,
+    payload: data
+  }
+}
+export const QuizGetFailure = (error) => {
+  return {
+    type: quiz_get_failure,
+    payload: error
   }
 }
 

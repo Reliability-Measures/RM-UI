@@ -12,6 +12,9 @@ import {
   item_selected_id,
   item_selected_text,
   item_selected_reset,
+  quiz_get_request,
+  quiz_get_success,
+  quiz_get_failure,
   reset_sent
 } from './quiz_question_types'
 const quiz_question_state = {
@@ -30,6 +33,11 @@ const quiz_question_state = {
   items_post_sent: false,
   items_post_response: [],
   items_post_error: '',
+
+  quiz_get_loading: false,
+  quiz_get_sent: false,
+  quiz_get_response: [],
+  quiz_get_error: '',
 
   items_selected_id: [],
   items_selected_text: []
@@ -120,6 +128,23 @@ const quiz_question_reducer = (state = quiz_question_state, action) => {
         items_post_sent: false
       }
 
+    case quiz_get_request:
+      return {
+        ...state,
+        quiz_get_loading: true
+      }
+    case quiz_get_success:
+      return {
+        ...state,
+        quiz_get_loading: false,
+        quiz_get_sent: true,
+        quiz_get_response: action.payload
+      }
+    case quiz_get_failure:
+      return {
+        ...state,
+        quiz_get_error: action.payload
+      }
     default:
       return state
   }
