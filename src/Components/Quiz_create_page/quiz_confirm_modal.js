@@ -30,6 +30,7 @@ function QuizConfirmModal(props) {
       ? (options.required = 3)
       : (options.required = 0)
     options.show_correct = options.show_correct === false ? 0 : 1
+    options.searchable = options.searchable === false ? 0 : 1
     Object.assign(quiz_json, { options })
     Object.assign(quiz_json, { item_ids })
     Object.assign(quiz_json, { quiz_name })

@@ -35,7 +35,7 @@ const quiz_question_state = {
   items_post_error: '',
 
   quiz_get_loading: false,
-  quiz_get_sent: false,
+  quiz_get_received: false,
   quiz_get_response: [],
   quiz_get_error: '',
 
@@ -137,7 +137,7 @@ const quiz_question_reducer = (state = quiz_question_state, action) => {
       return {
         ...state,
         quiz_get_loading: false,
-        quiz_get_sent: true,
+        quiz_get_received: true,
         quiz_get_response: action.payload
       }
     case quiz_get_failure:

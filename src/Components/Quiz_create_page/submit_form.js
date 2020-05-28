@@ -14,11 +14,12 @@ const quiz_create_valid = yup.object().shape({
 function SubmitForm() {
   const [modalShow, setModalShow] = React.useState(false)
   const items_recived = useSelector((state) => state.quiz_question.item_get_received)
+  const is_login = useSelector((state) => state.google_json.isLogin)
   const quiz_create = useForm({
     defaultValues: {
       quiz_name: '',
       quiz_description: '',
-      options: [{ required: false, show_correct: false }]
+      options: [{ required: false, show_correct: false, searchable: true }]
     },
     validationSchema: quiz_create_valid
   })
@@ -54,9 +55,13 @@ function SubmitForm() {
             </Row>
             <Dropdown id='filters' className='text-center' drop='left'>
               <Dropdown.Toggle variant='outline-dark' id='filters_toggle'>
-                Additional Options
+                Options On By Default
               </Dropdown.Toggle>
               <Dropdown.Menu>
+                (Check If Do Not Want)
+                {is_login && (
+                  <MyInput label='Searchable' label_size='h5' input_type='checkbox' name='options.searchable' />
+                )}
                 <MyInput
                   label='Show Correct Answers'
                   label_size='h5'

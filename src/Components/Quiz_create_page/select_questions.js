@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Card, Col, Row, Dropdown } from 'react-bootstrap'
+import { Card, Col, Row, Dropdown, Button } from 'react-bootstrap'
 import Loader from 'react-loader-spinner'
 import { ItemSelectedId, ItemSelectedText, ItemSelectedReset } from '../../Redux/Quiz_question/quiz_question_actions'
 import BootstrapTable from 'react-bootstrap-table-next'
@@ -190,6 +190,11 @@ function SelectQuestions() {
                             ))}
                           </Dropdown.Menu>
                         </Dropdown>
+                      </Col>
+                      <Col>
+                        <Button variant='outline-dark' onClick={() => dispatch(ItemSelectedReset([], []))}>
+                          Reset Items
+                        </Button>
                       </Col>
                       <Col>Subject: {items_recived && items_n > 0 && items[0].subject}</Col>
                     </Row>

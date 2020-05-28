@@ -70,7 +70,6 @@ function MyInput({
               disabled={disabled}
               checked={checked}
               className='double'
-              onClick={onClick}
               defaultValue={defaultValue}
             />
           </>
@@ -84,7 +83,6 @@ function MyInput({
               ref={register}
               disabled={disabled}
               checked={checked}
-              onClick={onClick}
               defaultValue={defaultValue}
             />
           </>

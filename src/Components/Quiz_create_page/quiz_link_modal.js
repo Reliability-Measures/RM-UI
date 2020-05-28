@@ -10,7 +10,7 @@ function QuizLinkModal(props) {
   const request_sent = useSelector((state) => state.quiz_question.items_post_sent)
   const response = useSelector((state) => state.quiz_question.items_post_response)
   const is_login = useSelector((state) => state.google_json.isLogin)
-  let error = !response.quiz  // || !response.quiz.metadata
+  let error = !response.quiz // || !response.quiz.metadata
   let error_text = response.error
   //let pub_link = !error && request_sent ? response.quiz.metadata.published_url : null
   //let edit_link = !error && request_sent ? response.quiz.metadata.editor_url : null
@@ -29,8 +29,8 @@ function QuizLinkModal(props) {
             {error && request_sent && 'Error Try Again - ' + error_text}
             {!error && request_sent && (
               <>
-                <ListItem item={'Quiz Name: ' + quiz_name}  />
-                <ListItem item={'Quiz Id: ' + quiz_id}  />
+                <ListItem item={'Quiz Name: ' + quiz_name} />
+                <ListItem item={'Quiz Id: ' + quiz_id} />
                 <p>The quiz will be ready in few seconds.</p>
                 {!is_login && (
                   <>
@@ -46,14 +46,7 @@ function QuizLinkModal(props) {
             )}
           </Modal.Body>
           <Modal.Footer>
-
-            <Button
-              onClick={() => {
-                props.onHide()
-                window.location.reload()
-              }}>
-              Close
-            </Button>
+            <Button onClick={props.onHide}>Close</Button>
           </Modal.Footer>
         </Modal>
       )}

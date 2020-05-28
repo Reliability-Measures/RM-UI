@@ -177,7 +177,6 @@ export const postItems = (data) => {
   const options = {
     method: 'POST',
     url: url,
-    timeout: 1000 * 100,
     params: { input: data }
   }
   return (dispatch) => {
@@ -190,6 +189,28 @@ export const postItems = (data) => {
       })
       .catch((error) => {
         dispatch(ItemsPostFailure(error.message))
+      })
+  }
+}
+
+export const getQuiz = (data) => {
+  let url = get_config('service2_url') + get_config('get_form')
+  console.log(url)
+  const options = {
+    method: 'POST',
+    url: url,
+    params: { input: data }
+  }
+  return (dispatch) => {
+    console.log(data)
+    dispatch(QuizGetRequest())
+    axios(options)
+      .then((response) => {
+        const data = response.data
+        dispatch(QuizgetSuccess(data))
+      })
+      .catch((error) => {
+        dispatch(QuizGetFailure(error.message))
       })
   }
 }

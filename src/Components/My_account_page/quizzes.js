@@ -20,7 +20,12 @@ function Quizzes() {
   const columns = [
     {
       dataField: 'id',
-      text: `Exam #`,
+      text: 'Exam #',
+      sort: true
+    },
+    {
+      dataField: 'quiz_id',
+      text: 'Quiz ID',
       sort: true
     },
     {
@@ -64,6 +69,7 @@ function Quizzes() {
     loaded &&
     exams.map((val, index) => ({
       id: index + 1,
+      quiz_id: val.id,
       quiz_name: (
         <a target='blank' href={val.metadata.published_url}>
           {val.name}
