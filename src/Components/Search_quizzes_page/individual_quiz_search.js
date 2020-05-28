@@ -7,15 +7,15 @@ import { Form, Button } from 'react-bootstrap'
 import { getQuiz } from '../../Redux/Quiz_question/quiz_question_actions'
 
 const individual_quiz_search_valid = yup.object().shape({
-  form_id: yup.number().required().positive().integer(),
-  quiz_name: yup.string().required()
+  id: yup.number().required().positive().integer(),
+  name: yup.string().required()
 })
 
 function IndividualQuizSearch() {
   const individual_quiz_search = useForm({
     defaultValues: {
-      form_id: '',
-      quiz_name: ''
+      id: '',
+      name: ''
     },
     validationSchema: individual_quiz_search_valid
   })
@@ -37,7 +37,7 @@ function IndividualQuizSearch() {
           }
           label_size='h2'
           placeholder='Enter Id...'
-          name='form_id'
+          name='id'
           input_type='textarea'
           rows='1'
         />
@@ -50,11 +50,11 @@ function IndividualQuizSearch() {
           }
           label_size='h2'
           placeholder='Enter Quiz Name...'
-          name='quiz_name'
+          name='name'
           input_type='textarea'
           rows='2'
         />
-        {errors.quiz_name && <p className='text-danger'>Quiz Name is Required</p>}
+        {errors.name && <p className='text-danger'>Quiz Name is Required</p>}
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Button variant='outline-dark' type='submit'>
             Search
