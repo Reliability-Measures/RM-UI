@@ -1,42 +1,59 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Row, Col, Card, Button } from 'react-bootstrap'
 import Loader from 'react-loader-spinner'
+import { getUserData } from '../../Redux/User_data/user_data_actions'
 import BootstrapTable from 'react-bootstrap-table-next'
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css'
-import ListItem from '../Quiz_question_page/Reuse_components/list_item'
 
 function Items() {
+  const dispatch = useDispatch()
   const data = useSelector((state) => state.user_data.data)
   const is_loading = useSelector((state) => state.user_data.isloading)
   const loaded = useSelector((state) => state.user_data.loaded)
+  const google_json = useSelector((state) => state.google_json.data)
   let items = loaded ? data.items : null
-  let items_count = loaded ? data.items_count : null
 
   const { SearchBar, ClearSearchButton } = Search
 
   const columns = [
     {
       dataField: 'id',
-      text: `Items (${items_count})`,
-      sort: true,
-      headerStyle: () => {
-        return { width: '10%' }
-      }
+      text: 'Item #',
+      sort: true
     },
     {
       dataField: 'item_id',
       text: 'Item Id',
-      sort: true,
-      headerStyle: () => {
-        return { width: '10%' }
-      }
+      sort: true
     },
     {
       dataField: 'subject',
       text: 'Subject',
       sort: true
+    },
+    {
+      dataField: 'topics',
+      text: 'Topic(s)',
+      sort: true
+    },
+    {
+      dataField: 'sub_topics',
+      text: 'SubTopic(s)',
+      sort: true
+    },
+    {
+      dataField: 'item_text',
+      text: 'Item Text'
+    },
+    {
+      dataField: 'date_created',
+      text: 'Date Created'
+    },
+    {
+      dataField: 'date_updated',
+      text: 'Date Updated'
     },
     {
       dataField: 'privacy_status',
@@ -50,11 +67,31 @@ function Items() {
       id: index + 1,
       item_id: val.id,
       subject: val.subject ? val.subject : 'None',
-      privacy_status: val.private === 1 ? 'Public' : 'Private'
+      topics:
+        typeof val.topic === 'string'
+          ? val.topic
+          : val.topic === null
+          ? 'None'
+          : Object.values(val.topic) && Object.keys(val.topic).length > 0
+          ? Object.values(val.topic).map((v) => (v ? <div>{v}</div> : null))
+          : 'None',
+      sub_topics:
+        typeof val.sub_topics === 'string'
+          ? val.sub_topics
+          : val.sub_topics === null
+          ? 'None'
+          : Object.values(val.sub_topics) && Object.keys(val.sub_topics).length > 0
+          ? Object.values(val.sub_topics).map((v) => (v ? <div>{v}</div> : 'None'))
+          : 'None',
+      item_text: val.text,
+      date_created: val.date_created,
+      date_updated: val.date_updated,
+      privacy_status: val.private === 1 ? 'Private' : 'Public'
     }))
   const expandRow = {
     onlyOneExpanding: true,
     showExpandColumn: true,
+    expandByColumnOnly: true,
     expandHeaderColumnRenderer: ({ isAnyExpands }) => {
       if (isAnyExpands) {
         return <b></b>
@@ -84,34 +121,19 @@ function Items() {
                 <Card key={index}>
                   <Card.Header className='h4'>{val.text}</Card.Header>
                   <Card.Body>
-                    <Card.Title>
-                      <Row>
-                        <Col>
-                          Topic(s)
-                          {Object.values(JSON.parse(val.topic))
-                            ? Object.values(JSON.parse(val.topic)).map((v) => (v ? <ListItem item={v} /> : null))
-                            : 'None'}
-                        </Col>
-                        <Col>
-                          Sub-Topic(s)
-                          {Object.values(JSON.parse(val.sub_topics))
-                            ? Object.values(JSON.parse(val.sub_topics)).map((v) => (v ? <ListItem item={v} /> : null))
-                            : 'None'}
-                        </Col>
-                      </Row>
-                    </Card.Title>
                     <Card.Text>
                       {val.choices.map((va, index) => (
-                        <div key={index} className='text-center'>
+                        <div key={index} className='text-left'>
                           <Row>
                             <Col style={{ color: [va.correct === 1 && 'green'] }} className='h4'>
-                              {va.choice}
+                              {index + 1}) {va.choice}
+                              {va.correct === 1 && <i className='fas fa-check text-success'></i>}
                             </Col>
                           </Row>
                         </div>
                       ))}
                     </Card.Text>
-                    <Button variant='primary'>Edit Item</Button>
+                    {/* <Button variant='primary'>Edit Item</Button> */}
                   </Card.Body>
                 </Card>
               )}
@@ -134,9 +156,16 @@ function Items() {
                     <SearchBar {...props.searchProps} />
                     <ClearSearchButton {...props.searchProps} />
                   </Col>
+                  <Col md='6' />
+                  <Col md='3'>
+                    Refresh{' '}
+                    <Button onClick={() => dispatch(getUserData({ user_id: google_json.profileObj.email }))}>
+                      <i className='fas fa-sync-alt'></i>
+                    </Button>
+                  </Col>
                 </Row>
                 <hr />
-                <BootstrapTable {...props.baseProps} expandRow={expandRow} />
+                <BootstrapTable {...props.baseProps} classes='table-responsive' expandRow={expandRow} />
               </>
             )}
           </ToolkitProvider>

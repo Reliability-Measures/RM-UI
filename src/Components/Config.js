@@ -5,11 +5,14 @@
 let cloud_provider = {
   cloud_host: 'dropbox',
   cloud_config_file: process.env.REACT_APP_CLOUD_CONFIG,
+  cloud_subjects_file: process.env.REACT_APP_CLOUD_SUBJECTS,
   cloud_access_key: process.env.REACT_APP_CLOUD_API_KEY
 }
+let subjects = {}
+
 let config = {
   application_id: 'rm_01',
-  application_version: '0.4.2',
+  application_version: '0.4.3',
   application_name: 'Reliability Measures microservices',
   application_org: 'Reliability Measures',
   application_email: 'info@reliabilitymeasures.com',
@@ -186,6 +189,7 @@ let config = {
 function get_service_config(service_id, key) {
   return config['services'][service_id][key]
 }
+
 function set_config(config_file) {
   let keys = Object.keys(config_file)
   keys.forEach((val) =>  config[val] = config_file[val])
@@ -193,6 +197,10 @@ function set_config(config_file) {
 
 function get_config(config_key) {
   return config[config_key]
+}
+
+function set_subjects(subjects_file) {
+ return subjects = subjects_file
 }
 
 function convertToArrayOfObjects(data) {
@@ -366,6 +374,8 @@ export { get_service_config }
 export { get_config }
 export { set_config }
 export { convertToArrayOfObjects }
+export { subjects}
+export { set_subjects}
 export { saveJSON }
 export { fnExcelReport }
 export { cloud_provider }

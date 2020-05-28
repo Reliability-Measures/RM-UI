@@ -11,6 +11,10 @@ import {
   items_post_failure,
   item_selected_id,
   item_selected_text,
+  item_selected_reset,
+  quiz_get_request,
+  quiz_get_success,
+  quiz_get_failure,
   reset_sent
 } from './quiz_question_types'
 import { get_config } from '../../Components/Config'
@@ -91,9 +95,35 @@ export const ItemSelectedText = (data) => {
   }
 }
 
+export const ItemSelectedReset = (id, text) => {
+  return {
+    type: item_selected_reset,
+    payload: id,
+    payload1: text
+  }
+}
+
 export const ResetSent = () => {
   return {
     type: reset_sent
+  }
+}
+
+export const QuizGetRequest = () => {
+  return {
+    type: quiz_get_request
+  }
+}
+export const QuizgetSuccess = (data) => {
+  return {
+    type: quiz_get_success,
+    payload: data
+  }
+}
+export const QuizGetFailure = (error) => {
+  return {
+    type: quiz_get_failure,
+    payload: error
   }
 }
 
@@ -159,6 +189,28 @@ export const postItems = (data) => {
       })
       .catch((error) => {
         dispatch(ItemsPostFailure(error.message))
+      })
+  }
+}
+
+export const getQuiz = (data) => {
+  let url = get_config('service2_url') + get_config('get_form')
+  console.log(url)
+  const options = {
+    method: 'POST',
+    url: url,
+    params: { input: data }
+  }
+  return (dispatch) => {
+    console.log(data)
+    dispatch(QuizGetRequest())
+    axios(options)
+      .then((response) => {
+        const data = response.data
+        dispatch(QuizgetSuccess(data))
+      })
+      .catch((error) => {
+        dispatch(QuizGetFailure(error.message))
       })
   }
 }

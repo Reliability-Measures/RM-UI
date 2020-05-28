@@ -3,7 +3,7 @@ import { useFormContext, useFieldArray, Controller } from 'react-hook-form'
 import { Button, ListGroup, Row, Col, Form } from 'react-bootstrap'
 
 function MultipleChoiceForm() {
-  const { watch, control } = useFormContext()
+  const { watch, control, errors } = useFormContext()
   const { fields, append, remove } = useFieldArray({ control, name: 'item_choices' })
   return (
     <>
@@ -15,6 +15,7 @@ function MultipleChoiceForm() {
                 <Col md='2' />
                 <Col md='6' className='h4'>
                   Item Choices
+                  {errors.item_choices && <p className='text-danger'>All Choices Must Be Filled</p>}
                 </Col>
                 <Col md='3'>Check Correct Answer(s)</Col>
                 <Col md='1'>

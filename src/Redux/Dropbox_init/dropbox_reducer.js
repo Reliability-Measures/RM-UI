@@ -1,21 +1,34 @@
-import { file_success, file_failure } from './dropbox_types'
+import { config_file_success, config_file_failure, subject_file_success, subject_file_failure } from './dropbox_types'
 
 const dropbox_state = {
-  init: false,
-  error: ''
+  config_init: false,
+  config_error: '',
+    subjects_init: false,
+    subjects_error:''
+
 }
 
 const dropbox_reducer = (state = dropbox_state, action) => {
   switch (action.type) {
-    case file_success:
+    case config_file_success:
       return {
         ...state,
-        init: true
+        config_init: true
       }
-    case file_failure:
+    case config_file_failure:
       return {
         ...state,
-        error: action.payload
+        config_error: action.payload
+      }
+      case subject_file_success:
+      return {
+        ...state,
+        subjects_init: true
+      }
+    case subject_file_failure:
+      return {
+        ...state,
+        subjects_error: action.payload
       }
     default:
       return state

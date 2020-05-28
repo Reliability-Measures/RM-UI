@@ -1,43 +1,75 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { Row, Col } from 'react-bootstrap'
+import { useSelector, useDispatch } from 'react-redux'
+import { Row, Col, Button } from 'react-bootstrap'
+import { getUserData } from '../../Redux/User_data/user_data_actions'
 import Loader from 'react-loader-spinner'
 import BootstrapTable from 'react-bootstrap-table-next'
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css'
 
 function Quizzes() {
+  const dispatch = useDispatch()
   const data = useSelector((state) => state.user_data.data)
+  const google_json = useSelector((state) => state.google_json.data)
   const is_loading = useSelector((state) => state.user_data.isloading)
   const loaded = useSelector((state) => state.user_data.loaded)
   let exams = loaded ? data.exams : null
-  let exams_count = loaded ? data.exams_count : null
 
   const { SearchBar, ClearSearchButton } = Search
 
   const columns = [
     {
       dataField: 'id',
-      text: `Exams (${exams_count})`,
-      sort: true,
-      headerStyle: () => {
-        return { width: '10%' }
-      }
+      text: 'Exam #',
+      sort: true
+    },
+    {
+      dataField: 'quiz_id',
+      text: 'Quiz ID',
+      sort: true
     },
     {
       dataField: 'quiz_name',
-      text: 'Quiz Name',
+      text: 'Quiz',
       sort: true
     },
     {
       dataField: 'editor_link',
       text: 'Edit'
+    },
+    {
+      dataField: 'quiz_desc',
+      text: 'Description'
+    },
+    {
+      dataField: 'no_of_items',
+      text: 'No. of Items',
+      sort: true
+    },
+    {
+      dataField: 'responses',
+      text: 'Total Responses',
+      sort: true
+    },
+    {
+      dataField: 'google_summary',
+      text: 'Google Form Summary'
+    },
+    {
+      dataField: 'analysis',
+      text: 'Analysis (Upcoming Feature)'
+    },
+    {
+      dataField: 'date_created',
+      text: 'Date Created',
+      sort: true
     }
   ]
   let table_data =
     loaded &&
     exams.map((val, index) => ({
       id: index + 1,
+      quiz_id: val.id,
       quiz_name: (
         <a target='blank' href={val.metadata.published_url}>
           {val.name}
@@ -47,7 +79,17 @@ function Quizzes() {
         <a target='blank' href={val.metadata.editor_url}>
           Edit
         </a>
-      )
+      ),
+      quiz_desc: val.description,
+      no_of_items: val.no_of_questions,
+      responses: val.responses,
+      date_created: val.date_created,
+      google_summary: (
+        <a target='blank' href={val.metadata.summary_url}>
+          Summary
+        </a>
+      ),
+      analysis: <Button>Analysis</Button>
     }))
   return (
     <>
@@ -63,9 +105,16 @@ function Quizzes() {
                     <SearchBar {...props.searchProps} />
                     <ClearSearchButton {...props.searchProps} />
                   </Col>
+                  <Col md='6' />
+                  <Col md='3'>
+                    Refresh{' '}
+                    <Button onClick={() => dispatch(getUserData({ user_id: google_json.profileObj.email }))}>
+                      <i className='fas fa-sync-alt'></i>
+                    </Button>
+                  </Col>
                 </Row>
                 <hr />
-                <BootstrapTable {...props.baseProps} keyField='exams_table' />
+                <BootstrapTable {...props.baseProps} classes='table-responsive' />
               </>
             )}
           </ToolkitProvider>

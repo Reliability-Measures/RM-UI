@@ -22,9 +22,15 @@ function QuizConfirmModal(props) {
     let quiz_description = form_data.quiz_description
     let options = form_data.options
     let user_profile = is_login ? google_json.profileObj : {}
-    options.email === false ? (options.email = 0) : (options.email = 1)
-    options.name === false ? (options.name = 0) : (options.name = 1)
-    options.show_correct === false ? (options.show_correct = 0) : (options.show_correct = 1)
+    options.required === 'e'
+      ? (options.required = 1)
+      : options.required === 'n'
+      ? (options.required = 2)
+      : options.required === 'b'
+      ? (options.required = 3)
+      : (options.required = 0)
+    options.show_correct = options.show_correct === false ? 0 : 1
+    options.searchable = options.searchable === false ? 0 : 1
     Object.assign(quiz_json, { options })
     Object.assign(quiz_json, { item_ids })
     Object.assign(quiz_json, { quiz_name })
@@ -44,7 +50,7 @@ function QuizConfirmModal(props) {
         <Modal {...props} size='lg' backdrop='static' aria-labelledby='contained-modal-title-vcenter' centered>
           <Modal.Header closeButton>
             <Modal.Title id='contained-modal-title-vcenter' className='text-center'>
-              Confirm Quiz Detials
+              Confirm Quiz Details
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>

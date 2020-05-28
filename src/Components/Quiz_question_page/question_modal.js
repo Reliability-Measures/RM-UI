@@ -17,13 +17,19 @@ function QuestionModal(props) {
   let paths = topic_path.map((val) => val.path)
   let quiz_question = props.show === true && from_data
   let user_profile = is_login ? google_json.profileObj : {}
+  let enough_choices = null
+  let one_choice_selected = null
+  let len_of_correct = []
   if (props.show === true) {
     quiz_question.item_choices.map((val) =>
       val.correct === false ? (val.correct = 0) : val.correct !== false ? (val.correct = 1) : null
     )
-    quiz_question.tags.privacy === false ? (quiz_question.tags.privacy = 0) : (quiz_question.tags.privacy = 1)
+    quiz_question.tags.privacy = quiz_question.tags.privacy === false ? 1 : 0
     Object.assign(quiz_question.tags, { paths })
     Object.assign(quiz_question, { user_profile })
+    enough_choices = from_data.item_choices.length > 1
+    from_data.item_choices.forEach((val) => val.correct === 1 && len_of_correct.push(1))
+    one_choice_selected = len_of_correct > 0
   }
 
   const handleSubmit = () => {
@@ -75,8 +81,13 @@ function QuestionModal(props) {
             </Row>
           </Modal.Body>
           <Modal.Footer>
+            {!enough_choices && <p className='text-danger'>Need At Least 2 Answer Choices</p>}
+            {!enough_choices && !one_choice_selected && <p className='text-danger'>And</p>}
+            {!one_choice_selected && <p className='text-danger'>Must Have 1 Correct Choice</p>}
             <Button onClick={props.onHide}>Close</Button>
-            <Button onClick={handleSubmit}>Submit</Button>
+            <Button onClick={handleSubmit} disabled={!(enough_choices && one_choice_selected)}>
+              Submit
+            </Button>
           </Modal.Footer>
         </Modal>
       )}

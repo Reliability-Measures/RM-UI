@@ -3,14 +3,16 @@ import { Row, Col } from 'react-bootstrap'
 import MyInput from './Reuse_components/my_input'
 import MultipleChoiceForm from './multiple_choice_form'
 import { useFormContext } from 'react-hook-form'
-import { question_details } from './question_details'
+import { subjects } from '../Config'
+//import { question_details } from './question_details'
 import DropdownTree from './dropdown_tree'
 import { useSelector } from 'react-redux'
 
 function HookForm() {
   const { watch, errors } = useFormContext()
   const isLogin = useSelector((state) => state.google_json.isLogin)
-  let subjects = question_details.subject_list.map((val) => val.label)
+  const subjects_init = useSelector((state) => state.dropbox.subjects_init)
+  let subject = subjects_init ? subjects.subject_list.map((val) => val.label) : []
   let item_types = ['Multiple Choice']
   let acc_label = watch('tags.privacy') === false ? 'Private' : 'Public'
   let grades = []
@@ -19,22 +21,30 @@ function HookForm() {
   }
   return (
     <>
-      <Row>
+      <Row style={{ padding: 20 }}>
         <Col md='12'>
           <MyInput
-            label='Item Text'
+            label={
+              <>
+                <i className='fas fa-star-of-life text-danger fa-xs'></i> Item Text
+              </>
+            }
             label_size='h2'
             placeholder='Enter question here..'
             name='tags.item_text'
             input_type='textarea'
             id='item'
-            size='lg'
+            rows='2'
           />
           {errors.tags && errors.tags.item_text && <p className='text-danger'>Item Text Is Required</p>}
         </Col>
-        <Col md='2'>
+        <Col>
           <MyInput
-            label='Item Type'
+            label={
+              <>
+                <i className='fas fa-star-of-life text-danger fa-xs'></i> Item Type
+              </>
+            }
             label_size='h5'
             name='tags.item_type'
             input_type='select'
@@ -45,24 +55,32 @@ function HookForm() {
         </Col>
         {watch('show.subject') !== false && (
           <>
-            <Col md='2'>
+            <Col>
               <MyInput
-                label='Subject'
+                label={
+                  <>
+                    <i className='fas fa-star-of-life text-danger fa-xs'></i> Subject
+                  </>
+                }
                 label_size='h5'
                 name='tags.subject'
                 input_type='select'
-                options={subjects}
+                options={subject}
                 id='subject'
               />
+              {errors.tags && errors.tags.subject && <p className='text-danger'>Subject Is Required</p>}
             </Col>
-            <Col md='2' className='h5 text-left'>
-              Item Topics
-              <DropdownTree />
+
+            <Col md='4'>
+              <h5 className='text-left'>Item Topics</h5>
+              <div className='wrap-drop'>
+                <DropdownTree />
+              </div>
             </Col>
           </>
         )}
         {/* {watch('quiz_question.show.grade_level') !== false && ( */}
-        <>
+        {/* <>
           <Col md='2'>
             <MyInput
               label='Grade-Level-Min'
@@ -83,10 +101,9 @@ function HookForm() {
               id='grade_max'
             />
           </Col>
-        </>
-        {/* )} */}
+        </> */}
         {isLogin && (
-          <Col md='2'>
+          <Col md='1'>
             <MyInput label={acc_label} label_size='h5' name='tags.privacy' input_type='checkbox' id='privacy' />
           </Col>
         )}

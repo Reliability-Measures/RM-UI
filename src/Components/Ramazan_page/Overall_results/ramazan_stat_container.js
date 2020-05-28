@@ -8,22 +8,18 @@ import '../Accordion.css'
 
 function RamazanStatContainer() {
   const [expanded, setexpanded] = useState(false)
-  const data_loading_4 = useSelector(
-    (state) => state.ramadan_agg_results.loading_4
-  )
+  const data_loading_4 = useSelector((state) => state.ramadan_agg_results.loading_4)
   return (
-    <React.Fragment>
+    <>
       <Accordion>
         <Card className='card'>
           <Accordion.Toggle
             className='panel-heading'
             eventKey='0'
-            onClick={() =>
-              setexpanded((prevExpanded) => (prevExpanded = !prevExpanded))
-            }>
+            onClick={() => setexpanded((prevExpanded) => (prevExpanded = !prevExpanded))}>
             <Row as={(Card.Header, 'h2')}>
               <Col />
-              <Col>Overall Results</Col>
+              <Col>Result Summary</Col>
               <Col>
                 {!expanded ? (
                   <i className='fas fa-chevron-down'></i>
@@ -35,9 +31,7 @@ function RamazanStatContainer() {
           </Accordion.Toggle>
           <Accordion.Collapse eventKey='0'>
             <Card.Body>
-              {data_loading_4 ? (
-                <Loader type='Puff' color='#00BFFF' height={50} width={60} />
-              ) : null}
+              {data_loading_4 ? <Loader type='Puff' color='#00BFFF' height={50} width={60} /> : null}
               <Row>
                 <Col md='2'>
                   <RamazanStat4 />
@@ -45,13 +39,12 @@ function RamazanStatContainer() {
                 <Col md='8'>
                   <RamazanStat5 />
                 </Col>
-                {/* <Col md='2'></Col> */}
               </Row>
             </Card.Body>
           </Accordion.Collapse>
         </Card>
       </Accordion>
-    </React.Fragment>
+    </>
   )
 }
 

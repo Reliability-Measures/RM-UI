@@ -1,7 +1,7 @@
 import { logout, send_login_request, send_login_success, send_login_failure, login } from './google_types'
 
 const google_state = {
-  data: [],
+  data: {},
   isLogin: false,
   error: ''
 }
@@ -17,7 +17,8 @@ const google_reducer = (state = google_state, action) => {
     case logout:
       return {
         ...state,
-        isLogin: false
+        isLogin: false,
+        data: {}
       }
     case send_login_request:
       return {

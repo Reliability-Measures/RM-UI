@@ -1,23 +1,25 @@
 import React from 'react'
 import { useForm, FormContext } from 'react-hook-form'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Dropdown, Col, Row } from 'react-bootstrap'
 import MyInput from '../Quiz_question_page/Reuse_components/my_input'
 import QuizConfirmModal from './quiz_confirm_modal'
 import { useSelector } from 'react-redux'
 import * as yup from 'yup'
 
 const quiz_create_valid = yup.object().shape({
-  quiz_name: yup.string().required()
+  quiz_name: yup.string().required(),
+  options: yup.object().shape({ required: yup.string().required() })
 })
 
 function SubmitForm() {
   const [modalShow, setModalShow] = React.useState(false)
   const items_recived = useSelector((state) => state.quiz_question.item_get_received)
+  const is_login = useSelector((state) => state.google_json.isLogin)
   const quiz_create = useForm({
     defaultValues: {
       quiz_name: '',
       quiz_description: '',
-      options: [{ email: false, name: false, show_correct: false }]
+      options: [{ required: false, show_correct: false, searchable: true }]
     },
     validationSchema: quiz_create_valid
   })
@@ -28,16 +30,53 @@ function SubmitForm() {
   return (
     <>
       <FormContext {...quiz_create}>
-        <MyInput label='Quiz name' label_size='h5' input_type='textarea' rows='1' name='quiz_name' />
-        {errors.quiz_name && <p className='text-danger'>Quiz Name Is Required</p>}
+        <h5>
+          <i className='fas fa-star-of-life text-danger fa-xs'></i> Quiz name
+          {errors.quiz_name && <p className='text-danger'>Required</p>}
+        </h5>
+        <MyInput input_type='textarea' rows='1' name='quiz_name' />
         <MyInput label='Quiz Description' label_size='h5' input_type='textarea' rows='1' name='quiz_description' />
-        <MyInput label='Email Required' label_size='h5' input_type='checkbox' name='options.email' />
-        <MyInput label='Name Required' label_size='h5' input_type='checkbox' name='options.name' />
-        <MyInput label='Show Correct Answers' label_size='h5' input_type='checkbox' name='options.show_correct' />
         {items_recived && (
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            <Button type='submit'>Confirm</Button>
-          </Form>
+          <>
+            {errors.options && errors.options.required && <p className='text-danger'>Required</p>}
+            <h5>
+              <i className='fas fa-star-of-life text-danger fa-xs'></i> Select One
+            </h5>
+            <Row>
+              <Col>
+                <MyInput label='Email Required' input_type='radio' value='e' name='options.required' />
+              </Col>
+              <Col>
+                <MyInput label='Name Required' input_type='radio' value='n' name='options.required' />
+              </Col>
+              <Col>
+                <MyInput label='Email and Name Required' input_type='radio' value='b' name='options.required' />
+              </Col>
+            </Row>
+            <Dropdown id='filters' className='text-center' drop='left'>
+              <Dropdown.Toggle variant='outline-dark' id='filters_toggle'>
+                Options On By Default
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                (Check If Do Not Want)
+                {is_login && (
+                  <MyInput label='Searchable' label_size='h5' input_type='checkbox' name='options.searchable' />
+                )}
+                <MyInput
+                  label='Show Correct Answers'
+                  label_size='h5'
+                  input_type='checkbox'
+                  name='options.show_correct'
+                />
+              </Dropdown.Menu>
+            </Dropdown>
+            <br></br>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+              <Button variant='outline-dark' type='submit'>
+                Confirm
+              </Button>
+            </Form>
+          </>
         )}
         <QuizConfirmModal show={modalShow} onHide={() => setModalShow(false)} />
       </FormContext>
