@@ -80,7 +80,7 @@ function QuizTable() {
                 <BootstrapTable {...props.baseProps} classes='table-responsive' />
               </>
             )}
-          </ToolkitProvider>{' '}
+          </ToolkitProvider>
         </>
       ) : (
         <h1>No Quizzes Found</h1>
