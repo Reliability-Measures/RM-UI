@@ -63,7 +63,7 @@ function QuizTable() {
     <>
       {typeof data.quiz !== 'string' ? (
         <>
-          <h1>Quizzes Table</h1>
+          <h1>Quizzes List</h1>
           <ToolkitProvider keyField='id' bootstrap4={true} data={table_data} columns={columns} search>
             {(props) => (
               <>
@@ -74,10 +74,10 @@ function QuizTable() {
                   <Col md='1'>
                     <ClearSearchButton {...props.searchProps} />
                   </Col>
-                  <Col md='3'>Quizzes Found {data.quiz_count}</Col>
+                  <Col md='3'>Quizzes Found: {data.quiz_count}</Col>
                 </Row>
                 <hr />
-                <BootstrapTable {...props.baseProps} classes='table-responsive' />
+                <BootstrapTable {...props.baseProps}  classes='table-responsive' />
               </>
             )}
           </ToolkitProvider>
