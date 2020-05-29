@@ -6,9 +6,14 @@ import Loader from 'react-loader-spinner'
 import BootstrapTable from 'react-bootstrap-table-next'
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css'
+import AnalysisModal from './analysis_modal'
+import { getResponses } from '../../Redux/Quiz_question/quiz_question_actions'
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter'
 
 function Quizzes() {
   const dispatch = useDispatch()
+  const [modalShow, setModalShow] = React.useState(false)
+  const [selected_quiz, setselected_quiz] = React.useState('')
   const data = useSelector((state) => state.user_data.data)
   const google_json = useSelector((state) => state.google_json.data)
   const is_loading = useSelector((state) => state.user_data.isloading)
@@ -26,11 +31,13 @@ function Quizzes() {
     {
       dataField: 'quiz_id',
       text: 'Quiz ID',
+      filter: textFilter(),
       sort: true
     },
     {
       dataField: 'quiz_name',
       text: 'Quiz',
+      filter: textFilter(),
       sort: true
     },
     {
@@ -39,11 +46,13 @@ function Quizzes() {
     },
     {
       dataField: 'quiz_desc',
+      filter: textFilter(),
       text: 'Description'
     },
     {
       dataField: 'no_of_items',
       text: 'No. of Items',
+      filter: textFilter(),
       sort: true
     },
     {
@@ -56,12 +65,9 @@ function Quizzes() {
       text: 'Google Form Summary'
     },
     {
-      dataField: 'analysis',
-      text: 'Analysis (Upcoming Feature)'
-    },
-    {
       dataField: 'date_created',
       text: 'Date Created',
+      filter: textFilter(),
       sort: true
     }
   ]
@@ -88,9 +94,27 @@ function Quizzes() {
         <a target='blank' href={val.metadata.summary_url}>
           Summary
         </a>
-      ),
-      analysis: <Button>Analysis</Button>
+      )
     }))
+
+  const selectRow = {
+    mode: 'radio',
+    selectionHeaderRenderer: () => 'Analysis',
+    selectionRenderer: () => (
+      <Button variant='link'>
+        <i className='fas fa-chart-bar '></i>
+      </Button>
+    ),
+    onSelect: (row, isSelect, rowIndex, e) => {
+      console.log(row.editor_link.props.href)
+      setselected_quiz(row.quiz_name)
+      dispatch(
+        getResponses({ edit_url: 'https://docs.google.com/forms/d/1DEUSZfBvcZIaL4c255z6boYHrNhcbg6A93JQqvUNUzY/edit' })
+      )
+      setModalShow(true)
+    }
+  }
+
   return (
     <>
       {is_loading && <Loader />}
@@ -101,8 +125,10 @@ function Quizzes() {
             {(props) => (
               <>
                 <Row>
-                  <Col md='3'>
+                  <Col md='2'>
                     <SearchBar {...props.searchProps} />
+                  </Col>
+                  <Col md='1'>
                     <ClearSearchButton {...props.searchProps} />
                   </Col>
                   <Col md='6' />
@@ -114,12 +140,18 @@ function Quizzes() {
                   </Col>
                 </Row>
                 <hr />
-                <BootstrapTable {...props.baseProps} classes='table-responsive' />
+                <BootstrapTable
+                  {...props.baseProps}
+                  selectRow={selectRow}
+                  classes='table-responsive'
+                  filter={filterFactory()}
+                />
               </>
             )}
           </ToolkitProvider>
         </>
       )}
+      <AnalysisModal show={modalShow} onHide={() => setModalShow(false)} quiz_name={selected_quiz} />
     </>
   )
 }

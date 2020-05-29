@@ -13,21 +13,16 @@ import * as yup from 'yup'
 function Header() {
   let history = useHistory()
   const [expanded, setexpanded] = useState(false)
-  const keyword_quiz_search_valid_header = yup.object().shape({
-    keyword: yup.string().required()
-  })
   const keyword_quiz_search_header = useForm({
     defaultValues: {
       keyword: ''
-    },
-    validationSchema: keyword_quiz_search_valid_header
+    }
   })
 
-  const { handleSubmit, errors, register, reset } = keyword_quiz_search_header
+  const { handleSubmit, errors, register } = keyword_quiz_search_header
   const dispatch = useDispatch()
   const onSubmit = (form_data) => {
     dispatch(getQuiz(form_data))
-    reset()
     history.push('/searchquiz')
   }
   return (
@@ -82,11 +77,6 @@ function Header() {
             </NavDropdown> */}
           </Nav>
           <Form inline onSubmit={handleSubmit(onSubmit)} style={{ paddingRight: 10 }}>
-            {errors.keyword && (
-              <p className='text-danger' style={{ paddingRight: 10 }}>
-                Can Not Leave Empty
-              </p>
-            )}
             <FormControl type='text' placeholder='Search Quizzes' className='mr-sm-2' name='keyword' ref={register} />
             <Button variant='outline-light' type='submit'>
               Search

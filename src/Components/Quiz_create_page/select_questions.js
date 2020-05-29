@@ -175,9 +175,6 @@ function SelectQuestions() {
                 {(props) => (
                   <>
                     <Row>
-                      <Col>
-                        <SearchBar placeholder='Search Table' {...props.searchProps} />
-                      </Col>
                       <Col>Total Items Selected: {state_ids.length}</Col>
                       <Col>
                         <Dropdown>
@@ -191,12 +188,15 @@ function SelectQuestions() {
                           </Dropdown.Menu>
                         </Dropdown>
                       </Col>
+                      <Col>Subject: {items_recived && items_n > 0 && items[0].subject}</Col>
+                      <Col>
+                        <SearchBar placeholder='Search Table' {...props.searchProps} />
+                      </Col>
                       <Col>
                         <Button variant='outline-dark' onClick={() => dispatch(ItemSelectedReset([], []))}>
                           Reset Items
                         </Button>
                       </Col>
-                      <Col>Subject: {items_recived && items_n > 0 && items[0].subject}</Col>
                     </Row>
                     <hr />
                     <BootstrapTable
