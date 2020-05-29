@@ -6,6 +6,7 @@ import { getUserData } from '../../Redux/User_data/user_data_actions'
 import BootstrapTable from 'react-bootstrap-table-next'
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css'
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter'
 
 function Items() {
   const dispatch = useDispatch()
@@ -26,30 +27,36 @@ function Items() {
     {
       dataField: 'item_id',
       text: 'Item Id',
+      filter: textFilter(),
       sort: true
     },
     {
       dataField: 'subject',
       text: 'Subject',
+      filter: textFilter(),
       sort: true
     },
     {
       dataField: 'topics',
       text: 'Topic(s)',
+      filter: textFilter(),
       sort: true
     },
     {
       dataField: 'sub_topics',
       text: 'SubTopic(s)',
+      filter: textFilter(),
       sort: true
     },
     {
       dataField: 'item_text',
-      text: 'Item Text'
+      text: 'Item Text',
+      filter: textFilter()
     },
     {
       dataField: 'date_created',
-      text: 'Date Created'
+      text: 'Date Created',
+      filter: textFilter()
     },
     {
       dataField: 'date_updated',
@@ -152,8 +159,10 @@ function Items() {
             {(props) => (
               <>
                 <Row>
-                  <Col md='3'>
+                  <Col md='2'>
                     <SearchBar {...props.searchProps} />
+                  </Col>
+                  <Col md='1'>
                     <ClearSearchButton {...props.searchProps} />
                   </Col>
                   <Col md='6' />
@@ -165,7 +174,12 @@ function Items() {
                   </Col>
                 </Row>
                 <hr />
-                <BootstrapTable {...props.baseProps} classes='table-responsive' expandRow={expandRow} />
+                <BootstrapTable
+                  {...props.baseProps}
+                  classes='table-responsive'
+                  expandRow={expandRow}
+                  filter={filterFactory()}
+                />
               </>
             )}
           </ToolkitProvider>
