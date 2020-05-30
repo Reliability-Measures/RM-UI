@@ -5,7 +5,6 @@ import { Link, useHistory } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { getQuiz } from '../../Redux/Quiz_question/quiz_question_actions'
 import GoogleLogin from './google_login'
-import * as yup from 'yup'
 
 //import { rmCoursesShow, rmCoursesHide } from '../../Redux/RM-courses_init/rm_courses_init_actions'
 //import { dataLoadedOff } from '../../Redux/Ramadan_quiz_results/indivisual_actions'
@@ -19,7 +18,7 @@ function Header() {
     }
   })
 
-  const { handleSubmit, errors, register } = keyword_quiz_search_header
+  const { handleSubmit, register } = keyword_quiz_search_header
   const dispatch = useDispatch()
   const onSubmit = (form_data) => {
     dispatch(getQuiz(form_data))

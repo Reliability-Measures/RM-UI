@@ -7,14 +7,20 @@ import SubmitForm from './submit_form'
 function QuizCreatePage() {
   return (
     <>
-      <h1>Create a Quiz</h1>
-      <p className={'text-justify h5'} style={{ padding: 20 }}>
-        Create your own quizzes using Google forms. You get the items (questions, including items which you have
-        created) from our database on the subject and topic of your interest. Then select items you want to include in
-        the quiz and finally name and create the quiz with some options. If you sign in with Google account then you
-        also will be able to edit the Google form and can modify as you please before publishing it for people to take
-        the quiz. You can monitor the progress of your quizzes from your account section.
-      </p>
+      <Row>
+        <Col md='2' />
+        <Col md='8'>
+          <h1>Create a Quiz</h1>
+          <p className={'text-justify h5'} style={{ padding: 20 }}>
+            Create your own quizzes using Google forms. You get the items (questions, including items which you have
+            created) from our database on the subject and topic of your interest. Then select items you want to include
+            in the quiz and finally name and create the quiz with some options. If you sign in with Google account then
+            you also will be able to edit the Google form and can modify as you please before publishing it for people
+            to take the quiz. You can monitor the progress of your quizzes from your account section.
+          </p>
+        </Col>
+        <Col md='2' />
+      </Row>
       <ListGroup horizontal>
         <Row>
           <Col md='3'>

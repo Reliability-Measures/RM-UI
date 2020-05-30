@@ -19,6 +19,11 @@ function QuizTable() {
       sort: true
     },
     {
+      dataField: 'quiz_id',
+      text: 'Quiz ID',
+      sort: true
+    },
+    {
       dataField: 'quiz_name',
       text: 'Quiz',
       filter: textFilter(),
@@ -53,6 +58,7 @@ function QuizTable() {
   ]
   let table_data = quizzes.map((val, index) => ({
     id: index + 1,
+    quiz_id: val.id,
     quiz_name: (
       <a target='blank' href={val.metadata.published_url}>
         {val.name}

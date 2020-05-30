@@ -215,7 +215,7 @@ function SelectQuestions() {
       )}
       {response.error && !items_loading && <h3>Error Please Try Again</h3>}
       {items_n === 0 && !items_loading && <h3>No Questions Found</h3>}
-      {items_loading && <Loader type='Puff' color='#00BFFF' height={200} width={200} />}
+      {items_loading && <Loader type='Puff' color='green' height={200} width={200} />}
     </>
   )
 }
