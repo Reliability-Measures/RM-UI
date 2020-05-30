@@ -7,7 +7,6 @@ import BootstrapTable from 'react-bootstrap-table-next'
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css'
 import AnalysisModal from './analysis_modal'
-import { getResponses } from '../../Redux/Quiz_question/quiz_question_actions'
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter'
 
 function Quizzes() {
@@ -18,7 +17,7 @@ function Quizzes() {
   const google_json = useSelector((state) => state.google_json.data)
   const is_loading = useSelector((state) => state.user_data.isloading)
   const loaded = useSelector((state) => state.user_data.loaded)
-  let exams = loaded ? data.exams : null
+  let exams = loaded && data.exams ? data.exams : null
 
   const { SearchBar, ClearSearchButton } = Search
 
@@ -102,15 +101,11 @@ function Quizzes() {
     selectionHeaderRenderer: () => 'Analysis',
     selectionRenderer: () => (
       <Button variant='link'>
-        <i className='fas fa-chart-bar '></i>
+        <i className='fas fa-chart-bar fa-lg '></i>
       </Button>
     ),
     onSelect: (row, isSelect, rowIndex, e) => {
-      console.log(row.editor_link.props.href)
-      setselected_quiz(row.quiz_name)
-      dispatch(
-        getResponses({ edit_url: 'https://docs.google.com/forms/d/1DEUSZfBvcZIaL4c255z6boYHrNhcbg6A93JQqvUNUzY/edit' })
-      )
+      setselected_quiz(row.quiz_id)
       setModalShow(true)
     }
   }
@@ -149,9 +144,9 @@ function Quizzes() {
               </>
             )}
           </ToolkitProvider>
+          <AnalysisModal show={modalShow} onHide={() => setModalShow(false)} quiz_id={selected_quiz} />
         </>
       )}
-      <AnalysisModal show={modalShow} onHide={() => setModalShow(false)} quiz_name={selected_quiz} />
     </>
   )
 }

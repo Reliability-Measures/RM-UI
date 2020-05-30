@@ -14,7 +14,7 @@ function Items() {
   const is_loading = useSelector((state) => state.user_data.isloading)
   const loaded = useSelector((state) => state.user_data.loaded)
   const google_json = useSelector((state) => state.google_json.data)
-  let items = loaded ? data.items : null
+  let items = loaded && data.items ? data.items : null
 
   const { SearchBar, ClearSearchButton } = Search
 
