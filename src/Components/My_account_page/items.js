@@ -14,7 +14,7 @@ function Items() {
   const is_loading = useSelector((state) => state.user_data.isloading)
   const loaded = useSelector((state) => state.user_data.loaded)
   const google_json = useSelector((state) => state.google_json.data)
-  let items = loaded && data.items ? data.items : null
+  let items = loaded && data.items ? data.items : []
 
   const { SearchBar, ClearSearchButton } = Search
 
@@ -168,7 +168,7 @@ function Items() {
                   <Col md='6' />
                   <Col md='3'>
                     Refresh{' '}
-                    <Button onClick={() => dispatch(getUserData({ user_id: google_json.profileObj.email }))}>
+                    <Button onClick={() => dispatch(getUserData({ user_profile: google_json.profileObj }))}>
                       <i className='fas fa-sync-alt'></i>
                     </Button>
                   </Col>

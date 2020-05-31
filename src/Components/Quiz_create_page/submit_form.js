@@ -53,14 +53,14 @@ function SubmitForm() {
                 <MyInput label='Email and Name Required' input_type='radio' value='b' name='options.required' />
               </Col>
             </Row>
-            <Dropdown id='filters' className='text-center' drop='left'>
-              <Dropdown.Toggle variant='outline-dark' id='filters_toggle'>
-                Options On By Default
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                (Check If Do Not Want)
+            {/*<Dropdown id='filters' className='text-center' drop='left'>*/}
+              {/*<Dropdown.Toggle variant='outline-dark' id='filters_toggle'>*/}
+                {/*Options On By Default*/}
+              {/*</Dropdown.Toggle>*/}
+              {/*<Dropdown.Menu>*/}
+                {/*(Check If Do Not Want)*/}
                 {is_login && (
-                  <MyInput label='Searchable' label_size='h5' input_type='checkbox' name='options.searchable' />
+                  <MyInput label='Searchable'  label_size='h5' input_type='checkbox' name='options.searchable' />
                 )}
                 <MyInput
                   label='Show Correct Answers'
@@ -68,8 +68,8 @@ function SubmitForm() {
                   input_type='checkbox'
                   name='options.show_correct'
                 />
-              </Dropdown.Menu>
-            </Dropdown>
+              {/*</Dropdown.Menu>*/}
+            {/*</Dropdown>*/}
             <br></br>
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Button variant='outline-dark' type='submit'>

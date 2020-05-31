@@ -14,7 +14,7 @@ function Googlelogin() {
   const dispatch = useDispatch()
   const signIn = (response) => {
     dispatch(Login(response))
-    dispatch(getUserData({ user_id: response.profileObj.email }))
+    dispatch(getUserData({ user_profile: response.profileObj }))
   }
   const error = (response) => {
     console.log(response)

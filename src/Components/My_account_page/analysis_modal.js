@@ -7,7 +7,7 @@ import filterFactory, { textFilter } from 'react-bootstrap-table2-filter'
 
 function AnalysisModal(props) {
   const data = useSelector((state) => state.user_data.data)
-  let exams = data.exams ? data.exams : null
+  let exams = data.exams ? data.exams : []
 
   const columns = [
     {

@@ -17,7 +17,7 @@ function Quizzes() {
   const google_json = useSelector((state) => state.google_json.data)
   const is_loading = useSelector((state) => state.user_data.isloading)
   const loaded = useSelector((state) => state.user_data.loaded)
-  let exams = loaded && data.exams ? data.exams : null
+  let exams = loaded && data.exams ? data.exams : []
 
   const { SearchBar, ClearSearchButton } = Search
 
@@ -129,7 +129,7 @@ function Quizzes() {
                   <Col md='6' />
                   <Col md='3'>
                     Refresh{' '}
-                    <Button onClick={() => dispatch(getUserData({ user_id: google_json.profileObj.email }))}>
+                    <Button onClick={() => dispatch(getUserData({ user_profile: google_json.profileObj }))}>
                       <i className='fas fa-sync-alt'></i>
                     </Button>
                   </Col>
