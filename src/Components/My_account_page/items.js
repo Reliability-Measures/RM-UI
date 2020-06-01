@@ -42,12 +42,12 @@ function Items() {
       filter: textFilter(),
       sort: true
     },
-    {
+/*    {
       dataField: 'sub_topics',
       text: 'SubTopic(s)',
       filter: textFilter(),
       sort: true
-    },
+    },*/
     {
       dataField: 'item_text',
       text: 'Item Text',
@@ -73,23 +73,23 @@ function Items() {
     items.map((val, index) => ({
       id: index + 1,
       item_id: val.id,
-      subject: val.subject ? val.subject : 'None',
+      subject: val.subject ? val.subject : ' ',
       topics:
         typeof val.topic === 'string'
           ? val.topic
           : val.topic === null
-          ? 'None'
+          ? ' '
           : Object.values(val.topic) && Object.keys(val.topic).length > 0
           ? Object.values(val.topic).map((v) => (v ? <div>{v}</div> : null))
-          : 'None',
-      sub_topics:
+          : ' ',
+/*      sub_topics:
         typeof val.sub_topics === 'string'
           ? val.sub_topics
           : val.sub_topics === null
-          ? 'None'
+          ? ' '
           : Object.values(val.sub_topics) && Object.keys(val.sub_topics).length > 0
-          ? Object.values(val.sub_topics).map((v) => (v ? <div>{v}</div> : 'None'))
-          : 'None',
+          ? Object.values(val.sub_topics).map((v) => (v ? <div>{v}</div> : ' '))
+          : ' ',*/
       item_text: val.text,
       date_created: val.date_created,
       date_updated: val.date_updated,

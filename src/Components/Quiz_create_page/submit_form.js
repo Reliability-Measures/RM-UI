@@ -50,7 +50,7 @@ function SubmitForm() {
                 <MyInput label='Name Required' input_type='radio' value='n' name='options.required' />
               </Col>
               <Col>
-                <MyInput label='Email and Name Required' input_type='radio' value='b' name='options.required' />
+                <MyInput label='Email/Name Required' input_type='radio' value='b' name='options.required' />
               </Col>
             </Row>
             {/*<Dropdown id='filters' className='text-center' drop='left'>*/}
@@ -59,15 +59,21 @@ function SubmitForm() {
               {/*</Dropdown.Toggle>*/}
               {/*<Dropdown.Menu>*/}
                 {/*(Check If Do Not Want)*/}
-                {is_login && (
-                  <MyInput label='Searchable'  label_size='h5' input_type='checkbox' name='options.searchable' />
-                )}
-                <MyInput
-                  label='Show Correct Answers'
-                  label_size='h5'
+                <Row>
+                {is_login && (<Col>
+                  <MyInput
+                      label='Make it Searchable: &nbsp;'
+                      //label_size='h5'
+                      input_type='checkbox'
+                      name='options.searchable' />
+                    </Col>)}
+                <Col><MyInput
+                  label='Show Correct Answers: &nbsp;'
+                  //label_size='h5'
                   input_type='checkbox'
                   name='options.show_correct'
-                />
+                /></Col>
+                </Row>
               {/*</Dropdown.Menu>*/}
             {/*</Dropdown>*/}
             <br></br>

@@ -22,15 +22,15 @@ function Quizzes() {
   const { SearchBar, ClearSearchButton } = Search
 
   const columns = [
-    {
+/*    {
       dataField: 'id',
       text: 'Exam #',
       sort: true
-    },
+    },*/
     {
       dataField: 'quiz_id',
       text: 'Quiz ID',
-      filter: textFilter(),
+      //filter: textFilter(),
       sort: true
     },
     {
@@ -51,7 +51,7 @@ function Quizzes() {
     {
       dataField: 'no_of_items',
       text: 'No. of Items',
-      filter: textFilter(),
+      //filter: textFilter(),
       sort: true
     },
     {

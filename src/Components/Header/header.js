@@ -40,9 +40,7 @@ function Header() {
             <Link className='text-light nav-link' to='/'>
               Home
             </Link>
-            {/* <Link className='text-light nav-link' to='/analyze'>
-              Analyze Test
-            </Link> */}
+
             <Link className='text-light nav-link' to='/createquestion'>
               Create Items
             </Link>
@@ -55,6 +53,7 @@ function Header() {
             <Link className='text-light nav-link' to='/ramadan'>
               Ramadan Quiz Results
             </Link>
+             <a target="_blank" className='text-light nav-link' href='http://exam.reliabilitymeasures.com/'>Analyze Exam</a>
 
             {/* <NavDropdown title={<span className='text-light my-auto'>Courses</span>} id='basic-nav-dropdown'>
               <NavDropdown.Item
