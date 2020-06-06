@@ -12,7 +12,7 @@ function RamazanPage() {
   const data_loaded_5 = useSelector((state) => state.ramadan_agg_results.loaded_5)
   const data_loaded_6 = useSelector((state) => state.ramadan_agg_results.loaded_6)
   return (
-    <Container fluid='md'>
+    <Container fluid>
       <Row
         className='justify-content-center text-white'
         style={{ backgroundImage: 'url(Ramadan-2020.jpg)', backgroundSize: 'stretch' }}>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm, FormContext } from 'react-hook-form'
-import { Form, Button, Dropdown, Col, Row } from 'react-bootstrap'
+import { Form, Button, Col, Row } from 'react-bootstrap'
 import MyInput from '../Quiz_question_page/Reuse_components/my_input'
 import QuizConfirmModal from './quiz_confirm_modal'
 import { useSelector } from 'react-redux'
@@ -54,27 +54,32 @@ function SubmitForm() {
               </Col>
             </Row>
             {/*<Dropdown id='filters' className='text-center' drop='left'>*/}
-              {/*<Dropdown.Toggle variant='outline-dark' id='filters_toggle'>*/}
-                {/*Options On By Default*/}
-              {/*</Dropdown.Toggle>*/}
-              {/*<Dropdown.Menu>*/}
-                {/*(Check If Do Not Want)*/}
-                <Row>
-                {is_login && (<Col>
+            {/*<Dropdown.Toggle variant='outline-dark' id='filters_toggle'>*/}
+            {/*Options On By Default*/}
+            {/*</Dropdown.Toggle>*/}
+            {/*<Dropdown.Menu>*/}
+            {/*(Check If Do Not Want)*/}
+            <Row>
+              {is_login && (
+                <Col>
                   <MyInput
-                      label='Make it Searchable: &nbsp;'
-                      //label_size='h5'
-                      input_type='checkbox'
-                      name='options.searchable' />
-                    </Col>)}
-                <Col><MyInput
+                    label='Make it Searchable: &nbsp;'
+                    //label_size='h5'
+                    input_type='checkbox'
+                    name='options.searchable'
+                  />
+                </Col>
+              )}
+              <Col>
+                <MyInput
                   label='Show Correct Answers: &nbsp;'
                   //label_size='h5'
                   input_type='checkbox'
                   name='options.show_correct'
-                /></Col>
-                </Row>
-              {/*</Dropdown.Menu>*/}
+                />
+              </Col>
+            </Row>
+            {/*</Dropdown.Menu>*/}
             {/*</Dropdown>*/}
             <br></br>
             <Form onSubmit={handleSubmit(onSubmit)}>

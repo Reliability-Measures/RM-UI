@@ -11,6 +11,7 @@ import ListItem from '../Quiz_question_page/Reuse_components/list_item'
 
 function SelectQuestions() {
   const dispatch = useDispatch()
+  const [selected, setselected] = React.useState([])
   const items = useSelector((state) => state.quiz_question.item_get_response.items)
   const response = useSelector((state) => state.quiz_question.item_get_response)
   const items_n = useSelector((state) => state.quiz_question.item_get_response.total_items)
@@ -54,36 +55,57 @@ function SelectQuestions() {
     }))
   let items_selected_id_l = null
   let items_selected_text_l = null
-  const selectRow = {
-    mode: 'checkbox',
-    bgColor: '#c8e6c9',
-    onSelect: (row, isSelect, rowIndex, e) => {
-      if (isSelect && state_ids.indexOf(row.id) === -1) {
-        items_selected_id_l = row.id
-        items_selected_text_l = row.item
+
+  const handleRest = () => {
+    setselected([])
+    dispatch(ItemSelectedReset([], []))
+  }
+
+  const handleOnSelect = (row, isSelect) => {
+    if (isSelect) {
+      setselected([...selected, row.id])
+    } else {
+      setselected(selected.filter((x) => x !== row.id))
+    }
+    if (isSelect && state_ids.indexOf(row.id) === -1) {
+      items_selected_id_l = row.id
+      items_selected_text_l = row.item
+      dispatch(ItemSelectedId(items_selected_id_l))
+      dispatch(ItemSelectedText(items_selected_text_l))
+    }
+    if (!isSelect) {
+      state_ids.splice(state_ids.indexOf(row.id), 1)
+      state_texts.splice(state_texts.indexOf(row.text), 1)
+      dispatch(ItemSelectedReset(state_ids, []))
+      state_texts.forEach((val) => dispatch(ItemSelectedText(val)))
+    }
+  }
+
+  const handleOnSelectAll = (isSelect, rows) => {
+    const ids = rows.map((r) => r.id)
+    console.log('handleOnSelectAll -> ids', ids)
+    if (isSelect) {
+      setselected(ids)
+    }
+    rows.forEach((val, index) => {
+      if (isSelect && state_ids.indexOf(val.id) === -1) {
+        items_selected_id_l = val.id
+        items_selected_text_l = val.item
         dispatch(ItemSelectedId(items_selected_id_l))
         dispatch(ItemSelectedText(items_selected_text_l))
       }
-      if (!isSelect) {
-        state_ids.splice(state_ids.indexOf(row.id), 1)
-        state_texts.splice(state_texts.indexOf(row.text), 1)
-        dispatch(ItemSelectedReset(state_ids, []))
-        state_texts.forEach((val) => dispatch(ItemSelectedText(val)))
-      }
-    },
-    onSelectAll: (isSelect, rows, e) => {
-      rows.forEach((val, index) => {
-        if (isSelect && state_ids.indexOf(val.id) === -1) {
-          items_selected_id_l = val.id
-          items_selected_text_l = val.item
-          dispatch(ItemSelectedId(items_selected_id_l))
-          dispatch(ItemSelectedText(items_selected_text_l))
-        }
-      })
-      if (!isSelect) {
-        dispatch(ItemSelectedReset([], []))
-      }
+    })
+    if (!isSelect) {
+      setselected([])
+      dispatch(ItemSelectedReset([], []))
     }
+  }
+  const selectRow = {
+    mode: 'checkbox',
+    bgColor: '#c8e6c9',
+    selected: selected,
+    onSelect: handleOnSelect,
+    onSelectAll: handleOnSelectAll
   }
   const expandRow = {
     onlyOneExpanding: true,
@@ -193,7 +215,7 @@ function SelectQuestions() {
                         <SearchBar placeholder='Search Table' {...props.searchProps} />
                       </Col>
                       <Col>
-                        <Button variant='outline-dark' onClick={() => dispatch(ItemSelectedReset([], []))}>
+                        <Button variant='outline-dark' onClick={handleRest}>
                           Reset Items
                         </Button>
                       </Col>

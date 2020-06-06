@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Nav, Navbar, Col, Form, FormControl, Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
+import { get_config } from '../Config'
 import { useForm } from 'react-hook-form'
 import { getQuiz } from '../../Redux/Quiz_question/quiz_question_actions'
 import GoogleLogin from './google_login'
@@ -28,8 +29,8 @@ function Header() {
     <>
       <Navbar expanded={expanded} style={{ backgroundColor: 'green' }} expand='lg' variant='dark'>
         <Col md='2' />
-        <Navbar.Brand target='_blank' href='https://reliabilitymeasures.com/'>
-          Reliability Measures
+        <Navbar.Brand>
+          Reliability Measures (<small>V {get_config('application_version')}</small>)
         </Navbar.Brand>
         <Navbar.Toggle
           onClick={() => setexpanded((prevExpanded) => (prevExpanded = !prevExpanded))}
@@ -53,7 +54,13 @@ function Header() {
             <Link className='text-light nav-link' to='/ramadan'>
               Ramadan Quiz Results
             </Link>
-             <a target="_blank" className='text-light nav-link' href='http://exam.reliabilitymeasures.com/'>Analyze Exam</a>
+            <a
+              target='_blank'
+              className='text-light nav-link'
+              rel='noopener noreferrer'
+              href='http://exam.reliabilitymeasures.com/'>
+              Analyze Exam
+            </a>
 
             {/* <NavDropdown title={<span className='text-light my-auto'>Courses</span>} id='basic-nav-dropdown'>
               <NavDropdown.Item

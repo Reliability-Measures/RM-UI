@@ -22,7 +22,7 @@ function Quizzes() {
   const { SearchBar, ClearSearchButton } = Search
 
   const columns = [
-/*    {
+    /*    {
       dataField: 'id',
       text: 'Exam #',
       sort: true
@@ -30,7 +30,6 @@ function Quizzes() {
     {
       dataField: 'quiz_id',
       text: 'Quiz ID',
-      //filter: textFilter(),
       sort: true
     },
     {
@@ -45,7 +44,6 @@ function Quizzes() {
     },
     {
       dataField: 'quiz_desc',
-      filter: textFilter(),
       text: 'Description'
     },
     {
@@ -116,7 +114,7 @@ function Quizzes() {
       {loaded && !is_loading && (
         <>
           <h1>Quizzes Table</h1>
-          <ToolkitProvider keyField='id' bootstrap4={true} data={table_data} columns={columns} search>
+          <ToolkitProvider keyField='quiz_id' bootstrap4={true} data={table_data} columns={columns} search>
             {(props) => (
               <>
                 <Row>
