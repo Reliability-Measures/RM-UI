@@ -30,7 +30,7 @@ function Header() {
       <Navbar expanded={expanded} style={{ backgroundColor: 'green' }} expand='lg' variant='dark'>
         <Col md='2' />
         <Navbar.Brand>
-          Reliability Measures (<small>V {get_config('application_version')}</small>)
+            Reliability Measures
         </Navbar.Brand>
         <Navbar.Toggle
           onClick={() => setexpanded((prevExpanded) => (prevExpanded = !prevExpanded))}

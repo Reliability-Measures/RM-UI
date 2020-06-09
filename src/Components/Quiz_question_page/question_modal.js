@@ -29,7 +29,7 @@ function QuestionModal(props) {
     Object.assign(quiz_question, { user_profile })
     enough_choices = from_data.item_choices.length > 1
     from_data.item_choices.forEach((val) => val.correct === 1 && len_of_correct.push(1))
-    one_choice_selected = len_of_correct > 0
+    one_choice_selected = len_of_correct.length > 0
   }
 
   const handleSubmit = () => {

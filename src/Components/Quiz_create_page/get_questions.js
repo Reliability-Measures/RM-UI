@@ -24,7 +24,7 @@ function QuizCreateForm() {
       subject: '',
       user: 0,
       keyword: '',
-      limit: 50
+      limit: 100
     },
     validationSchema: get_questions_valid
   })
@@ -36,7 +36,7 @@ function QuizCreateForm() {
         ? (form_data.user = '')
         : (form_data.user = google_json.profileObj.email)
     let keyword = form_data.keyword
-    let limit = form_data.limit ? Number(form_data.limit) : 50
+    let limit = form_data.limit ? Number(form_data.limit) : 100
     // let topic = topic_state.label
     let user_profile = is_login ? google_json.profileObj : {}
     Object.assign(data, { user_profile })
@@ -71,7 +71,7 @@ function QuizCreateForm() {
             {errors.subject && <p className='text-danger'>Subject Is Required</p>}
             {/*<MyInput label='Keyword' label_size='h5' name='keyword' input_type='textarea' />*/}
             <h5>No. of Items ({watch('limit')})</h5>
-            <MyInput name='limit' input_type='range' max_range={50} />
+            <MyInput name='limit' input_type='range' max_range={100} />
             {/* {watch('show.topics') !== false && (
               <>
                 <h3>Topics</h3>

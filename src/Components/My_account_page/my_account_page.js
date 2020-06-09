@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import UserData from './user_data'
+//import UserData from './user_data'
 import { Row, Col, Tabs, Tab, Container } from 'react-bootstrap'
 import { get_config } from '../Config'
 import { GoogleLogout } from 'react-google-login'
@@ -48,10 +48,10 @@ function MyAccountPage() {
             <Row>
               <Col md='2' />
               <Col md='8'>
-                <Tabs defaultActiveKey='Info' transition={false} id='user-page'>
-                  <Tab eventKey='Info' title='Info'>
+                <Tabs defaultActiveKey='Quizzes' transition={false} id='user-page'>
+{/*                  <Tab eventKey='Info' title='Info'>
                     <UserData />
-                  </Tab>
+                  </Tab>*/}
                   <Tab eventKey='Items' title={'Items (' + items_count + ')'}>
                     <Container fluid='sm'>
                       <Items />
