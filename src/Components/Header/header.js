@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { Nav, Navbar, Col, Form, FormControl, Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
-import { get_config } from '../Config'
 import { useForm } from 'react-hook-form'
 import { getQuiz } from '../../Redux/Quiz_question/quiz_question_actions'
 import GoogleLogin from './google_login'
 
+//import { get_config } from '../Config'
 //import { rmCoursesShow, rmCoursesHide } from '../../Redux/RM-courses_init/rm_courses_init_actions'
 //import { dataLoadedOff } from '../../Redux/Ramadan_quiz_results/indivisual_actions'
 
@@ -29,9 +29,7 @@ function Header() {
     <>
       <Navbar expanded={expanded} style={{ backgroundColor: 'green' }} expand='lg' variant='dark'>
         <Col md='2' />
-        <Navbar.Brand>
-            Reliability Measures
-        </Navbar.Brand>
+        <Navbar.Brand>Reliability Measures</Navbar.Brand>
         <Navbar.Toggle
           onClick={() => setexpanded((prevExpanded) => (prevExpanded = !prevExpanded))}
           aria-controls='basic-navbar-nav'

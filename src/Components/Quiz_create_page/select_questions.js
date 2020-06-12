@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Card, Col, Row, Dropdown, Button } from 'react-bootstrap'
+import { Card, Col, Row, Button } from 'react-bootstrap'
 import Loader from 'react-loader-spinner'
 import { ItemSelectedId, ItemSelectedText, ItemSelectedReset } from '../../Redux/Quiz_question/quiz_question_actions'
 import BootstrapTable from 'react-bootstrap-table-next'
@@ -11,7 +11,6 @@ import ListItem from '../Quiz_question_page/Reuse_components/list_item'
 
 function SelectQuestions() {
   const dispatch = useDispatch()
-  const [selected, setselected] = React.useState([])
   const items = useSelector((state) => state.quiz_question.item_get_response.items)
   const response = useSelector((state) => state.quiz_question.item_get_response)
   const items_n = useSelector((state) => state.quiz_question.item_get_response.total_items)
@@ -20,18 +19,6 @@ function SelectQuestions() {
   const state_ids = useSelector((state) => state.quiz_question.items_selected_id)
   const state_texts = useSelector((state) => state.quiz_question.items_selected_text)
 
-  const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-    <a
-      href='/#'
-      ref={ref}
-      onClick={(e) => {
-        e.preventDefault()
-        onClick(e)
-      }}>
-      {children}
-      &#x25bc;
-    </a>
-  ))
   const { SearchBar } = Search
   const columns = [
     {
@@ -56,17 +43,7 @@ function SelectQuestions() {
   let items_selected_id_l = null
   let items_selected_text_l = null
 
-  const handleRest = () => {
-    setselected([])
-    dispatch(ItemSelectedReset([], []))
-  }
-
   const handleOnSelect = (row, isSelect) => {
-    if (isSelect) {
-      setselected([...selected, row.id])
-    } else {
-      setselected(selected.filter((x) => x !== row.id))
-    }
     if (isSelect && state_ids.indexOf(row.id) === -1) {
       items_selected_id_l = row.id
       items_selected_text_l = row.item
@@ -82,11 +59,6 @@ function SelectQuestions() {
   }
 
   const handleOnSelectAll = (isSelect, rows) => {
-    const ids = rows.map((r) => r.id)
-    console.log('handleOnSelectAll -> ids', ids)
-    if (isSelect) {
-      setselected(ids)
-    }
     rows.forEach((val, index) => {
       if (isSelect && state_ids.indexOf(val.id) === -1) {
         items_selected_id_l = val.id
@@ -96,14 +68,13 @@ function SelectQuestions() {
       }
     })
     if (!isSelect) {
-      setselected([])
       dispatch(ItemSelectedReset([], []))
     }
   }
   const selectRow = {
     mode: 'checkbox',
     bgColor: '#c8e6c9',
-    selected: selected,
+    selected: state_ids,
     onSelect: handleOnSelect,
     onSelectAll: handleOnSelectAll
   }
@@ -197,7 +168,7 @@ function SelectQuestions() {
                 {(props) => (
                   <>
                     <Row>
-                      <Col>Total Items Selected: {state_ids.length}</Col>
+                      {/* <Col>Total Items Selected: {state_ids.length}</Col>
                       <Col>
                         <Dropdown>
                           <Dropdown.Toggle as={CustomToggle} id='dropdown-custom-components'>
@@ -209,13 +180,13 @@ function SelectQuestions() {
                             ))}
                           </Dropdown.Menu>
                         </Dropdown>
-                      </Col>
+                      </Col> */}
                       <Col>Subject: {items_recived && items_n > 0 && items[0].subject}</Col>
                       <Col>
                         <SearchBar placeholder='Search Table' {...props.searchProps} />
                       </Col>
                       <Col>
-                        <Button variant='outline-dark' onClick={handleRest}>
+                        <Button variant='outline-dark' onClick={() => dispatch(ItemSelectedReset([], []))}>
                           Reset Items
                         </Button>
                       </Col>

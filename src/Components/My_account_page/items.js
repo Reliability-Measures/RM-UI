@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Row, Col, Card, Button, Container } from 'react-bootstrap'
+import { Row, Col, Card, Button } from 'react-bootstrap'
 import Loader from 'react-loader-spinner'
 import { getUserData } from '../../Redux/User_data/user_data_actions'
 import BootstrapTable from 'react-bootstrap-table-next'
@@ -122,28 +122,24 @@ function Items() {
         {loaded &&
           items.map((val, index) => (
             <>
-              <Container fluid>
-                {rowIndex === index && (
-                  <Card key={index}>
-                    <Card.Header className='h4'>{val.text}</Card.Header>
-                    <Card.Body>
-                      <Card.Text>
-                        {val.choices.map((va, index) => (
-                          <div key={index} className='text-left'>
-                            <Row>
-                              <Col style={{ color: [va.correct === 1 && 'green'] }} className='h4'>
-                                {index + 1}) {va.choice}
-                                {va.correct === 1 && <i className='fas fa-check text-success'></i>}
-                              </Col>
-                            </Row>
-                          </div>
-                        ))}
-                      </Card.Text>
-                      {/* <Button variant='primary'>Edit Item</Button> */}
-                    </Card.Body>
-                  </Card>
-                )}
-              </Container>
+              {rowIndex === index && (
+                <Card key={index}>
+                  <Card.Header className='h4'>{val.text}</Card.Header>
+                  <Card.Body>
+                    {val.choices.map((va, index) => (
+                      <div key={index} className='text-left'>
+                        <Row>
+                          <Col style={{ color: [va.correct === 1 && 'green'] }} className='h4'>
+                            {index + 1}) {va.choice}
+                            {va.correct === 1 && <i className='fas fa-check text-success'></i>}
+                          </Col>
+                        </Row>
+                      </div>
+                    ))}
+                    {/* <Button variant='primary'>Edit Item</Button> */}
+                  </Card.Body>
+                </Card>
+              )}
             </>
           ))}
       </>

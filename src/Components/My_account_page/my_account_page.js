@@ -24,8 +24,7 @@ function MyAccountPage() {
   }
   return (
     <>
-      {!isLogin && <h1>Please Login</h1>}
-      {isLogin && (
+      {isLogin ? (
         <>
           <Container fluid>
             <Row>
@@ -49,18 +48,14 @@ function MyAccountPage() {
               <Col md='2' />
               <Col md='8'>
                 <Tabs defaultActiveKey='Quizzes' transition={false} id='user-page'>
-{/*                  <Tab eventKey='Info' title='Info'>
+                  {/*<Tab eventKey='Info' title='Info'>
                     <UserData />
                   </Tab>*/}
                   <Tab eventKey='Items' title={'Items (' + items_count + ')'}>
-                    <Container fluid='sm'>
-                      <Items />
-                    </Container>
+                    <Items />
                   </Tab>
                   <Tab eventKey='Quizzes' title={'Quizzes (' + exams_count + ')'}>
-                    <Container fluid='sm'>
-                      <Quizzes />
-                    </Container>
+                    <Quizzes />
                   </Tab>
                 </Tabs>
               </Col>
@@ -69,6 +64,8 @@ function MyAccountPage() {
             </Row>
           </Container>
         </>
+      ) : (
+        <h1>Please Login</h1>
       )}
     </>
   )
