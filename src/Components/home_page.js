@@ -56,7 +56,7 @@ const Home = () => {
           <Col>
             <div className='card'>
               <div className='card-header bg-success text-white text-center'>
-                <h3 className='display-4'>Create Quiz</h3>
+                <h3 className='display-4'>Create Quizzes</h3>
               </div>
               <div>
                 <h2 className='text-center'>A simple and innovative way to..</h2>
