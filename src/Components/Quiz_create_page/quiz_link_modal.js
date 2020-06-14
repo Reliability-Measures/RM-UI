@@ -10,10 +10,7 @@ function QuizLinkModal(props) {
   const request_sent = useSelector((state) => state.quiz_question.items_post_sent)
   const response = useSelector((state) => state.quiz_question.items_post_response)
   const is_login = useSelector((state) => state.google_json.isLogin)
-  let error = !response.quiz // || !response.quiz.metadata
-  let error_text = response.error
-  //let pub_link = !error && request_sent ? response.quiz.metadata.published_url : null
-  //let edit_link = !error && request_sent ? response.quiz.metadata.editor_url : null
+  let error = response.error
   let quiz_name = !error && request_sent ? response.quiz.quiz_name : null
   let quiz_id = !error && request_sent ? response.quiz.exam_id : null
 
@@ -26,24 +23,24 @@ function QuizLinkModal(props) {
           </Modal.Header>
           <Modal.Body className='text-center'>
             {link_loading && <Loader type='ThreeDots' color='red' width={200} />}
-            {error && request_sent && 'Error Try Again - ' + error_text}
-            {!error && request_sent && (
+            {!error && request_sent ? (
               <>
                 <ListItem item={'Quiz Name: ' + quiz_name} />
                 <ListItem item={'Quiz Id: ' + quiz_id} />
-                <p>The quiz will be ready in few seconds.</p>
-                {!is_login && (
-                  <>
-                    Please note your quiz name and id to retrieve it later <Link to='/myquiz'>get quiz</Link>.
-                  </>
-                )}
-                {is_login && (
+                <p>The quiz will be ready in few moments.</p>
+                {is_login ? (
                   <>
                     You can view and manage your quizzes from your <Link to='/myaccount'>account page</Link>.
                   </>
+                ) : (
+                  <>
+                    Please note your quiz name and id to retrieve it later <Link to='/searchquiz'>find quiz</Link>.
+                  </>
                 )}
               </>
-            )}
+            ) : request_sent ? (
+              'Error Try Again'
+            ) : null}
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={props.onHide}>Close</Button>

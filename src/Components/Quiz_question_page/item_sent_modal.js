@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Modal, Button } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import Loader from 'react-loader-spinner'
 
 function ItemSentModal(props) {
@@ -29,13 +29,14 @@ function ItemSentModal(props) {
                   </>
                 )}
                 <br></br>
-                You can create more items now or go to Create Quiz section to create a new quiz
+                <div>You can create more items now or go to Create Quiz section to create a new quiz</div>
+                <small>To view or manage items you created, please login</small>
               </>
             )}
           </Modal.Body>
-          <Modal.Footer>
+          {/* <Modal.Footer>
             <Button onClick={props.onHide}>Close</Button>
-          </Modal.Footer>
+          </Modal.Footer> */}
         </Modal>
       )}
     </>

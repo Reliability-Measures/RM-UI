@@ -16,12 +16,18 @@ function QuizConfirmModal(props) {
   const google_json = useSelector((state) => state.google_json.data)
   const is_login = useSelector((state) => state.google_json.isLogin)
   let quiz_json = {}
+  let one_question_selected = items_selected_id.length === 0
+  console.log('QuizConfirmModal -> items_selected_id', items_selected_id)
+  console.log('QuizConfirmModal -> one_question_selected', one_question_selected)
   if (props.show === true) {
-    let item_ids = items_selected_id
-    let quiz_name = form_data.quiz_name
-    let quiz_description = form_data.quiz_description
     let options = form_data.options
-    let user_profile = is_login ? google_json.profileObj : {}
+    quiz_json = {
+      options: form_data.options,
+      item_ids: items_selected_id,
+      quiz_name: form_data.quiz_name,
+      quiz_description: form_data.quiz_description,
+      user_profile: is_login ? google_json.profileObj : {}
+    }
     options.required === 'e'
       ? (options.required = 1)
       : options.required === 'n'
@@ -31,11 +37,6 @@ function QuizConfirmModal(props) {
       : (options.required = 0)
     options.show_correct = options.show_correct === false ? 0 : 1
     options.searchable = options.searchable === false ? 0 : 1
-    Object.assign(quiz_json, { options })
-    Object.assign(quiz_json, { item_ids })
-    Object.assign(quiz_json, { quiz_name })
-    Object.assign(quiz_json, { quiz_description })
-    Object.assign(quiz_json, { user_profile })
   }
   const handleSubmit = () => {
     props.onHide()
@@ -69,10 +70,11 @@ function QuizConfirmModal(props) {
             </Row>
           </Modal.Body>
           <Modal.Footer>
-            {!is_login && <div className='text-danger'>For editing access, you need to login first!</div>}
-
-            <Button onClick={props.onHide}>Close</Button>
-            <Button onClick={handleSubmit}>Create Quiz</Button>
+            {!is_login && <p className='text-danger'>For editing access, you need to login first!</p>}
+            {one_question_selected && <p className='text-danger'>Must Select at lest 1 Item</p>}
+            <Button onClick={handleSubmit} disabled={one_question_selected}>
+              Create Quiz
+            </Button>
           </Modal.Footer>
         </Modal>
       )}

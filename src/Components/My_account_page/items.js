@@ -136,7 +136,6 @@ function Items() {
                         </Row>
                       </div>
                     ))}
-                    {/* <Button variant='primary'>Edit Item</Button> */}
                   </Card.Body>
                 </Card>
               )}

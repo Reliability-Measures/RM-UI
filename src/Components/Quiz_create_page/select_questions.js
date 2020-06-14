@@ -158,6 +158,33 @@ function SelectQuestions() {
       </>
     )
   }
+  const customTotal = (from, to, size) => (
+    <span className='react-bootstrap-table-pagination-total'>
+      Showing {from} to {to} of {size} Results
+    </span>
+  )
+  const options = {
+    showTotal: true,
+    paginationTotalRenderer: customTotal,
+    sizePerPageList: [
+      {
+        text: '10',
+        value: 10
+      },
+      {
+        text: '20',
+        value: 20
+      },
+      {
+        text: '30',
+        value: 10
+      },
+      {
+        text: 'All',
+        value: table_data.length
+      }
+    ] // A numeric array is also available. the purpose of above example is custom the text
+  }
   return (
     <>
       {items_recived && (
@@ -197,7 +224,7 @@ function SelectQuestions() {
                       //classes='table-responsive'
                       expandRow={expandRow}
                       selectRow={selectRow}
-                      pagination={paginationFactory()}
+                      pagination={paginationFactory(options)}
                     />
                   </>
                 )}

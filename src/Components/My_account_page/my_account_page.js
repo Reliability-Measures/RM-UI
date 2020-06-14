@@ -47,7 +47,7 @@ function MyAccountPage() {
             <Row>
               <Col md='2' />
               <Col md='8'>
-                <Tabs defaultActiveKey='Quizzes' transition={false} id='user-page'>
+                <Tabs defaultActiveKey='Items' transition={false} id='user-page'>
                   {/*<Tab eventKey='Info' title='Info'>
                     <UserData />
                   </Tab>*/}
