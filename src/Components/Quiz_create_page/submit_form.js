@@ -33,7 +33,7 @@ function SubmitForm() {
     defaultValues: {
       quiz_name: '',
       quiz_description: '',
-      options: [{ required: false, show_correct: false, searchable: true }]
+      options: { required: false, show_correct: false, searchable: 1 }
     },
     validationSchema: quiz_create_valid
   })
@@ -84,20 +84,21 @@ function SubmitForm() {
                 <MyInput label='Email/Name Required' input_type='radio' value='b' name='options.required' />
               </Col>
             </Row>
-            {/*<Dropdown id='filters' className='text-center' drop='left'>*/}
-            {/*<Dropdown.Toggle variant='outline-dark' id='filters_toggle'>*/}
-            {/*Options On By Default*/}
-            {/*</Dropdown.Toggle>*/}
-            {/*<Dropdown.Menu>*/}
-            {/*(Check If Do Not Want)*/}
+            {/* <Dropdown id='filters' className='text-center' drop='left'>
+            <Dropdown.Toggle variant='outline-dark' id='filters_toggle'>
+            Options On By Default
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+            (Check If Do Not Want) */}
             <Row>
               {is_login && (
                 <Col>
                   <MyInput
-                    label='Make it Searchable: &nbsp;'
+                    label='Searchable: &nbsp;'
                     //label_size='h5'
                     input_type='checkbox'
                     name='options.searchable'
+                    id='searchable'
                   />
                 </Col>
               )}
@@ -107,11 +108,12 @@ function SubmitForm() {
                   //label_size='h5'
                   input_type='checkbox'
                   name='options.show_correct'
+                  id='show_correct'
                 />
               </Col>
             </Row>
-            {/*</Dropdown.Menu>*/}
-            {/*</Dropdown>*/}
+            {/* </Dropdown.Menu>
+            </Dropdown> */}
             <br></br>
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Button variant='outline-dark' type='submit'>
