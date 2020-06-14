@@ -29,33 +29,33 @@ function IndividualQuizSearch() {
   return (
     <>
       <FormContext {...individual_quiz_search}>
-        <MyInput
-          label={
-            <>
-              <i className='fas fa-star-of-life text-danger fa-xs'></i> Quiz Id
-            </>
-          }
-          label_size='h2'
-          placeholder='Enter Id...'
-          name='id'
-          input_type='textarea'
-          rows='1'
-        />
-        {errors.id && <p className='text-danger'>Id is Required (Must Be a Positive Integer Number)</p>}
-        <MyInput
-          label={
-            <>
-              <i className='fas fa-star-of-life text-danger fa-xs'></i> Quiz Name
-            </>
-          }
-          label_size='h2'
-          placeholder='Enter Quiz Name...'
-          name='name'
-          input_type='textarea'
-          rows='2'
-        />
-        {errors.name && <p className='text-danger'>Quiz Name is Required</p>}
         <Form onSubmit={handleSubmit(onSubmit)}>
+          <MyInput
+            label={
+              <>
+                <i className='fas fa-star-of-life text-danger fa-xs'></i> Quiz Id
+              </>
+            }
+            label_size='h2'
+            placeholder='Enter Id...'
+            name='id'
+            input_type='text'
+            rows='1'
+          />
+          {errors.id && <p className='text-danger'>Id is Required (Must Be a Positive Integer Number)</p>}
+          <MyInput
+            label={
+              <>
+                <i className='fas fa-star-of-life text-danger fa-xs'></i> Quiz Name
+              </>
+            }
+            label_size='h2'
+            placeholder='Enter Quiz Name...'
+            name='name'
+            input_type='text'
+            rows='2'
+          />
+          {errors.name && <p className='text-danger'>Quiz Name is Required</p>}
           <Button variant='outline-dark' type='submit'>
             Search
           </Button>

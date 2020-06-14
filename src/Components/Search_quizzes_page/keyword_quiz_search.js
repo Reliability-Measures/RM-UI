@@ -27,20 +27,19 @@ function KeywordQuizSearch() {
   return (
     <>
       <FormContext {...keyword_quiz_search}>
-        <MyInput
-          label={
-            <>
-              <i className='fas fa-star-of-life text-danger fa-xs'></i> Keyword
-            </>
-          }
-          label_size='h2'
-          placeholder='Enter Keyword...'
-          name='keyword'
-          input_type='textarea'
-          rows='1'
-        />
-        {errors.keyword && <p className='text-danger'>Keyword is Required</p>}
         <Form onSubmit={handleSubmit(onSubmit)}>
+          <MyInput
+            label={
+              <>
+                <i className='fas fa-star-of-life text-danger fa-xs'></i> Keyword
+              </>
+            }
+            label_size='h2'
+            placeholder='Enter Keyword...'
+            name='keyword'
+            input_type='text'
+          />
+          {errors.keyword && <p className='text-danger'>Keyword is Required</p>}
           <Button variant='outline-dark' type='submit'>
             Search
           </Button>

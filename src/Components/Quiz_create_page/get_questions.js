@@ -63,18 +63,18 @@ function QuizCreateForm() {
             <h5>
               <i className='fas fa-star-of-life text-danger fa-xs'></i> Subject
             </h5>
-            <MyInput name='subject' input_type='select' options={subject} id='subject' />
-            {errors.subject && <p className='text-danger'>Subject Is Required</p>}
-            <MyInput label='Keyword' label_size='h5' name='keyword' input_type='textarea' rows='1' />
-            <h5>No. of Items ({watch('limit')})</h5>
-            <MyInput name='limit' input_type='range' max_range={100} />
-            {/* {watch('show.topics') !== false && (
+            <Form onSubmit={handleSubmit(onSubmit)}>
+              <MyInput name='subject' input_type='select' options={subject} id='subject' />
+              {errors.subject && <p className='text-danger'>Subject Is Required</p>}
+              <MyInput label='Keyword' label_size='h5' name='keyword' input_type='text' />
+              <h5>No. of Items ({watch('limit')})</h5>
+              <MyInput name='limit' input_type='range' max_range={100} />
+              {/* {watch('show.topics') !== false && (
               <>
                 <h3>Topics</h3>
                 <DropdownTree />
               </>
             )} */}
-            <Form onSubmit={handleSubmit(onSubmit)}>
               <Button variant='outline-dark' type='submit'>
                 Search
               </Button>

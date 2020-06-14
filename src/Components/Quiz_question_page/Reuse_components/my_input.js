@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form } from 'react-bootstrap'
+import { Form, FormControl } from 'react-bootstrap'
 import '../../Components.css'
 import { useFormContext } from 'react-hook-form'
 
@@ -37,6 +37,9 @@ function MyInput({
               ))}
             </>
           </Form.Control>
+        ) : null}
+        {input_type === 'text' ? (
+          <FormControl type='text' placeholder={placeholder} name={name} ref={register} />
         ) : null}
         {input_type === 'textarea' ? (
           <>

@@ -65,8 +65,8 @@ function SubmitForm() {
           <i className='fas fa-star-of-life text-danger fa-xs'></i> Quiz name
           {errors.quiz_name && <p className='text-danger'>Required</p>}
         </h5>
-        <MyInput input_type='textarea' rows='1' name='quiz_name' />
-        <MyInput label='Quiz Description' label_size='h5' input_type='textarea' rows='1' name='quiz_description' />
+        <MyInput input_type='text' name='quiz_name' />
+        <MyInput label='Quiz Description' label_size='h5' input_type='textarea' rows='2' name='quiz_description' />
         {items_recived && (
           <>
             {errors.options && errors.options.required && <p className='text-danger'>Required</p>}

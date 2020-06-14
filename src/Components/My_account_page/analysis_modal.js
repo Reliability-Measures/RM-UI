@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, Row, Col } from 'react-bootstrap'
+import { Modal, Row, Col, Container } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import ListItem from '../Quiz_question_page/Reuse_components/list_item'
 import BootstrapTable from 'react-bootstrap-table-next'
@@ -76,39 +76,45 @@ function AnalysisModal(props) {
         }))
         modal_header = (
           <>
-            <Row as='h2'>
-              <Col>Quiz Name : {val.name}</Col>
-              <Col>Quiz ID: {val.id}</Col>
-            </Row>
+            <Container fluid>
+              <Row as='h2'>
+                <Col>Quiz Name : {val.name}</Col>
+                <Col>Quiz ID: {val.id}</Col>
+              </Row>
+            </Container>
           </>
         )
         overall_scores = (
           <>
-            <h3>Overall Scores</h3>
-            <Row>
-              <Col>
-                <ListItem text='Kr20 : ' item={val.analysis.overall_quiz.kr20} />
-              </Col>
-              <Col>
-                <ListItem text='Average Score : ' item={val.analysis.overall_quiz.average} />
-              </Col>
-              <Col>
-                <ListItem text='Weighted Average : ' item={val.analysis.overall_quiz.weighted_avg} />
-              </Col>
-            </Row>
+            <Container fluid>
+              <h3>Overall Scores</h3>
+              <Row>
+                <Col>
+                  <ListItem text='Kr20 : ' item={val.analysis.overall_quiz.kr20} />
+                </Col>
+                <Col>
+                  <ListItem text='Average Score : ' item={val.analysis.overall_quiz.average} />
+                </Col>
+                <Col>
+                  <ListItem text='Weighted Average : ' item={val.analysis.overall_quiz.weighted_avg} />
+                </Col>
+              </Row>
+            </Container>
           </>
         )
         overall_item_avg = (
           <>
-            <h3>Overall Item Averages</h3>
-            <Row>
-              <Col>
-                <ListItem text='Difficulty Average : ' item={val.analysis.overall_items.diff_avg} />
-              </Col>
-              <Col>
-                <ListItem text='IDR Average : ' item={val.analysis.overall_items.idr_avg} />
-              </Col>
-            </Row>
+            <Container fluid>
+              <h3>Overall Item Averages</h3>
+              <Row>
+                <Col>
+                  <ListItem text='Difficulty Average : ' item={val.analysis.overall_items.diff_avg} />
+                </Col>
+                <Col>
+                  <ListItem text='IDR Average : ' item={val.analysis.overall_items.idr_avg} />
+                </Col>
+              </Row>
+            </Container>
           </>
         )
       }
@@ -122,37 +128,39 @@ function AnalysisModal(props) {
         </Modal.Header>
         <Modal.Body className='text-center'>
           <>
-            <Row>
-              <Col md='1' />
-              <Col>
-                {overall_scores}
-                {overall_item_avg}
-                <h3>Item Analysis</h3>
-                <Row>
-                  <BootstrapTable
-                    keyField='id'
-                    bootstrap4={true}
-                    striped
-                    wrapperClasses='table-responsive'
-                    filter={filterFactory()}
-                    data={table_data}
-                    columns={columns}
-                  />
-                </Row>
-                <h3>Student Scores</h3>
-                <Row>
-                  <BootstrapTable
-                    keyField='id'
-                    bootstrap4={true}
-                    striped
-                    wrapperClasses='table-responsive'
-                    data={table_data1}
-                    columns={columns1}
-                  />
-                </Row>
-              </Col>
-              <Col md='1' />
-            </Row>
+            <Container fluid>
+              <Row>
+                <Col md='1' />
+                <Col>
+                  {overall_scores}
+                  {overall_item_avg}
+                  <h3>Item Analysis</h3>
+                  <Row>
+                    <BootstrapTable
+                      keyField='id'
+                      bootstrap4={true}
+                      striped
+                      wrapperClasses='table-responsive'
+                      filter={filterFactory()}
+                      data={table_data}
+                      columns={columns}
+                    />
+                  </Row>
+                  <h3>Student Scores</h3>
+                  <Row>
+                    <BootstrapTable
+                      keyField='id'
+                      bootstrap4={true}
+                      striped
+                      wrapperClasses='table-responsive'
+                      data={table_data1}
+                      columns={columns1}
+                    />
+                  </Row>
+                </Col>
+                <Col md='1' />
+              </Row>
+            </Container>
           </>
         </Modal.Body>
       </Modal>

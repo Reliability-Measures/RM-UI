@@ -30,7 +30,10 @@ function Quizzes() {
     {
       dataField: 'quiz_id',
       text: 'Quiz ID',
-      sort: true
+      sort: true,
+      headerStyle: () => {
+        return { width: '5%' }
+      }
     },
     {
       dataField: 'quiz_name',
@@ -83,7 +86,7 @@ function Quizzes() {
           Edit
         </a>
       ),
-      quiz_desc: val.description,
+      quiz_desc: val.description.substring(0, 100),
       no_of_items: val.no_of_questions,
       responses: val.responses,
       date_created: val.date_created,
@@ -96,6 +99,9 @@ function Quizzes() {
 
   const selectRow = {
     mode: 'radio',
+    headerColumnStyle: {
+      width: '10%'
+    },
     selectionHeaderRenderer: () => 'Analysis',
     selectionRenderer: () => (
       <Button variant='link'>
@@ -113,35 +119,39 @@ function Quizzes() {
       {is_loading && <Loader />}
       {loaded && !is_loading && (
         <>
-          <h1>Quizzes Table</h1>
-          <ToolkitProvider keyField='quiz_id' bootstrap4={true} data={table_data} columns={columns} search>
-            {(props) => (
-              <>
-                <Row>
-                  <Col md='2'>
-                    <SearchBar {...props.searchProps} />
-                  </Col>
-                  <Col md='1'>
-                    <ClearSearchButton {...props.searchProps} />
-                  </Col>
-                  <Col md='6' />
-                  <Col md='3'>
-                    Refresh{' '}
-                    <Button onClick={() => dispatch(getUserData({ user_profile: google_json.profileObj }))}>
-                      <i className='fas fa-sync-alt'></i>
-                    </Button>
-                  </Col>
-                </Row>
-                <hr />
-                <BootstrapTable
-                  {...props.baseProps}
-                  selectRow={selectRow}
-                  classes='table-responsive'
-                  filter={filterFactory()}
-                />
-              </>
-            )}
-          </ToolkitProvider>
+          <Row>
+            <Col>
+              <h1>Quizzes Table</h1>
+              <ToolkitProvider keyField='quiz_id' bootstrap4={true} data={table_data} columns={columns} search>
+                {(props) => (
+                  <>
+                    <Row>
+                      <Col md='2'>
+                        <SearchBar {...props.searchProps} />
+                      </Col>
+                      <Col md='1'>
+                        <ClearSearchButton {...props.searchProps} />
+                      </Col>
+                      <Col md='6' />
+                      <Col md='3'>
+                        Refresh{' '}
+                        <Button onClick={() => dispatch(getUserData({ user_profile: google_json.profileObj }))}>
+                          <i className='fas fa-sync-alt'></i>
+                        </Button>
+                      </Col>
+                    </Row>
+                    <hr />
+                    <BootstrapTable
+                      {...props.baseProps}
+                      selectRow={selectRow}
+                      classes='table-responsive'
+                      filter={filterFactory()}
+                    />
+                  </>
+                )}
+              </ToolkitProvider>
+            </Col>
+          </Row>
           <AnalysisModal show={modalShow} onHide={() => setModalShow(false)} quiz_id={selected_quiz} />
         </>
       )}
