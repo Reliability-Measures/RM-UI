@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import UserData from './user_data'
-import { Row, Col, Tabs, Tab } from 'react-bootstrap'
+//import UserData from './user_data'
+import { Row, Col, Tabs, Tab, Container } from 'react-bootstrap'
 import { get_config } from '../Config'
 import { GoogleLogout } from 'react-google-login'
 import { logOut } from '../../Redux/Google_login/google_actions'
@@ -24,45 +24,48 @@ function MyAccountPage() {
   }
   return (
     <>
-      {!isLogin && <h1>Please Login</h1>}
-      {isLogin && (
+      {isLogin ? (
         <>
-          <Row>
-            <Col md='1' />
-            <Col md='10'>
-              <h1>Welcome {user_name}</h1>
-              <img src={img} alt='Profile Pic' style={{ borderRadius: 50 }}></img>
-              <div className='text-right'>
-                {isLogin ? (
-                  <GoogleLogout
-                    clientId={get_config('application_client_id')}
-                    buttonText='Logout'
-                    onLogoutSuccess={logout}
-                  />
-                ) : null}
-              </div>
-            </Col>
-            <Col md='1'></Col>
-          </Row>
-          <Row>
-            <Col md='2' />
-            <Col md='8'>
-              <Tabs defaultActiveKey='Info' transition={false} id='user-page'>
-                <Tab eventKey='Info' title='Info'>
-                  <UserData />
-                </Tab>
-                <Tab eventKey='Items' title={'Items (' + items_count + ')'}>
-                  <Items />
-                </Tab>
-                <Tab eventKey='Quizzes' title={'Quizzes (' + exams_count + ')'}>
-                  <Quizzes />
-                </Tab>
-              </Tabs>
-            </Col>
-            <Col md='1'></Col>
-            <Col md='1' />
-          </Row>
+          <Container fluid>
+            <Row>
+              <Col md='1' />
+              <Col md='10'>
+                <h1>Welcome {user_name}</h1>
+                <img src={img} alt='Profile Pic' style={{ borderRadius: 50 }}></img>
+                <div className='text-right'>
+                  {isLogin ? (
+                    <GoogleLogout
+                      clientId={get_config('application_client_id')}
+                      buttonText='Logout'
+                      onLogoutSuccess={logout}
+                    />
+                  ) : null}
+                </div>
+              </Col>
+              <Col md='1'></Col>
+            </Row>
+            <Row>
+              <Col md='2' />
+              <Col md='8'>
+                <Tabs defaultActiveKey='Items' transition={false} id='user-page'>
+                  {/*<Tab eventKey='Info' title='Info'>
+                    <UserData />
+                  </Tab>*/}
+                  <Tab eventKey='Items' title={'Items (' + items_count + ')'}>
+                    <Items />
+                  </Tab>
+                  <Tab eventKey='Quizzes' title={'Quizzes (' + exams_count + ')'}>
+                    <Quizzes />
+                  </Tab>
+                </Tabs>
+              </Col>
+              <Col md='1'></Col>
+              <Col md='1' />
+            </Row>
+          </Container>
         </>
+      ) : (
+        <h1>Please Login</h1>
       )}
     </>
   )

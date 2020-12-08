@@ -106,3 +106,7 @@
   /* display: flex; */
   align-self: flex-end;
 }
+
+.modal-width {
+  min-width: 80%;
+}

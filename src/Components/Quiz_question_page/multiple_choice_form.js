@@ -12,13 +12,14 @@ function MultipleChoiceForm() {
           <ListGroup>
             <ListGroup.Item>
               <Row>
-                <Col md='2' />
-                <Col md='6' className='h4'>
+                <Col className='h4 text-left'>
                   Item Choices
                   {errors.item_choices && <p className='text-danger'>All Choices Must Be Filled</p>}
                 </Col>
-                <Col md='3'>Check Correct Answer(s)</Col>
-                <Col md='1'>
+                <Col className='text-right' style={{ paddingRight: 0 }}>
+                  Check Correct Answer(s)
+                </Col>
+                <Col className='text-right'>
                   <Button
                     type='button'
                     onClick={() => {
@@ -33,7 +34,22 @@ function MultipleChoiceForm() {
             {fields.map((item, index) => (
               <ListGroup.Item key={item.id}>
                 <Row>
-                  <Col md='2'>Choice {index + 1}</Col>
+                  <Col className='text-left'>Choice {index + 1}</Col>
+                  <Col className='text-right'>
+                    <Controller
+                      as={<input type='checkbox' className='double' />}
+                      name={`item_choices[${index}].correct`}
+                      defaultValue={item.correct}
+                      control={control}
+                    />
+                  </Col>
+                  <Col className='text-right'>
+                    <Button type='button' onClick={() => remove(index)}>
+                      Delete
+                    </Button>
+                  </Col>
+                </Row>
+                <Row className='justify-content-left'>
                   <Col md='6'>
                     <Controller
                       as={<Form.Control as='textarea' rows='2' />}
@@ -42,19 +58,6 @@ function MultipleChoiceForm() {
                       control={control}
                       defaultValue={item.choice}
                     />
-                  </Col>
-                  <Col md='3'>
-                    <Controller
-                      as={<input type='checkbox' className='double' />}
-                      name={`item_choices[${index}].correct`}
-                      defaultValue={item.correct}
-                      control={control}
-                    />
-                  </Col>
-                  <Col md='1'>
-                    <Button type='button' onClick={() => remove(index)}>
-                      Delete
-                    </Button>
                   </Col>
                 </Row>
               </ListGroup.Item>

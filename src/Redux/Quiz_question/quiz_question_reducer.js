@@ -15,6 +15,9 @@ import {
   quiz_get_request,
   quiz_get_success,
   quiz_get_failure,
+  responses_get_request,
+  responses_get_success,
+  responses_get_failure,
   reset_sent
 } from './quiz_question_types'
 const quiz_question_state = {
@@ -38,6 +41,11 @@ const quiz_question_state = {
   quiz_get_received: false,
   quiz_get_response: [],
   quiz_get_error: '',
+
+  responses_get_loading: false,
+  responses_get_received: false,
+  responses_get_response: [],
+  responses_get_error: '',
 
   items_selected_id: [],
   items_selected_text: []
@@ -144,6 +152,24 @@ const quiz_question_reducer = (state = quiz_question_state, action) => {
       return {
         ...state,
         quiz_get_error: action.payload
+      }
+
+    case responses_get_request:
+      return {
+        ...state,
+        responses_get_loading: true
+      }
+    case responses_get_success:
+      return {
+        ...state,
+        responses_get_loading: false,
+        responses_get_received: true,
+        responses_get_response: action.payload
+      }
+    case responses_get_failure:
+      return {
+        ...state,
+        responses_get_error: action.payload
       }
     default:
       return state

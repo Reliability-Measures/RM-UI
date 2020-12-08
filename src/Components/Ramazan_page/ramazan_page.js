@@ -12,7 +12,7 @@ function RamazanPage() {
   const data_loaded_5 = useSelector((state) => state.ramadan_agg_results.loaded_5)
   const data_loaded_6 = useSelector((state) => state.ramadan_agg_results.loaded_6)
   return (
-    <Container fluid='md'>
+    <Container fluid>
       <Row
         className='justify-content-center text-white'
         style={{ backgroundImage: 'url(Ramadan-2020.jpg)', backgroundSize: 'stretch' }}>
@@ -24,13 +24,13 @@ function RamazanPage() {
           <br></br>
         </Col>
         <Col md='10' className='overall-row'>
-          <p className={'text-justify h4'} Style={'padding: 20px'}>
+          <p className={'text-justify h4'} style={{ padding: 20 }}>
             We are very grateful for your overwhelming response, support and feedback to our daily Ramadan quizzes.
             Ramadan is over but our striving to gain knowledge should continue. We are introducing a feature to allow
             you to contribute your own questions and create your own quizzes. See the Create Items and Create Quiz
             sections above.
           </p>
-          <p className={'text-justify h4'} Style={'padding: 20px'}>
+          <p className={'text-justify h4'} style={{ padding: 20 }}>
             Below are Ramadan 2020 Quiz overall results. In the individual results section, you can enter your name and
             age to see total score, rank and percentile. The rank and percentile is only available to quiz takers who
             have participated in at least 15 quizzes (out of 25 and no more than 5 duplicate entries). There are about

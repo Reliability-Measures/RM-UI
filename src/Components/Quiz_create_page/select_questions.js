@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Card, Col, Row, Dropdown, Button } from 'react-bootstrap'
+import { Card, Col, Row, Button } from 'react-bootstrap'
 import Loader from 'react-loader-spinner'
 import { ItemSelectedId, ItemSelectedText, ItemSelectedReset } from '../../Redux/Quiz_question/quiz_question_actions'
 import BootstrapTable from 'react-bootstrap-table-next'
@@ -19,18 +19,6 @@ function SelectQuestions() {
   const state_ids = useSelector((state) => state.quiz_question.items_selected_id)
   const state_texts = useSelector((state) => state.quiz_question.items_selected_text)
 
-  const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-    <a
-      href='/#'
-      ref={ref}
-      onClick={(e) => {
-        e.preventDefault()
-        onClick(e)
-      }}>
-      {children}
-      &#x25bc;
-    </a>
-  ))
   const { SearchBar } = Search
   const columns = [
     {
@@ -54,36 +42,41 @@ function SelectQuestions() {
     }))
   let items_selected_id_l = null
   let items_selected_text_l = null
-  const selectRow = {
-    mode: 'checkbox',
-    bgColor: '#c8e6c9',
-    onSelect: (row, isSelect, rowIndex, e) => {
-      if (isSelect && state_ids.indexOf(row.id) === -1) {
-        items_selected_id_l = row.id
-        items_selected_text_l = row.item
+
+  const handleOnSelect = (row, isSelect) => {
+    if (isSelect && state_ids.indexOf(row.id) === -1) {
+      items_selected_id_l = row.id
+      items_selected_text_l = row.item
+      dispatch(ItemSelectedId(items_selected_id_l))
+      dispatch(ItemSelectedText(items_selected_text_l))
+    }
+    if (!isSelect) {
+      state_ids.splice(state_ids.indexOf(row.id), 1)
+      state_texts.splice(state_texts.indexOf(row.text), 1)
+      dispatch(ItemSelectedReset(state_ids, []))
+      state_texts.forEach((val) => dispatch(ItemSelectedText(val)))
+    }
+  }
+
+  const handleOnSelectAll = (isSelect, rows) => {
+    rows.forEach((val, index) => {
+      if (isSelect && state_ids.indexOf(val.id) === -1) {
+        items_selected_id_l = val.id
+        items_selected_text_l = val.item
         dispatch(ItemSelectedId(items_selected_id_l))
         dispatch(ItemSelectedText(items_selected_text_l))
       }
-      if (!isSelect) {
-        state_ids.splice(state_ids.indexOf(row.id), 1)
-        state_texts.splice(state_texts.indexOf(row.text), 1)
-        dispatch(ItemSelectedReset(state_ids, []))
-        state_texts.forEach((val) => dispatch(ItemSelectedText(val)))
-      }
-    },
-    onSelectAll: (isSelect, rows, e) => {
-      rows.forEach((val, index) => {
-        if (isSelect && state_ids.indexOf(val.id) === -1) {
-          items_selected_id_l = val.id
-          items_selected_text_l = val.item
-          dispatch(ItemSelectedId(items_selected_id_l))
-          dispatch(ItemSelectedText(items_selected_text_l))
-        }
-      })
-      if (!isSelect) {
-        dispatch(ItemSelectedReset([], []))
-      }
+    })
+    if (!isSelect) {
+      dispatch(ItemSelectedReset([], []))
     }
+  }
+  const selectRow = {
+    mode: 'checkbox',
+    bgColor: '#c8e6c9',
+    selected: state_ids,
+    onSelect: handleOnSelect,
+    onSelectAll: handleOnSelectAll
   }
   const expandRow = {
     onlyOneExpanding: true,
@@ -165,6 +158,33 @@ function SelectQuestions() {
       </>
     )
   }
+  const customTotal = (from, to, size) => (
+    <span className='react-bootstrap-table-pagination-total'>
+      Showing {from} to {to} of {size} Results
+    </span>
+  )
+  const options = {
+    showTotal: true,
+    paginationTotalRenderer: customTotal,
+    sizePerPageList: [
+      {
+        text: '10',
+        value: 10
+      },
+      {
+        text: '20',
+        value: 20
+      },
+      {
+        text: '30',
+        value: 10
+      },
+      {
+        text: 'All',
+        value: table_data.length
+      }
+    ] // A numeric array is also available. the purpose of above example is custom the text
+  }
   return (
     <>
       {items_recived && (
@@ -175,10 +195,7 @@ function SelectQuestions() {
                 {(props) => (
                   <>
                     <Row>
-                      <Col>
-                        <SearchBar placeholder='Search Table' {...props.searchProps} />
-                      </Col>
-                      <Col>Total Items Selected: {state_ids.length}</Col>
+                      {/* <Col>Total Items Selected: {state_ids.length}</Col>
                       <Col>
                         <Dropdown>
                           <Dropdown.Toggle as={CustomToggle} id='dropdown-custom-components'>
@@ -190,13 +207,16 @@ function SelectQuestions() {
                             ))}
                           </Dropdown.Menu>
                         </Dropdown>
+                      </Col> */}
+                      <Col>Subject: {items_recived && items_n > 0 && items[0].subject}</Col>
+                      <Col>
+                        <SearchBar placeholder='Search Table' {...props.searchProps} />
                       </Col>
                       <Col>
                         <Button variant='outline-dark' onClick={() => dispatch(ItemSelectedReset([], []))}>
                           Reset Items
                         </Button>
                       </Col>
-                      <Col>Subject: {items_recived && items_n > 0 && items[0].subject}</Col>
                     </Row>
                     <hr />
                     <BootstrapTable
@@ -204,7 +224,7 @@ function SelectQuestions() {
                       //classes='table-responsive'
                       expandRow={expandRow}
                       selectRow={selectRow}
-                      pagination={paginationFactory()}
+                      pagination={paginationFactory(options)}
                     />
                   </>
                 )}
@@ -215,7 +235,7 @@ function SelectQuestions() {
       )}
       {response.error && !items_loading && <h3>Error Please Try Again</h3>}
       {items_n === 0 && !items_loading && <h3>No Questions Found</h3>}
-      {items_loading && <Loader type='Puff' color='#00BFFF' height={200} width={200} />}
+      {items_loading && <Loader type='Puff' color='green' height={200} width={200} />}
     </>
   )
 }

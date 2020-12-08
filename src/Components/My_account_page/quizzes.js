@@ -6,31 +6,39 @@ import Loader from 'react-loader-spinner'
 import BootstrapTable from 'react-bootstrap-table-next'
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css'
+import AnalysisModal from './analysis_modal'
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter'
 
 function Quizzes() {
   const dispatch = useDispatch()
+  const [modalShow, setModalShow] = React.useState(false)
+  const [selected_quiz, setselected_quiz] = React.useState('')
   const data = useSelector((state) => state.user_data.data)
   const google_json = useSelector((state) => state.google_json.data)
   const is_loading = useSelector((state) => state.user_data.isloading)
   const loaded = useSelector((state) => state.user_data.loaded)
-  let exams = loaded ? data.exams : null
+  let exams = loaded && data.exams ? data.exams : []
 
   const { SearchBar, ClearSearchButton } = Search
 
   const columns = [
-    {
+    /*    {
       dataField: 'id',
       text: 'Exam #',
       sort: true
-    },
+    },*/
     {
       dataField: 'quiz_id',
       text: 'Quiz ID',
-      sort: true
+      sort: true,
+      headerStyle: () => {
+        return { width: '5%' }
+      }
     },
     {
       dataField: 'quiz_name',
       text: 'Quiz',
+      filter: textFilter(),
       sort: true
     },
     {
@@ -44,6 +52,7 @@ function Quizzes() {
     {
       dataField: 'no_of_items',
       text: 'No. of Items',
+      //filter: textFilter(),
       sort: true
     },
     {
@@ -56,12 +65,9 @@ function Quizzes() {
       text: 'Google Form Summary'
     },
     {
-      dataField: 'analysis',
-      text: 'Analysis (Upcoming Feature)'
-    },
-    {
       dataField: 'date_created',
       text: 'Date Created',
+      filter: textFilter(),
       sort: true
     }
   ]
@@ -80,7 +86,7 @@ function Quizzes() {
           Edit
         </a>
       ),
-      quiz_desc: val.description,
+      quiz_desc: val.description.substring(0, 100),
       no_of_items: val.no_of_questions,
       responses: val.responses,
       date_created: val.date_created,
@@ -88,36 +94,65 @@ function Quizzes() {
         <a target='blank' href={val.metadata.summary_url}>
           Summary
         </a>
-      ),
-      analysis: <Button>Analysis</Button>
+      )
     }))
+
+  const selectRow = {
+    mode: 'radio',
+    headerColumnStyle: {
+      width: '10%'
+    },
+    selectionHeaderRenderer: () => 'Analysis',
+    selectionRenderer: () => (
+      <Button variant='link'>
+        <i className='fas fa-chart-bar fa-lg '></i>
+      </Button>
+    ),
+    onSelect: (row, isSelect, rowIndex, e) => {
+      setselected_quiz(row.quiz_id)
+      setModalShow(true)
+    }
+  }
+
   return (
     <>
       {is_loading && <Loader />}
       {loaded && !is_loading && (
         <>
-          <h1>Quizzes Table</h1>
-          <ToolkitProvider keyField='id' bootstrap4={true} data={table_data} columns={columns} search>
-            {(props) => (
-              <>
-                <Row>
-                  <Col md='3'>
-                    <SearchBar {...props.searchProps} />
-                    <ClearSearchButton {...props.searchProps} />
-                  </Col>
-                  <Col md='6' />
-                  <Col md='3'>
-                    Refresh{' '}
-                    <Button onClick={() => dispatch(getUserData({ user_id: google_json.profileObj.email }))}>
-                      <i className='fas fa-sync-alt'></i>
-                    </Button>
-                  </Col>
-                </Row>
-                <hr />
-                <BootstrapTable {...props.baseProps} classes='table-responsive' />
-              </>
-            )}
-          </ToolkitProvider>
+          <Row>
+            <Col>
+              <h1>Quizzes Table</h1>
+              <ToolkitProvider keyField='quiz_id' bootstrap4={true} data={table_data} columns={columns} search>
+                {(props) => (
+                  <>
+                    <Row>
+                      <Col md='2'>
+                        <SearchBar {...props.searchProps} />
+                      </Col>
+                      <Col md='1'>
+                        <ClearSearchButton {...props.searchProps} />
+                      </Col>
+                      <Col md='6' />
+                      <Col md='3'>
+                        Refresh{' '}
+                        <Button onClick={() => dispatch(getUserData({ user_profile: google_json.profileObj }))}>
+                          <i className='fas fa-sync-alt'></i>
+                        </Button>
+                      </Col>
+                    </Row>
+                    <hr />
+                    <BootstrapTable
+                      {...props.baseProps}
+                      selectRow={selectRow}
+                      classes='table-responsive'
+                      filter={filterFactory()}
+                    />
+                  </>
+                )}
+              </ToolkitProvider>
+            </Col>
+          </Row>
+          <AnalysisModal show={modalShow} onHide={() => setModalShow(false)} quiz_id={selected_quiz} />
         </>
       )}
     </>

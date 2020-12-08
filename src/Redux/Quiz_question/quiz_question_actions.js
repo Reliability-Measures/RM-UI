@@ -15,6 +15,9 @@ import {
   quiz_get_request,
   quiz_get_success,
   quiz_get_failure,
+  responses_get_request,
+  responses_get_success,
+  responses_get_failure,
   reset_sent
 } from './quiz_question_types'
 import { get_config } from '../../Components/Config'
@@ -127,6 +130,24 @@ export const QuizGetFailure = (error) => {
   }
 }
 
+export const ResponsesGetRequest = () => {
+  return {
+    type: responses_get_request
+  }
+}
+export const ResponsesGetSuccess = (data) => {
+  return {
+    type: responses_get_success,
+    payload: data
+  }
+}
+export const ResponsesGetFailure = (error) => {
+  return {
+    type: responses_get_failure,
+    payload: error
+  }
+}
+
 export const postItem = (data) => {
   let url = get_config('service2_url') + get_config('create_item')
   console.log(url)
@@ -211,6 +232,28 @@ export const getQuiz = (data) => {
       })
       .catch((error) => {
         dispatch(QuizGetFailure(error.message))
+      })
+  }
+}
+
+export const getResponses = (data) => {
+  let url = get_config('service2_url') + get_config('get_responses')
+  console.log(url)
+  const options = {
+    method: 'POST',
+    url: url,
+    params: { input: data }
+  }
+  return (dispatch) => {
+    console.log(data)
+    dispatch(ResponsesGetRequest())
+    axios(options)
+      .then((response) => {
+        const data = response.data
+        dispatch(ResponsesGetSuccess(data))
+      })
+      .catch((error) => {
+        dispatch(ResponsesGetFailure(error.message))
       })
   }
 }

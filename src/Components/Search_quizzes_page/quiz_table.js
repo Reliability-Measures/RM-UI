@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
 import BootstrapTable from 'react-bootstrap-table-next'
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css'
 
 function QuizTable() {
@@ -18,17 +19,25 @@ function QuizTable() {
       sort: true
     },
     {
+      dataField: 'quiz_id',
+      text: 'Quiz ID',
+      sort: true
+    },
+    {
       dataField: 'quiz_name',
       text: 'Quiz',
+      filter: textFilter(),
       sort: true
     },
     {
       dataField: 'quiz_desc',
-      text: 'Description'
+      text: 'Description',
+      filter: textFilter()
     },
     {
       dataField: 'tags',
-      text: 'Tags'
+      text: 'Quiz Tags',
+      filter: textFilter()
     },
     {
       dataField: 'no_of_items',
@@ -43,11 +52,13 @@ function QuizTable() {
     {
       dataField: 'date_created',
       text: 'Date Created',
+      filter: textFilter(),
       sort: true
     }
   ]
   let table_data = quizzes.map((val, index) => ({
     id: index + 1,
+    quiz_id: val.id,
     quiz_name: (
       <a target='blank' href={val.metadata.published_url}>
         {val.name}
@@ -74,10 +85,11 @@ function QuizTable() {
                   <Col md='1'>
                     <ClearSearchButton {...props.searchProps} />
                   </Col>
+                  <Col md='5' />
                   <Col md='3'>Quizzes Found: {data.quiz_count}</Col>
                 </Row>
                 <hr />
-                <BootstrapTable {...props.baseProps}  classes='table-responsive' />
+                <BootstrapTable {...props.baseProps} filter={filterFactory()} classes='table-responsive' />
               </>
             )}
           </ToolkitProvider>

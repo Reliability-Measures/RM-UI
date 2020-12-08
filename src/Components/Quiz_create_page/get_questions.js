@@ -24,26 +24,22 @@ function QuizCreateForm() {
       subject: '',
       user: 0,
       keyword: '',
-      limit: 50
+      limit: 100
     },
     validationSchema: get_questions_valid
   })
   const { handleSubmit, watch, errors } = get_questions
   const onSubmit = (form_data) => {
-    let data = { subject: form_data.subject }
-    let user_id =
-      form_data.user === false || form_data.user === undefined
-        ? (form_data.user = '')
-        : (form_data.user = google_json.profileObj.email)
-    let keyword = form_data.keyword
-    let limit = form_data.limit ? Number(form_data.limit) : 50
-    // let topic = topic_state.label
-    let user_profile = is_login ? google_json.profileObj : {}
-    Object.assign(data, { user_profile })
-    Object.assign(data, { user_id })
-    Object.assign(data, { keyword })
-    Object.assign(data, { limit })
-    // Object.assign(data, { topic })
+    let data = {
+      subject: form_data.subject,
+      user_id:
+        form_data.user === false || form_data.user === undefined
+          ? (form_data.user = '')
+          : (form_data.user = google_json.profileObj.email),
+      user_profile: is_login ? google_json.profileObj : {},
+      keyword: form_data.keyword,
+      limit: form_data.limit ? Number(form_data.limit) : 100
+    }
     dispatch(getItem(data))
   }
   return (
@@ -67,18 +63,18 @@ function QuizCreateForm() {
             <h5>
               <i className='fas fa-star-of-life text-danger fa-xs'></i> Subject
             </h5>
-            <MyInput name='subject' input_type='select' options={subject} id='subject' />
-            {errors.subject && <p className='text-danger'>Subject Is Required</p>}
-            {/*<MyInput label='Keyword' label_size='h5' name='keyword' input_type='textarea' />*/}
-            <h5>No. of Items ({watch('limit')})</h5>
-            <MyInput name='limit' input_type='range' max_range={50} />
-            {/* {watch('show.topics') !== false && (
+            <Form onSubmit={handleSubmit(onSubmit)}>
+              <MyInput name='subject' input_type='select' options={subject} id='subject' />
+              {errors.subject && <p className='text-danger'>Subject Is Required</p>}
+              <MyInput label='Keyword' label_size='h5' name='keyword' input_type='text' />
+              <h5>No. of Items ({watch('limit')})</h5>
+              <MyInput name='limit' input_type='range' max_range={100} />
+              {/* {watch('show.topics') !== false && (
               <>
                 <h3>Topics</h3>
                 <DropdownTree />
               </>
             )} */}
-            <Form onSubmit={handleSubmit(onSubmit)}>
               <Button variant='outline-dark' type='submit'>
                 Search
               </Button>

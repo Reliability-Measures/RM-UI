@@ -14,6 +14,8 @@ import QuizCreatePage from './Components/Quiz_create_page/quiz_create_page'
 import MyAccountPage from './Components/My_account_page/my_account_page'
 import RamazanPage from './Components/Ramazan_page/ramazan_page'
 import SearchQuizzesPage from './Components/Search_quizzes_page/search_quizzes_page'
+// import Footer from './Components/footer'
+import Copyright from './Components/copyright'
 
 function App() {
   const config_init = useSelector((state) => state.dropbox.config_init)
@@ -34,8 +36,10 @@ function App() {
             <Route path='/ramazan' component={RamazanPage} exact />
             <Route path='/ramadan' component={RamazanPage} exact />
             <Route path='/test' component={Test} exact />
+            <Route path='/copyright' component={Copyright} exact />
             <Route component={Error} />
           </Switch>
+          {/*<Footer />*/}
         </div>
       )}
     </BrowserRouter>

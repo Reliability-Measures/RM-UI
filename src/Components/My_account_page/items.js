@@ -6,6 +6,7 @@ import { getUserData } from '../../Redux/User_data/user_data_actions'
 import BootstrapTable from 'react-bootstrap-table-next'
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css'
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter'
 
 function Items() {
   const dispatch = useDispatch()
@@ -13,7 +14,7 @@ function Items() {
   const is_loading = useSelector((state) => state.user_data.isloading)
   const loaded = useSelector((state) => state.user_data.loaded)
   const google_json = useSelector((state) => state.google_json.data)
-  let items = loaded ? data.items : null
+  let items = loaded && data.items ? data.items : []
 
   const { SearchBar, ClearSearchButton } = Search
 
@@ -26,6 +27,7 @@ function Items() {
     {
       dataField: 'item_id',
       text: 'Item Id',
+      filter: textFilter(),
       sort: true
     },
     {
@@ -38,18 +40,21 @@ function Items() {
       text: 'Topic(s)',
       sort: true
     },
-    {
+    /*    {
       dataField: 'sub_topics',
       text: 'SubTopic(s)',
+      filter: textFilter(),
       sort: true
-    },
+    },*/
     {
       dataField: 'item_text',
-      text: 'Item Text'
+      text: 'Item Text',
+      filter: textFilter()
     },
     {
       dataField: 'date_created',
-      text: 'Date Created'
+      text: 'Date Created',
+      filter: textFilter()
     },
     {
       dataField: 'date_updated',
@@ -66,23 +71,23 @@ function Items() {
     items.map((val, index) => ({
       id: index + 1,
       item_id: val.id,
-      subject: val.subject ? val.subject : 'None',
+      subject: val.subject ? val.subject : ' ',
       topics:
         typeof val.topic === 'string'
           ? val.topic
           : val.topic === null
-          ? 'None'
+          ? ' '
           : Object.values(val.topic) && Object.keys(val.topic).length > 0
           ? Object.values(val.topic).map((v) => (v ? <div>{v}</div> : null))
-          : 'None',
-      sub_topics:
+          : ' ',
+      /*      sub_topics:
         typeof val.sub_topics === 'string'
           ? val.sub_topics
           : val.sub_topics === null
-          ? 'None'
+          ? ' '
           : Object.values(val.sub_topics) && Object.keys(val.sub_topics).length > 0
-          ? Object.values(val.sub_topics).map((v) => (v ? <div>{v}</div> : 'None'))
-          : 'None',
+          ? Object.values(val.sub_topics).map((v) => (v ? <div>{v}</div> : ' '))
+          : ' ',*/
       item_text: val.text,
       date_created: val.date_created,
       date_updated: val.date_updated,
@@ -121,19 +126,16 @@ function Items() {
                 <Card key={index}>
                   <Card.Header className='h4'>{val.text}</Card.Header>
                   <Card.Body>
-                    <Card.Text>
-                      {val.choices.map((va, index) => (
-                        <div key={index} className='text-left'>
-                          <Row>
-                            <Col style={{ color: [va.correct === 1 && 'green'] }} className='h4'>
-                              {index + 1}) {va.choice}
-                              {va.correct === 1 && <i className='fas fa-check text-success'></i>}
-                            </Col>
-                          </Row>
-                        </div>
-                      ))}
-                    </Card.Text>
-                    {/* <Button variant='primary'>Edit Item</Button> */}
+                    {val.choices.map((va, index) => (
+                      <div key={index} className='text-left'>
+                        <Row>
+                          <Col style={{ color: [va.correct === 1 && 'green'] }} className='h4'>
+                            {index + 1}) {va.choice}
+                            {va.correct === 1 && <i className='fas fa-check text-success'></i>}
+                          </Col>
+                        </Row>
+                      </div>
+                    ))}
                   </Card.Body>
                 </Card>
               )}
@@ -152,20 +154,27 @@ function Items() {
             {(props) => (
               <>
                 <Row>
-                  <Col md='3'>
+                  <Col md='2'>
                     <SearchBar {...props.searchProps} />
+                  </Col>
+                  <Col md='1'>
                     <ClearSearchButton {...props.searchProps} />
                   </Col>
                   <Col md='6' />
                   <Col md='3'>
                     Refresh{' '}
-                    <Button onClick={() => dispatch(getUserData({ user_id: google_json.profileObj.email }))}>
+                    <Button onClick={() => dispatch(getUserData({ user_profile: google_json.profileObj }))}>
                       <i className='fas fa-sync-alt'></i>
                     </Button>
                   </Col>
                 </Row>
                 <hr />
-                <BootstrapTable {...props.baseProps} classes='table-responsive' expandRow={expandRow} />
+                <BootstrapTable
+                  {...props.baseProps}
+                  classes='table-responsive'
+                  expandRow={expandRow}
+                  filter={filterFactory()}
+                />
               </>
             )}
           </ToolkitProvider>
