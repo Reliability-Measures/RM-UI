@@ -49,9 +49,9 @@ function Header() {
             <Link className='text-light nav-link' to='/searchquiz'>
               Search Quizzes
             </Link>
-            <Link className='text-light nav-link' to='/ramadan'>
-              Ramadan Quiz Results
-            </Link>
+            {/*<Link className='text-light nav-link' to='/ramadan'>*/}
+              {/*Ramadan Quiz Results*/}
+            {/*</Link>*/}
             <a
               target='_blank'
               className='text-light nav-link'
